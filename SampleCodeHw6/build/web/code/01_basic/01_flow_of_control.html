@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<!-- comments -->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            body {
+                line-height: 2rem;
+                font-size: 1.25rem;
+                font-family:sans-serif;
+            }
+            pre {
+                line-height: 1.5rem;
+            }
+        </style>
+    </head>
+    <body>
+        <h3>Flow Of Control - Press F12 in Chrome to See Console</h3>
+        <p>
+            This example shows how you can intersperse JavaScript function definitions 
+            with statements. As you would expect, functions only run if invoked. 
+            Statements at the "global" (or page) level, run (top to bottom) at page load time.
+            Here's the code that's being run:
+        </p>
+        <pre>
+    console.log('hello');
+    function dostuff(x) {
+        console.log("x is " + x);
+    }
+    console.log("goodbye");
+    dostuff("later");
+        </pre>
+
+        <script>
+            console.log('hello');
+            function dostuff(x) {
+                console.log("x is " + x);
+            }
+            console.log("goodbye");
+            dostuff("later");
+        </script>
+    </body>
+</html>

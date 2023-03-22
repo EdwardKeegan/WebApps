@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+        <style>
+            body {
+                font-family: arial;
+                padding-left: 1.5rem;
+                line-height: 1.5rem; 
+            }
+            h2 { 
+                text-align:center;
+                margin:0.5rem 0.5rem; /* first is top/bottom, second is left/right */ 
+                line-height: 2rem;
+            }
+            form {
+                background-color: #CCCCCC;
+                border: thin solid black; 
+                padding: 0.5rem;
+                margin-left: 1rem;
+            }
+
+            input {
+                padding:0.25rem;
+                border-color: lightgray; 
+            }
+
+            input:focus { /* When your cursor is in the field... */
+                box-shadow: 0px 0px 9px #668899;
+            }
+
+            .example {
+                background-color: #DDEEFF;
+                padding: 1.5rem;
+                padding-top:0.25rem;
+                border-radius: 0.5rem;
+                margin: 1rem;
+                font-size: 0.9rem;
+            }
+
+            pre {
+                background-color: #EEEEEE;
+                border-radius:0.5rem;
+                padding: 0.5rem;
+                font-size: 0.8rem;
+                line-height: 1.2rem;
+            }
+
+        </style>
+    </head>
+    <body>
+        <h2>Using HTML5 Validation in a Single Page Application</h2>
+        <p>
+            Single Page Applications (like we have been writing all semester) 
+            do not post user input to a server side page. They gather up the user's input, 
+            validate them (client side), then (if all input is OK), they may make 
+            an ajax call to ask a server side program that will do something with the user's input. 
+        <p>
+
+        <p>
+            First, let's review to see how a form would use HTML5 validation to send data 
+            to a server side program:
+        </p>
+
+        <div class="example">
+            <h4>Form With HTML5 Validation - Server Side Processing Only (no JS client side).</h4>
+
+            <p>
+                First, let's review how a form uses HTML5 validation before posting user data 
+                to a server side program.
+            </p>
+
+            <form method="post" action="http://cis-linux2.temple.edu:8080/sallyk/receiveData.jsp">  
+
+                Email <input name="emailAddress"  type="email" placeholder="name@domain.com" required> 
+                (uses HTML5 "required" attribute)
+
+                <br/>Your college <input name="college"  required/>
+                (also uses HTML5 "required" attribute)
+
+                <br/><button type="submit">An Actual Submit Button</button> &nbsp; 
+
+                <!-- button default type is submit, so be careful with this if putting 
+                a button in a form -->
+
+            </form> 
+
+
+            <p>
+                When the user clicks the Submit button above,
+            </p>
+            <ul>
+                <li>
+                    If any input does not pass HTML5 validation rules, the 
+                    user will see an HTML5 "bubble" validation pop up (of 
+                    the first error only).
+                </li>
+                <li>
+                    If all input passes HTML5 validation rules, then all the input data 
+                    is sent to the server side program that is specified by the "action" 
+                    attribute of the form tag. In this case, the form posts to a server page 
+                    that I wrote that simply prints out the names and values of all the inputs. 
+                    Typically a server program would look at those inputs, interact 
+                    with a database and respond back with some data confirmation. 
+                </li>
+            </ul>
+        </div>
+
+
+        <p>
+            Here is a JavaScript "trick" that we can use in our Single Page Applications 
+            -- to get the HTML5 "bubble validation" messages to come up, even if we have 
+            no intention of "posting" user data to a server side program. 
+        </p>
+
+        <div class="example">
+
+            <h4>JavaScript code invokes HTML5 Validation (no submit to server side page)</h4>
+            <form> 
+
+                Email 
+                <input  id="emailAddressId" type="email" placeholder="name@domain.com" required=""> 
+                (uses HTML5 "required" attribute)
+
+                <br/>Your college 
+                <input  id="collegeId" required/>
+                (also uses HTML5 "required" attribute)
+
+                <br/>
+                <br/>
+
+                <button>Actual Submit Button (should be hidden)</button> 
+                We don't want the user to click this button, but we need this submit button since
+                the JS will reference it.
+
+                <br/>
+                <br/>
+                <!-- "this" means the button that was clicked. Pass that to the validate function 
+                so that it can work on any form, not just one particular form. This code needs 
+                the submit button to be a button tag and the "not a submit button" to be 
+                an input tag -->
+                <input type = "button" onclick="validateForm(this)" value="Not a Submit Button (Visible)"/>
+                We add onclick functionality to this button (which is not a Submit button). 
+                This click event calls a JS function that invokes the HTML5 validation without 
+                trying to post to any server page.  
+            </form>       
+
+            <p>
+                If you click the "Actual Submit Button" (above), then HTML5 validation 
+                will "kick in", requiring you to fill in all required fields etc.. 
+                But once your input passes validation, the only thing that happens is that 
+                all inputs of the form get blanked out. This is because this form has no action attribute. 
+                We really did not want to "submit the form" to any server side program. 
+                We just wanted to take advantage of HTML5 validation features to validate the input
+                so that we could do something like bundle the input together and make an AJAX call 
+                to some Web API (in our Single Page Application). 
+            </p>
+            <p>
+                So, what you can do is make the Actual submit button invisible (so that the user 
+                cannot click it) and make another button which the user CAN click. This 
+                visible button will invoke the function that's shown below. 
+            </p>
+
+            <pre>
+    function validateForm(clickedButton) {
+
+        var form = clickedButton.parentElement; 
+
+        // for this to work, the actual (hidden) submit button must be a &lt;button> tag
+        // and the visible button must be an &lt;input> tag. 
+        var submitButton = form.getElementsByTagName("button")[0];
+
+        // This causes HTML5 validation bubbles to appear if anything is invalid
+        if (!form.checkValidity()) {
+
+            // clicking a (visible or hidden) submit button is what causes HTML5 to 
+            // validate all inputs within a particular form
+            submitButton.click();
+
+            // If there was code here, it would never run, because when the form is invalid, 
+            // the HTML5 validation behavior stops the submit process.
+
+        } else {
+            alert("Your data passes all validation. " +
+                    "Your JS code would probably invoke some AJAX call at this point.");
+        }
+    }       </pre>
+
+        </div>
+
+        <p>
+            Here is the final version of the JavaScript "trick" -- where the actual submit 
+            button is hidden so that the user cannot click it. The visible button 
+            auto-clicks the hidden submit button, but only when the form does NOT pass validation.
+
+        </p>
+
+        <script>
+            "use strict";
+
+            function validateForm(clickedButton) {
+
+                var form = clickedButton.parentElement;
+
+                // for this to work, the actual (hidden) submit button must be a <button> tag
+                // <button> tags default to type = "submit". 
+                // and the visible button must be an <input type="button"/> tag
+                var submitButton = form.getElementsByTagName("button")[0];
+
+                // This causes HTML5 validation bubbles to appear if anything is invalid
+                if (!form.checkValidity()) {
+
+                    // clicking a (visible or hidden) submit button is what causes HTML5 to 
+                    // validate all inputs within a particular form
+                    submitButton.click();
+
+                    // If there was code here, it would never run, because when the form is invalid, 
+                    // the HTML5 validation behavior stops the submit process.
+
+                } else {
+                    alert("Your data passes all validation. " +
+                            "Your JS code would probably invoke some AJAX call at this point.");
+                }
+            }
+        </script>
+    </body>
+</html>

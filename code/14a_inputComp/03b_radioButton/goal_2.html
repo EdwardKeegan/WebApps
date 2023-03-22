@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            form {
+                font-weight: bold;
+            }
+            form p {
+                font-weight: normal;
+                margin: 0rem;
+            }
+        </style>
+    </head>
+    <body>
+        <h2>2. Planning For The Radio Button Component</h2>
+
+        <p>
+            We want our radio button group components to be separated. Usually we return a div 
+            from a MakeComponent function, but in this case, we can return a form. 
+            Let's put each radio group in its own form. Then it does not matter what name 
+            we use to group the radio button options into a radio button group. 
+        </p>
+        <p>
+            We added a bit of styling just so that the prompt for the radio button group 
+            is bold but each label is not. 
+        </p>
+
+        <form name="pizzaForm">
+            Select Your Pizza:
+            <p>
+                <input type="radio" name="radName" value="Ch" /> Cheese 
+            </p>
+            <p>
+                <input type="radio" name="radName" value="Mush" checked /> Mushrooms 
+            </p>
+            <p>
+                <input type="radio" name="radName" value="Pep" /> Pepperoni 
+            </p>
+        </form>
+        <br/>
+        <form name="collegeYearForm">
+            What Year in College are you?
+            <p>
+                <input type="radio" name="radName" value="FR" /> Freshman 
+            </p>
+            <p>
+                <input type="radio" name="radName" value="SO" /> Sophomore 
+            </p>
+            <p>
+                <input type="radio" name="radName" value="JR" /> Junior 
+            </p>
+            <p>
+                <input type="radio" name="radName" value="SR" /> Senior 
+            </p>
+        </form>
+        <br/>
+        <button onclick="showValues()">Show Values</button>
+        <br/>
+        <br/>
+        <div id="msg"></div>
+        <script>
+            function showValues() {
+                var msgArea = document.getElementById("msg");
+                msgArea.innerHTML = "You have selected a " + document.pizzaForm.radName.value + " pizza." +
+                        "<br/>Your college class is: " + document.collegeYearForm.radName.value;
+            }
+        </script>
+    </body>
+</html>

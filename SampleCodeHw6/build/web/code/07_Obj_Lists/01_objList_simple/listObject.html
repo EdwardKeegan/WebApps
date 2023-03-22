@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="empList.css" rel="stylesheet"/>
+        <style>
+
+        </style>
+    </head>
+    <body>
+        <h2>Making a DOM element from a List of Employees</h2>
+
+        <div id="empListDiv"></div>
+
+        <script>
+            // prevents a misspelled variable from getting globally auto-declared.
+            "use strict";
+        </script>
+
+        <script src="MakeEmpList.js"></script>
+
+        <script>
+            // Main program
+            // debugger;
+            var employeeList = [
+                {
+                    "webUserId": "1",
+                    "name": "Abha Belorkar",
+                    "userEmail": "abha@temple.edu",
+                    "image": "http://cis-linux2.temple.edu/~sallyk/pics_users/abha.jpg",
+                    "birthday": "11/22/2001",
+                    "salary": "19000.00",
+                    "userRoleId": "3",
+                    "userRoleType": "Member",
+                    "errorMsg": ""
+                },
+                {
+                    "webUserId": "2",
+                    "name": "Dominic Letarte",
+                    "userEmail": "dominic@temple.edu",
+                    "image": "http://cis-linux2.temple.edu/~sallyk/pics_users/dominic.jpg",
+                    "birthday": "",
+                    "salary": "17000.00",
+                    "userRoleId": "3",
+                    "userRoleType": "Member",
+                    "errorMsg": ""
+                },
+                {
+                    "webUserId": "228",
+                    "name": "Ed Crotty",
+                    "userEmail": "ed@temple.edu",
+                    "image": "http://cis-linux2.temple.edu/~sallyk/pics_users/ed.jpg",
+                    "birthday": "01/02/2003",
+                    "salary": "15000.00",
+                    "userRoleId": "3",
+                    "userRoleType": "Member",
+                    "errorMsg": ""
+                },
+                {
+                    "webUserId": "346",
+                    "name": "Jamie Payton Souveneir",
+                    "userEmail": "jamie@gmail.com",
+                    "image": "http://cis-linux2.temple.edu/~sallyk/pics_users/jamie.jpg",
+                    "birthday": "02/02/1997",
+                    "salary": "20000.00",
+                    "userRoleId": "1",
+                    "userRoleType": "Admin",
+                    "errorMsg": ""
+                },
+                {
+                    "webUserId": "349",
+                    "name": "Karl Morris",
+                    "userEmail": "karl@gmail.com",
+                    "image": "http://cis-linux2.temple.edu/~sallyk/pics_users/karl.jpg",
+                    "birthday": "02/02/1997",
+                    "salary": "16000.00",
+                    "userRoleId": "1",
+                    "userRoleType": "Admin",
+                    "errorMsg": ""
+                },
+                {
+                    "webUserId": "352",
+                    "name": "Sally Prather Kyvernitis",
+                    "userEmail": "sallyk@gmail.com",
+                    "image": "http://cis-linux2.temple.edu/~sallyk/pics_users/sallyk.jpg",
+                    "birthday": "02/02/1997",
+                    "salary": "14000.00",
+                    "userRoleId": "1",
+                    "userRoleType": "Admin",
+                    "errorMsg": ""
+                }
+            ];
+
+            var empListComponent = MakeEmpList(employeeList);
+            document.getElementById("empListDiv").appendChild(empListComponent);
+
+        </script>
+    </body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>TODO supply a title</title>
+        <style>
+            body {
+                margin:0;
+                padding:0;
+                background-color:#888888;
+            }
+            #bg {
+                position:relative;
+                z-index:1;
+                background-image:url(political_crowd6.jpg);
+                background-size:cover;
+                height:600px;
+                width:1200px;
+                border-radius:20px;
+                box-shadow: 02px 02px 05px black;
+            }
+            #obama {
+                height:300px;
+                position:absolute;
+                z-index:4;
+                opacity:0;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="bg">
+            <img src="obama3.png" id="obama" />
+        </div> 
+
+        <script>
+
+            function $(element) {
+                return document.getElementById(element);
+            }
+            
+                        function move() {
+                obama.top += obama.dy;
+                obama.left += obama.dx;
+                obama.opacity += obama.dOpacity;
+                obama.style.top = obama.top + "px";
+                obama.style.left = obama.left + "px";
+                obama.style.opacity = obama.opacity;
+                console.log("top style " + obama.style.top);
+                console.log("left style " + obama.style.left);
+                obama.numMoves--;
+                if (obama.numMoves > 0) {
+                    timer = setTimeout('move()', 25);
+                }
+            }
+            
+            // Main program
+            
+            obama = $("obama");
+            obama.top = -300;
+            obama.left = -395;
+            obama.numMoves = 100;
+            obama.dx = 8;
+            obama.dy = 6;
+            obama.opacity = 0;
+            obama.dOpacity = 0.015;
+
+            timer = setTimeout('move()', 1000);
+
+        </script>
+    </body>
+</html>

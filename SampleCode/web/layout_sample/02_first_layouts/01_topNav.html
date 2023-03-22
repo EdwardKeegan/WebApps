@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- Use this type of comment within HTML -->
+        <title>[Title of YOUR web site]</title>
+
+        <!-- this is your internal style sheet -->
+        <style> 
+
+            /*  Use ONLY this type of comment inside a style sheet. 
+            Other types (like double slash or the HTML comment) do not work. */
+
+            /* This rule makes everything use border-box sizing which is desireable. With border-box sizing, 
+                padding is not added to the width. For example, if you make the footer 100% and it has some padding, 
+                you'll see a horizontal because the footer becomes a little wider than 100%                            */
+            * { 
+                box-sizing: border-box;
+            }
+
+            body { 
+                margin:0; /* don't want tiny white border inside browser window */
+                font-family: sans-serif;
+                background-color:black;
+                color: white; /* color is color of font */
+            }
+
+            #titleNav {
+                font-weight: bold;
+                font-family: serif; /* For larger stuff, pick any font, "serif" means font has "tails" like Times New Roman */
+            }
+
+            #title{ /* web site title inside the titleNav */
+                font-size: 2rem;
+                white-space:nowrap; /* do not allow multi-word title to wrap to next line */
+                padding:1rem;
+                padding-bottom: 0rem;
+                letter-spacing: 0.02rem; /* spaces out letters a bit */
+                border:thin solid red; /* remove later, just for debugging */
+            }
+
+            #nav {
+                text-align:right;
+                font-size:1.5rem;
+                white-space:nowrap; /* do not allow nav bar elements to wrap to next line */
+                padding: 1rem;
+                border:thin solid red; /* remove later, just for debugging */
+            }
+
+            /* "a" is a link (stands for "anchor") */
+            /* putting one selector after another means "inside of", so we are styling all "a" tags */
+            /* So this rule applies to all links that are inside of the element with id="nav" */
+            #nav a {
+                text-decoration:none;  /* Do not want links in "nav" to be underlined */
+                color: #C8C8C8; /* (light gray) To provide color for links, you have to style the "a" tag */
+            }
+
+            #content {
+                background-color: rgb(160, 200, 180); /* this is the turqoise color */
+                line-height: 1.5rem;
+                color: black; 
+                padding:0.5rem;		
+            }
+
+            #footer {
+                text-align:center;
+                padding:0.5rem;	 	 
+            }
+
+        </style>
+    </head>
+    <body>
+
+        <div id="titleNav">
+
+            <div id="title">
+                [Website Title]
+            </div>
+
+            <div id="nav">
+                <a href="01_topNav.html">Home</a>
+                &nbsp; <!-- non breaking space used to give more space -->
+                | <!-- vertical bar used as separator -->
+                &nbsp; <!-- non breaking space used to give more space -->
+                <a href="blog.html">Blog</a>
+                &nbsp; <!-- non breaking space used to give more space -->
+                &nbsp; <!-- non breaking space used to give more space -->
+            </div>
+
+        </div>
+
+        <div id="content">
+            <h3>This Layout</h3>  
+
+            <ul>
+                <li>
+                    In this layout, the nav bar div aligns right underneath the title div that's aligned left. 
+                </li>
+                <li>
+                    Just for debugging (and educational reasons), I have added "border:thin solid red" to the #title 
+                    rule set and to the #nav rule set. 
+                    <ul>
+                        <li>
+                            If you have a "regular div" (meaning default 
+                            static positioning), the width of any div seems to be 100% (wider than its contents dictate). 
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    The body background color (black) "shows through" the titleNav and footer. The content 
+                    has a contrasting background color.
+                </li>
+            </ul>
+
+            <h3>Web Dev Tips</h3>  
+
+            <!-- unordered (bulleted) list, li means "list item" -->
+            <ul>
+                <li>
+                    <strong>Text</strong>: Make sure that all text (including link tags &lt;a>) is 
+                    <strong><em style="margin-right:0.5ex;">ALWAYS</em></strong> 
+                    easy to read. 
+                    <ul>
+                        <li>
+                            Make the text have enough <strong>contrast</strong> with its background. 
+                        </li>
+                        <li>
+                            Make the text <strong>large</strong> enough.  
+                        </li>
+                        <li>
+                            Use line-height for spacing between lines.
+                            You can also use letter-spacing for a stylized look within an important word.
+                        </li>
+                        <li>
+                            Use padding and/or margin to prevent text from being too close to 
+                            any visible edge. 
+                        </li>
+                        <li>
+                            <strong>Use "rem"</strong> for measuring font-sizes and <strong>vertical spacing</strong> (like 
+                            padding/margin top/bottom). 
+                            <ul>
+                                <li>
+                                    "rem" is a newer measurement unit that means the normal font-size of the root element of the viewport. It 
+                                    scales well (desktop/mobile). 
+                                </li>
+                            </ul>
+                        </li>
+                    </ul> 
+                </li>
+                <li>
+                    <strong>Fluid Layout (width)</strong>: narrow the browser to test the layout at different widths. It should 
+                    always wrap nicely filling out all the horizontal space (no wasted space, no horizontal scroll bar).
+                    <ul>
+                        <li>
+                            <strong>Use percentage</strong> for specifying widths and <strong>horizontal spacing</strong> 
+                            (like padding/margin left/right). 
+                            <ul>
+                                <li>
+                                    Remember that with "box-sizing:border-box" (which is recommended), div widths include border and padding 
+                                    but not margin. 
+                                </li>
+                                <li>
+                                    Use math to allocate the 100% width.     
+                                </li>
+                            </ul>      
+                        </li>
+
+
+                    </ul>
+                </li>
+                <li>
+                    <strong>Don't mix measurement units</strong> (e.g., pixels and rem) on any dimension 
+                    (e.g., width or height) since this can cause alignment problems on different 
+                    sizes of viewports.
+                </li>
+                <li>
+                    <strong>Vertical Layout</strong>: make sure your page would look good with a lot of content and with a little 
+                    content. We will be writing single page applications and the content will change depending on 
+                    what the user clicks on.
+                </li>
+                <li>
+                    <strong>Code Indentation</strong>: always indent your code while programming 
+                    indented using Alt-Shift-F or 
+                    "Source - Format" from the NetBeans menu. 
+                </li>
+            </ul>  
+
+        </div> <!-- content. [[Keep track of nesting]] -->
+        <div id="footer">
+            [ your name goes here ]
+        </div>
+    </body>
+</html>

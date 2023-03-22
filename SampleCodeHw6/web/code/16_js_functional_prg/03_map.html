@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            p {font-weight:bold;}
+        </style>
+    </head>
+    <body>
+        <h3>Demonstrating Map - Press F12 to See Output</h3>
+        <p>
+            Creating a new array that holds all elements of another array, but after 
+            getting transformed by some function.
+        </p>
+        <pre>
+   const carList = [
+        {id: 1, name: "Duster", year: 1980},
+        {id: 2, name: "Accord", year: 2019},
+        {id: 3, name: "Prius", year: 2010},
+        {id: 4, name: "Mustang", year: 2012}
+    ];
+
+    let newCars = [];
+
+    console.log("Transform - old way");
+    for (let i = 0; i < carList.length; i++) {
+        newCars.push(carList[i].year + " " + carList[i].name);
+    }
+    console.log(newCars);
+
+    console.log("Transform - using map");
+    newCars = carList.map(function (car) {
+        return car.year + " " + car.name;
+    });
+    console.log(newCars);
+
+    console.log("Named Arrow Fn");
+    newCars = carList.map(doOne = (car) => {
+        return car.year + " " + car.name;
+    });
+    console.log(newCars);
+
+    console.log("Anonymous Arrow Fn");
+    newCars = carList.map((car) => {
+        return car.year + " " + car.name;
+    });
+    console.log(newCars);
+
+    console.log("Abbreviated Arrow Fn");
+    newCars = carList.map(car => car.year + " " + car.name);
+    console.log(newCars);
+        </pre>
+
+    <script>
+
+        // https://www.youtube.com/watch?v=rRgD1yVwIvE&list=TLPQMzAxMDIwMTk9ycJkiKUMvw&index=2
+
+        const carList = [
+            {id: 1, name: "Duster", year: 1980},
+            {id: 2, name: "Accord", year: 2019},
+            {id: 3, name: "Prius", year: 2010},
+            {id: 4, name: "Mustang", year: 2012}
+        ];
+
+        let newCars = [];
+
+        console.log("Transform - old way");
+        for (let i = 0; i < carList.length; i++) {
+            newCars.push(carList[i].year + " " + carList[i].name);
+        }
+        console.log(newCars);
+
+        console.log("Transform - using map");
+        newCars = carList.map(function (car) {
+            return car.year + " " + car.name;
+        });
+        console.log(newCars);
+
+        console.log("Named Arrow Fn");
+        newCars = carList.map(doOne = (car) => {
+            return car.year + " " + car.name;
+        });
+        console.log(newCars);
+
+        console.log("Anonymous Arrow Fn");
+        newCars = carList.map((car) => {
+            return car.year + " " + car.name;
+        });
+        console.log(newCars);
+
+        console.log("Abbreviated Arrow Fn");
+        newCars = carList.map(car => car.year + " " + car.name);
+        console.log(newCars);
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h4>ES6 Templating: Study this code. See console output.</h4>
+        <script>
+
+            // example of "regular JavaScript (ES6) templating"
+            var myYear = "sophomore";
+            var myMajor = "IST";
+            var templatedContent = `Hi, I'm a ${myYear} majoring in ${myMajor}`;
+            console.log("templated content: " + templatedContent);
+            // should print this: 
+            // Hi, I'm a sophomore majoring in IST
+
+
+            // Now we want a function that can take in an arbitrary object and 
+            // an arbitrary template and return the result of applying the template 
+            // to the object... 
+
+            /* Apply a template to an object. Example:
+             *    template: "My id is ${obj.userId} and my email is ${obj.userEmail}",
+             *    obj:      {userId: 123, userEmail: "sallyk@temple.edu"}
+             * returns this: "My id is 123 and my email is sallyk@temple.edu"                 */
+            function applyTemplate(template, obj) {
+                
+                // Surround 'template' with back ticks and then 'eval' that. eval is a 
+                // JS function that runs a string as if it were code. Then return the 
+                // result of applying the template to object 'obj'.
+
+                //console.log("applyTemplate obj on next line");
+                //console.log(obj);
+                //console.log("template: ["+template+"]");
+                var result = eval("`" + template + "`");
+                //console.log("result is "+result);
+                return result;
+            }
+
+            var obj = {
+                "userId": "123",
+                "userEmail": "abha@temple.edu"
+            };
+
+            var myTemplate = "My id is ${obj.userId} and my email is ${obj.userEmail}";
+            console.log(applyTemplate(myTemplate, obj));
+
+        </script>
+    </body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            .calc {
+                border: thick solid black;
+                margin: 1rem;
+                padding: 1rem;
+            }
+    </style>
+</head>
+<body>
+            var heading = document.createElement("h2");
+            div.appendChild(heading);
+
+            var totalDiv = document.createElement("div");
+            div.appendChild(totalDiv);
+
+            function display() {
+                heading.innerHTML = div.myTitle;
+                totalDiv.innerHTML = "Total: " + total;
+            }
+
+            div.do = function (val) {
+                total += val;
+                display();
+            };
+            display();
+
+    <div id="content"></div>
+    <script>
+        function MakeDiv(initTitle, initVal) {
+            var div = document.createElement("div");
+            div.classList.add("calc");
+
+            div.myTitle = initTitle;
+            var total = initVal;
+            var heading = document.createElement("h2")
+            div.appendChild(heading);
+            var totalDiv = document.createElement("div");
+            function display(){
+                heading.innerHTML = div.myTitle;
+                totalDive.innerHTML = "Total:" + total;
+            }
+            div.do = function (val){
+                total =+ val;
+                display();
+                
+            };
+            display();
+            
+            
+
+            return div;
+        } // MakeDiv
+
+        var c1 = MakeDiv("Candy Bars", 50);
+        var c2 = MakeDiv("Bank Account", 10000);
+        var cont = document.getElementById("content");
+        cont.appendChild(c1);
+        cont.appendChild(c2);
+        c1.do(10);          c2.do(500);
+        c1.myTitle = "Muffins";
+        c1.do(5);
+
+        </script>
+    </body>
+</html>

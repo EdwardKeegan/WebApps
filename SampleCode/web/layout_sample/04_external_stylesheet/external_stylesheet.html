@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<!-- HTML comments like this... -->
+<html>
+    <head>
+        <title>Title Nav Using Flexbox</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- Link to an External Style Sheet --> 
+        <!-- Just cut whatever was in the internal style sheet and paste it into the external style sheet. --> 
+        <link href="style/myStyle.css" rel="stylesheet" type="text/css" />  
+
+        <!-- You can still have an internal style sheet after the external one, no problem. --> 
+        <style>
+
+
+        </style>
+    </head>
+    <body>
+        <div id="titleNav">
+            <div id="title">
+                Website Title
+            </div>
+            <div id="nav">
+                Home | Account | Search | Tutorial | Blog
+            </div>
+        </div>
+        <div id="content">
+
+
+            <div class='hero'>You're Going to Love This Web Site! </div>
+
+            <p>
+                Once you are happy with your layout, it's advisable that you move your styles to an <strong>external style sheet</strong> because you are separating concerns 
+                (content stays in the HTML page, style goes to the external CSS style sheet). 
+                This makes the HTML page a lot shorter and easier to edit.
+            </p>           
+            <p>
+                Please note, however, that once you put your styles into an external style sheet, it is possible 
+                (likely?) that your old style sheet may be cached by the browser and you may not see your latest 
+                style changes when you refresh your page. 
+            </p>
+            <ul>
+                <li>
+                    To check if you are using the latest version of your style sheet, you can right click the page (in the browser), 
+                    View Source, then click on the style sheet reference in the &lt;link> tag. This will show you the style 
+                    sheet that the browser is using. 
+                </li>
+                <li>
+                    To make sure you are using the latest version of your style sheet, you can try holding down the 
+                    control key when you refresh the page, or re-run the page from NetBeans, or empty out 
+                    your browser's cache, or run an "incognito window", or disable caching using Chrome developer tools 
+                    (F12 - click on Network - click on Disable Cache, but this only works if you have the F12 open). 
+                </li>
+            </ul>
+            
+
+        </div>
+        <div id="footer">
+            Your Footer Goes Here
+        </div>
+    </body>
+</html>

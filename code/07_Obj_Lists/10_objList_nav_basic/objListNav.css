@@ -1,0 +1,20 @@
+.objListNav {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+.objListNav, .objListNav *  {
+    /* count padding and border in the width of the div 
+    for objListNav and any children of objListNav */
+    box-sizing: border-box;
+}
+.objListNav .left {
+    width: 30%;   
+    background-color: lightgreen;
+    padding:0.5rem;
+}
+.objListNav .right {
+    width: 70%;
+    background-color: lightblue;
+    padding:0.5rem;
+}

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>ES6 Function Parameter Using Object Destructuring</title>
+    </head>
+    <body>
+        <h3>
+            ES6 Function Parameter Using Object Destructuring. Press F12 (open JS console) to see output.
+        </h3>
+        <pre>
+    function demo ( {a, b} ) {
+        console.log("a is " + a + " and b is " + b); // prints a is apple and b is banana
+    }
+
+    // putting the properties in reverse order to show the association is by 
+    // property name, not position.
+    demo( { b: "banana", a: "apple"} );
+        </pre>
+        <script>
+
+            function demo( {a, b}) {
+                console.log("a is " + a + " and b is " + b); // prints a is apple and b is banana
+            }
+
+            // putting the properties in reverse order to show the association is by 
+            // property name, not position.
+            demo( {b: "banana", a: "apple"} ); 
+
+        </script>
+    </body>
+</html>

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Basic Top Nav Layout</title>
+        <style>
+            html, body {
+                /* don't want white gap just inside browser border */
+                margin:0; 
+                padding:0; 
+            }
+            body {
+                font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+                background-color: rgb(160, 200, 180);
+            }
+
+            #titleNav {
+                color:white;
+                font-family: serif;
+                background-color:black;
+                height: 79px;
+                position: fixed; 
+                left: 0px; 
+                z-index:3;
+                width: 100%;
+            }
+            #title {
+                padding-top:10px;
+                padding-left:8px;
+                font-size:44px;
+                font-weight:bold;
+                letter-spacing: 1.5px;
+                float:left;
+            }
+            #nav {
+
+                /* make this absolute (instead of float) 
+                so that it doesnt push down the content
+                when the icon is pressed and the entries 
+                show below */
+                position:fixed;
+                top:0px;
+                right:0px;
+                z-index:2;
+
+                font-size:22px;
+                letter-spacing: 1px;
+                font-weight:bold;
+                text-align:center;
+                background-color:black;
+            }
+            #navGroup {
+                display: none; 
+            }
+            #navIcon {
+                padding-top: 18px;
+                width:100px;
+                box-sizing: border-box;
+                display: block;
+            }
+            .navLink {
+                width:100px;
+                border-bottom: thin solid gray;
+                padding: 4px;
+                display: block;
+                box-sizing: border-box;
+            }
+            .stopFloat {
+                clear:both;
+            }
+            #content {
+                padding:10px;
+                padding-top: 60px;
+                padding-bottom: 20px;
+            }
+            #footer {
+                background-color:black;
+                color:white;
+                clear:both;
+                text-align:center;
+                padding:5px;
+
+                position: fixed; 
+                bottom: 0px;
+                z-index:3;
+                width: 100%;
+            }
+
+
+            /* ------------ Desktop Only Styles --------------- */
+
+            @media screen and (min-width: 580px) {
+
+                #title { /* make font of "sally kyvernitis" a bit larger than mobileAndShared.css */
+                    font-size:36px;
+                    padding-top: 18px;
+
+                }
+                .navLink{
+                    display:inline;
+                    border:none;
+                    border-right: thin solid gray;
+                }
+                #navGroup {
+                    display:block;
+                    padding-top: 29px;
+                }
+                #navIcon {
+                    display:none;
+                }
+            }
+
+
+        </style>
+
+    </head>
+    <body>
+        <div  id="container">
+            <div id="titleNav">
+                <div id="title">
+                    City Gallery
+                </div>
+                <div id="nav">
+                    <div id="navIcon" onclick="iconClicked()">
+                        <img src="icons/menuIconWhite.png" alt="" width="43"/>
+                    </div>
+                    <div id="navGroup">
+                        <div class="navLink">London</div>
+                        <div class="navLink">Paris</div>
+                        <div class="navLink">Tokyo</div>
+                    </div>
+                </div>  <!--  end of nav -->
+            </div>  <!--  end of titleNav -->
+
+            <div id="content">
+                <h2>Narrow your browser until you see "Hamburger Nav"</h2>
+                <p>
+                    London is the largest city of Europe with a surface of about 1.000 square kilometers and some 7 million inhabitants. This is the same amount as in 1900, when London was the biggest city on earth. Although it no longer ranks among the world's most populous cities, London is still one of the world's major financial and cultural capitals.
+                    London is divided into many districts which seem still to be functioning as separate villages, like they used to be in the past and they still have their own typical identities. Therefore London shows many faces with many different attractions for tourists, pituresque sceneries, historical monuments, many green parks, theatres, luxurious shops etcetera.
+                    The centre of the city owes it's layout to the great fire in 1666 and the Blitz in World War II. Both events left the city in ruins and when it was reconstructed, urbanistic improvements were carried out to a great extent. After 1666 the streets were broadened and buildings had to be made out of stone. After the Blitz there was more focus on the development 
+                    of the suburbs and the redevelopment of the slum areas.
+                </p>
+                <p>
+                    London is the largest city of Europe with a surface of about 1.000 square kilometers and some 7 million inhabitants. This is the same amount as in 1900, when London was the biggest city on earth. Although it no longer ranks among the world's most populous cities, London is still one of the world's major financial and cultural capitals.
+                    London is divided into many districts which seem still to be functioning as separate villages, like they used to be in the past and they still have their own typical identities. Therefore London shows many faces with many different attractions for tourists, pituresque sceneries, historical monuments, many green parks, theatres, luxurious shops etcetera.
+                    The centre of the city owes it's layout to the great fire in 1666 and the Blitz in World War II. Both events left the city in ruins and when it was reconstructed, urbanistic improvements were carried out to a great extent. After 1666 the streets were broadened and buildings had to be made out of stone. After the Blitz there was more focus on the development 
+                    of the suburbs and the redevelopment of the slum areas.
+                </p>
+            </div>
+
+            <div id="footer">
+                Copyright W3Schools.com
+            </div>
+        </div> <!-- container -->
+        <script>
+
+            // returns a reference to the HTML element with the given id
+            function my$(id) {
+                return document.getElementById(id);
+            }
+
+            // This function is invoked whenever the navIcon is clicked -- because of the 
+            // <div id="navIcon" onclick="iconClicked()"> tag in the HTML.
+            function iconClicked() {
+                var navGroup = my$("navGroup");
+                var navDisplay = getComputedStyle(navGroup).display;
+                if (navDisplay === "block") {
+                    my$("navGroup").style.display = "none";
+                } else {
+                    my$("navGroup").style.display = "block";
+                }
+                console.log("icon Clicked. navGroup is " + my$("navGroup").style.display);
+            }
+
+
+            // Global declarations **************************************************
+            var navIcon = my$("navIcon"); // reference to the "navIcon" div
+
+            // This is the initial display attribute (block or none) - depends on the 
+            // size of browser at page refresh time. 
+            // I had to use getComputedStyle (per internet search) rather than just 
+            // navIcon.style.display because the initial setting is set by CSS not javaScript.
+            var iconDisplay = getComputedStyle(navIcon).display;
+            console.log("initial iconDisplay is " + iconDisplay);
+
+            // We want to have certain behavior when the browser first "gets small" 
+            // (converts to mobile layout) and when the browser first "gets big" 
+            // (converts to desktop layout). So we have to track the previous value 
+            // as well as the current value.
+            var previousIconDisplay = iconDisplay;
+            // End of Global declarations **************************************************
+
+
+            /* 
+             * The following function stops this particular problem:
+             * 
+             *  - the user' browser width is initially mobile.
+             *  - the user opens/closes the nav bar.
+             *  - when the user widens the browser (to desktop), the nav group is still hidden.
+             *  
+             *  The 580 used in the resize event should match whatever value was used in the media query
+             *  (for min-width).
+             */
+
+            window.onresize = function () {
+                var width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+                console.log("width is " + width);
+                var navGroup = document.getElementById("navGroup");
+                if (width >= 580) {
+                    navGroup.style.display = "block";
+                } else {
+                    navGroup.style.display = "none";
+                }
+            };
+
+        </script>
+    </body>
+</html>

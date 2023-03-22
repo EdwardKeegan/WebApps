@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Parameter Object</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            body {
+                font-family: sans-serif;
+                line-height: 2rem;
+                padding: 1rem;
+            }
+        </style>
+    </head>
+    <body>
+        <h3>Press F12 to see output</h3>
+        <p>
+            This example shows the "mechanics" of how to pass parameters in an object instead of in a parameter list. 
+            For this example, I did not bother putting the JS functions in external files, but the technique 
+            is the same. By using parameter objects, the code becomes more self documenting (you do not 
+            have to "look up" what is the first parameter, the second, etc). It is also easier to 
+            deal with optional parameters. If the calling code does not supply a value for some property 
+            of the parameter object, the function can supply a default value. The possible "down side", 
+            is that you must spell the parameter property names correctly or else they will not be picked 
+            up by the function being called (but this is probably no worse than having to know the 
+            order of parameters in a parameter list).
+        </p>
+        <script>
+            "use strict";
+
+            function paramList(dropHeaderStyle, dropContentStyle) {
+                console.log("paramList - The dropHeaderStyle is " + dropHeaderStyle);
+                console.log("paramList - The dropContentStyle is " + dropContentStyle);
+            }
+
+            function paramObject(params) {
+                var dropHeaderStyle = params.dropHeaderStyle || "defaultHeaderStyle";
+                var dropContentStyle = params.dropContentStyle || "defaultContentStyle";
+                console.log("paramObject - The dropHeaderStyle is " + dropHeaderStyle);
+                console.log("paramObject - The dropContentStyle is " + dropContentStyle);
+            }
+
+            paramList("dropHeader", "dropContent");
+
+            paramObject({
+                dropHeaderStyle: "myDropHeaderStyle",
+                dropContentStyle: "myDropContentStyle"
+            });
+
+            paramObject({
+                // either property can be left out and (if the function is coded properly), 
+                // then they get the default value...
+                dropContentStyle: "myDropContentStyle"
+            });
+
+        </script>
+    </body>
+</html>

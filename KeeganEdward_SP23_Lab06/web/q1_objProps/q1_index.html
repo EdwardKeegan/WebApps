@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Click Sort Lab Activity</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            body {
+                font-family: sans-serif;
+                line-height: 1.5rem;
+            }
+            .extractProps {
+                background-color: #DDEEDD; /* light green */
+                padding: 0.5rem;
+                margin:1rem;
+            }
+            .extractProps p {
+                background-color: #DDDDFF; /* light blue */
+                padding: 0.5rem;
+                margin: 0.5rem;
+            }
+        </style>
+    </head>
+    <body>
+        <h3>Question 1: Extract Properties and Values from Object</h3>
+
+        <ul>
+            <li>
+                Notice that this page calls function extractPropsAndValues twice, passing in a different 
+                object each time. 
+            </li>
+            <li>
+                <strong>Modify</strong> the code in <strong>js/extractPropsAndValues.js</strong> so that 
+                it returns a div that has one paragraph per property in obj. 
+                (You iterate over the object properties, not knowing in advance what they might be...)
+                Each paragraph shall have this text: "The property named XXX has the value YYY". 
+                Replace XXX with the property name. Replace YYY with the value of that property.
+            </li>
+        </ul>
+
+        <div id="content">
+        </div>
+
+        <script src="extractPropsAndValues.js"></script>
+
+        <script>
+
+            "use strict"; // turn off the "auto variable declaration" feature of the browser.
+            // this makes it so the browser will let us know when we have forgotten to declare a variable, 
+            // e.g., if we mispell a variable name. 
+
+            function injectAppend(ele, toId) {
+                document.getElementById(toId).appendChild(ele);
+            }
+
+
+            // ***** question A. See 21_makeTable_simple for help *****
+            var myDiv1 = extractPropsAndValues({classNum: "CIS 1068", numStudents: 50, semester: "fall", year: 2020});
+            myDiv1.classList.add("extractProps");
+            injectAppend(myDiv1, "content");
+
+            var myDiv2 = extractPropsAndValues({empName: "Fred Jones", salary: "$75,000", birthYear: 1980});
+            myDiv2.classList.add("extractProps");
+            injectAppend(myDiv2, "content");
+
+        </script>
+    </body>
+</html>

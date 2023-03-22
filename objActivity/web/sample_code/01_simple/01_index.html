@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!-- Sample code: Car Object -->
+<html>
+    <head>
+        <title>Car Object Sample</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link href="carStyle.css" rel="stylesheet" type="text/css" /> 
+
+        <style>
+
+        </style>
+    </head>
+    <body>
+
+        <h2>Check for Errors in Chrome (Press F12 to Open Up JS Console)</h2>
+        <div id="container">
+            <div id="myCar"></div>
+            <button onclick="changeMyPrice()">Change price by factor</button>
+            <input id="myFactor"/>
+
+            <br/><br/>
+
+            <div id="yourCar"></div>
+            <button onclick="changeYourCondition()">Change condition to</button>
+            <input id="yourCondition"/>
+        </div>
+
+        <script src="01_MakeCar.js"></script>
+
+        <script>
+                "use strict";
+
+                var myCarObj = MakeCar("great", 5000, "carStyle");
+                document.getElementById("myCar").appendChild(myCarObj);
+
+                var yourCarObj = MakeCar("fair", 2500, "carStyle");
+                document.getElementById("yourCar").appendChild(yourCarObj);
+
+                function changeYourCondition() {
+                    // get value of user's input
+                    var newCondition = document.getElementById("yourCondition").value;
+                    yourCarObj.setCondition(newCondition);
+                }
+
+                function changeMyPrice() {
+                    // get value of user's input
+                    var priceChangeFactor = document.getElementById("myFactor").value;
+                    myCarObj.changePrice(priceChangeFactor);
+                }
+
+        </script>
+    </body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <!-- Use this type of comment within HTML -->
+        <title>[Title of YOUR web site]</title>
+
+        <link href="style/modalStyle.css" rel="stylesheet" type="text/css" />  
+        <link rel="shortcut icon" href="icons/favicon.ico">
+
+    </head>
+    <body>
+
+        <div id="content">
+            <p>
+                <input type="button" value="Test Alert Modal Window" onclick = "testAlert()"/> 
+            </p>
+
+            <h2>
+                Bad Style Warning
+            </h2>
+            <p>
+                NOTE: this example is simple and easy to understand but it has REALLY BAD STYLE because it 
+                globally defines a lot of variables and functions in the external JS file. 
+            </p>
+            <p>
+                DO NOT COPY THIS style. It was only provided for educational reasons, so that you can 
+                follow the next code example (WITH GOOD STYLE) that uses encapsulation.
+            </p>
+
+            <h2>
+                Just Some Text
+            </h2>
+            <p>
+
+                Lorem ipsum dolor sit amet, eos ei quas fierent posidonium, quo evertitur urbanitas te. Te error eripuit reformidans vim, et natum viris sed. Nec habeo alterum no. Ei malis fastidii nam. Regione reprimique quo ea, his clita consul id.
+
+                Duis latine graecis vis et, mel in dicit dolorum constituto, ex eum paulo copiosae expetendis. Eam te sale omnium praesent. Dicit invenire qui id, ne meis rebum vim. Ne est viris fierent. Nec ubique mnesarchum instructior cu. Idque instructior complectitur ex mel, no duis aliquando qui.
+
+                Vidit assum abhorreant ad sea, ei has ubique reprehendunt, no erant alienum fierent vim. Augue omittam nec te, sed congue argumentum ad. Pro fierent vituperatoribus in, vel eu autem epicurei efficiantur. Virtute bonorum id nam. At ferri decore vim. Sit eu posidonium consectetuer, pri te urbanitas interesset.
+
+                Modus paulo ad duo, te nibh molestiae usu, ex sit ludus principes. No sed malis postea electram, dicat phaedrum mea eu. Ea usu quot legimus percipit, lorem efficiendi in vis. Has ceteros accommodare ex, instructior intellegebat conclusionemque ad vis. Ut mandamus suscipiantur est, omnes tritani concludaturque nec te, quod aliquip accusam est at.
+
+                Mei no graecis moderatius, ei duo sint eirmod menandri. Id tollit dicant option est, no mei euismod impedit. Ne eros rebum labitur mei, est te eirmod nostrum fierent, sit ex doctus nusquam neglegentur. Ei diam expetendis vel.
+
+                An his munere invenire, regione imperdiet eos no. Ad paulo forensibus mei, pri ex petentium tincidunt. Ad enim perpetua theophrastus duo, everti veritus inciderint mei no. Ad rationibus mediocritatem nec, vero atqui mandamus cu vel, ea per atomorum adipiscing interpretaris. Qui ei docendi mediocrem, ea dicunt salutatus vim.
+
+                Purto error laudem per no, duo et viris quaeque mandamus. Et est ipsum fabulas. Consequat efficiantur no sit, ea vel affert gubergren intellegam. Cu soluta nominati usu, mazim periculis maiestatis eos ad. Posse solet definitionem id cum, has eu nihil delenit, pri et justo partem alterum. Eu vis falli debet tacimates, mea illud explicari cotidieque ne.
+
+                Atqui exerci iriure has id, no dolor albucius delicata pro. Qui mundi scriptorem eloquentiam at, quot facete cotidieque sit ex. Et detraxit maiestatis sed, eu eos erat persecuti, eu mei clita iracundia definitiones. Sed ei autem nonumy. Ne est graece singulis, te purto mentitum copiosae usu.
+
+            </p>
+
+        </div> <!-- content. -->
+
+        <script src="js/alertModal.js"></script>
+        <script>
+
+                    function testAlert() {
+                        var longText = `
+                            This ia a nice message that is displayed in a modal window that you can style yourself, 
+                            which makes it look a whole lot better than the basic 'alert' that comes built into 
+                            JavaScript. 
+                        `;
+                        alertModal(longText);
+                    }
+
+        </script>
+    </body>
+</html>

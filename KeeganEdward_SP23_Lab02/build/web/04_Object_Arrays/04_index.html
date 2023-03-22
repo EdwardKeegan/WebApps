@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!--
+Dynamically creating an array of objects using JavaScript. 
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h2>Object Arrays</h2>
+
+        <div id="show"></div>
+
+        <script>
+            
+            // make the browser throw an error when a non declared variable is referenced
+            // (instead of auto-declaring a global variable). 
+            "use strict";
+            
+            var myObjArray = [
+                {PropType: "House", Address: "22 MLK Blvd.", Price: "$100,000"},
+                {PropType: "Apartment", Address: "111 Diamond ave.", Price:"$200,000"},
+                {PropType: "House", Address: "123 Apple st.", Price:"$300,000"}
+            ];
+           
+           
+            // <br/> is just a new line in HTML code...
+
+            var out = "";
+            for (var i = 0; i < myObjArray.length; i++) {
+                out += "Property type is " + myObjArray[i].PropType +
+                        ", address is " + myObjArray[i].Address +
+                        ", price is " + myObjArray[i].Price + "<br/>";
+            }
+
+            out += "<br/><br/><h3>Again...</h3>";
+
+            // here's another way to iterate over array elements...
+            // it's called "for - of"
+            for (var part of myObjArray) {
+                out += "Propert type is " + part.PropType +
+                        ", address is " + part.Address + 
+                        ", price is " + part.Price +
+                        "<br/>";
+            }
+
+            document.getElementById("show").innerHTML = out;
+
+        </script>
+    </body>
+</html>

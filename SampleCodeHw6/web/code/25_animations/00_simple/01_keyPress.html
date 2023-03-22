@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Key Press Event</title>
+        <style>
+
+            body {
+                background-color: lightyellow;
+            }
+            #container {
+                position:relative;
+                height:400px;
+                width:600px;
+                border:thin solid brown;
+            }
+            
+            /* position absolute is just like fixed
+            except the element is positioned with respect to its first 
+            non-static parent instead of to the edge of the browser
+            viewing area. Usually a relatively positioned element is used 
+            for the parent. */
+            #pic {
+                background-color: red;
+                height: 50px;
+                width: 50px;
+                border-radius: 25px;
+                position: absolute;
+                top: 100px;
+                left: 100px;
+                z-index: 2;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="container">
+            <h4>Press arrow keys to move the image</h4>
+
+            <div id="pic">
+
+            </div>
+
+        </div>
+        <script type="text/javascript">
+
+            // key code constants
+            var LEFT = 37;
+            var RIGHT = 39;
+            var UP = 38;
+            var DOWN = 40;
+            var SPACE = 32;
+
+            var x = 100;
+            var y = 100;
+            //alert ("x is " + x + " and y is "+y);
+
+            function changeImage(dx, dy) {
+                x = x + dx;
+                y = y + dy;
+                //alert ("x is " + x + " and y is "+y);
+
+                document.getElementById('pic').style.left = x + "px";
+                document.getElementById('pic').style.top = y + "px";
+            }
+
+            var distance = 10;
+            function onKeyPress(event) {
+                if (event.keyCode == LEFT) {
+                    changeImage(-distance, 0);
+                } else if (event.keyCode == RIGHT) {
+                    changeImage(distance, 0);
+                } else if (event.keyCode == UP) {
+                    changeImage(0, -distance);
+                } else if (event.keyCode == DOWN) {
+                    changeImage(0, distance);
+                }
+            }
+
+            window.addEventListener('keydown', onKeyPress, true);
+
+
+        </script>
+    </body>
+</html>

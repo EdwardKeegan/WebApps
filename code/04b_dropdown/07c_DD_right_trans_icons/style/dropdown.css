@@ -1,0 +1,62 @@
+/* To implement dropdowns, we have three styling elements (that are referenced by the JS code): 
+*
+*    - dropdown: a div container for dropdown header and (sibling associated dropdown content
+*    - dropHeader: visible upon first rendering. when you click on a drop header, 
+*          its related content will open up.
+*    - dropContent: initially hidden, but becomes visible when the dropHeader is clicked.
+*/
+
+/* This is an example of how t create a style sheet that "goes with" some "framework style JavaScript code". 
+   After selecting a name for our framework (in this case, I'm calling it "dropdown"), we name our style sheet.
+   I'm naming it "dropdown.css". Inside the style sheet, I have only one single global CSS classname ".dropdown". 
+   All style rules must begind with that single global CSS classname so that we do not claim global CSS classnames 
+   that the HTML coder (a person using our little framework) might want to use. We are avoiding polluting the 
+   global namespace. 
+*/
+
+.dropdown {
+ 
+    /* .dropdown is a parent of dropConent. Since we want to right justify dropConent with its parent,
+    assign "position relative" to the parent (.dropdown) and "position absolute" to the child (.dropContent).      */ 
+    position: relative;  
+
+    /* "display:inline-block" makes divs are positioned/treated like words instead of like block/paragraph elements */
+    display: inline-block;
+
+    /* put a little space between drop down group header entries */
+    margin-right: 0.5rem;
+
+    /* Change mouse pointer when the user hovers over a dropdown element */
+    cursor: pointer;
+}
+
+/* don't delete this even though there are no style rules - js references it and therefore we need it. */
+.dropdown .dropHeader {
+}
+
+.dropdown .dropContent {
+    background-color:black;
+    padding: 0.25rem;
+    letter-spacing: 0.05rem; 
+    line-height: 1.5rem;
+    border-radius: 8px;
+
+    position: absolute;
+    font-size: 0.75rem;
+    line-height: 1.25rem;
+    z-index: 3;
+
+    right: -500px;  /* places the element off screen to the right (cannot see initially) */
+
+    /* animate the change of the right property (enters in from right slow enough to see */
+    transition: right 0.5s ease 0s;
+}
+
+/* These next two classes are added to and removed from dropContent to hide and show it (with animation via the transition) */
+.dropdown .show {
+    right: 0px;  /* right 0px right-aligns the dropdown content with it's parent (the container classed dropdown) */
+}
+
+.dropdown .hide {
+    right: -500px;  /* sends the dropdown content way off to the right of the screen */ 
+}

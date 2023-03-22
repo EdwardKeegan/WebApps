@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>0 Simple Closure</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style> 
+            div {
+                border-radius:50%;
+                padding:2rem;
+                margin:1rem;
+                color: white;
+                text-align:center;
+                font-size: 1.5rem;
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body>
+        <h3>Open Up Chrome's Console To See Output</h3>
+        <script>
+
+            function MakeCounter(initVal, counterColor) {
+
+                // val and color are local variables 
+                // defined within MakeCounter.
+                var val = initVal;
+                var color = counterColor;
+
+                // This object (empty for now) will be returned 
+                // by MakeCounter. 
+                var counterObj = {}; // empty object that will be returned
+
+                // increment is a public method of counterObj
+                counterObj.increment = function () {
+                    
+                    // like java, val (declared up one level) 
+                    // is accessible from this method.
+                    val++;
+                    
+                    console.log("The "+color+" counter now has value:"+val);
+                };
+                
+                console.log("The "+color+" counter's initial value:"+val);
+
+                return counterObj;
+            }
+            // When MakeCounter is done running, its local variables 
+            // (val and color) are not destroyed (like they would have
+            // been in java). This is similar to how static data members
+            // are handled in java. 
+
+            // Each object created and returned by MakeCounter has 
+            // it's own set of local variables (just like each java object 
+            // has it's own set of data members). 
+
+            // global code 
+            var c1 = MakeCounter(100, "red");
+            var c2 = MakeCounter(200, "green");
+            c1.increment();
+            c2.increment();
+            c1.increment();
+            c1.increment();
+        </script>
+    </body>
+</html>

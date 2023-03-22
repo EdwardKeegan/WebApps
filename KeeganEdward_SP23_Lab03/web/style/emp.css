@@ -1,0 +1,16 @@
+
+.emp {
+background-color: lightsteelblue;
+border-radius: 0.5rem;
+padding: 0.5rem;
+margin: 2rem;
+}
+
+.emp button {
+background-color: salmon;
+}
+
+.emp img {
+width: 15%;
+height: 15%;
+}

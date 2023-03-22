@@ -1,0 +1,121 @@
+body { 
+    margin:0;                   /* no white border around browser window */
+    font-family: sans-serif;  
+}
+
+/* This rule makes everything use border-box sizing which is desireable. With border-box sizing, 
+   the size of padding and border are considered part of the width of the box, not added extra. 
+   Otherwise, if you had a div 100% wide with some padding, you'd get horizontal scroll bar 
+   cause the div would be wider than 100%                                                               */ 
+* { 
+    box-sizing: border-box;
+}
+
+#quickref {
+
+    /* ---------- Background: -------------------------------------------------------------------------------------------------- */
+
+    background-color: #4C5327;                   /* you can apply background color to body or any div                         */
+    opacity: 0.7;                                /* opacity means how solid, this means 70% solid                             */
+    background-image: url(images/night.jpg);     /* keep image < 500K to avoid slow load (reduce resolution?)                 */
+    background-size:cover;                       /* stretches the image to cover the background of the window or div          */ 
+    background-repeat: no-repeat;		 /* or you can repeat your image along the x or y axis, or both               */		 
+    background-attachment: fixed;                /* otherwise bg image must stretch too tall in mobile layout                 */
+    box-shadow: 0px 0px 9px #888888;             /* can add a 3D effect to a div, blending it in                              */
+
+    /* ---------- Fonts and text: ---------------------------------------------------------------------------------------------- *
+    
+       font family means try to use the first font, but if that font is not installed on the user’s pc, try the next, etc.    */
+    font-family: Georgia, "Times New Roman", Times, serif;     /* serif means that the letters have "tails"                   */
+    font-family: Tahoma, Geneva, sans-serif;                   /* sans-serif (french) means no tails                          */		     
+
+    /* To reference an online font, visit http://www.google.com/fonts, then copy out the link (see example below) and         *
+       paste into your head section. Then, you can then specify that font in a style rule.                                    */   
+
+    /*    <link href='http://fonts.googleapis.com/css?family=Balthazar' rel='stylesheet' type='text/css'>                     */
+    font-family: 'Balthazar', serif;			
+
+    color: #FEF4BC;				/* color means the color of the font/text, use RGB code to get rich colors   */
+    color: black;				/* color names work too, but are limited                                     */
+    font-size: 1.5rem;                          /* rem is basic font-size of root, recommended for responsive design         */
+    line-height: 4.5rem;                        /* how much space do you want between lines of text?                         */
+    font-weight: bold;
+    text-shadow: 0px 0px 15px yellow;		/* this can help letters stand out against a background                       */
+    text-align: center;                         /* other options are left, right                                              */
+    letter-spacing: 0.1rem;                     /* spaces out the letters a bit, provides stylized result                     */
+    text-decoration: none;                      /* Prevent links from being underlined.                                       */
+    white-space: nowrap;                        /* don't allow the text to wrap, good for title and for nav                   */
+
+
+    /* ---------- Borders around boxes: ------------------------------------------------------------------------------------------ */
+
+    border:1px solid gray;                      /* specifies width, style, & color of all borders: top, bottom, left, & right  */
+    border-bottom:1px solid gray;               /* to specify just one border: top, bottom, left, or right                     */
+    border-bottom-style: none;                  
+    border-radius: 8px;                         /* W3C standard, all 4 corners rounded with given radius.                       */
+    border-top-left-radius:8px;                 /* can use bottom or right as well                                              */
+
+
+    /* ---------- Margins (space outside the box) and padding (space inside the box):---------------------------------------------- */
+
+    margin: 1rem;                               /* will one root font-size space all around outside of box                      */
+    margin: auto;                               /* means same margin on left and right, centers the box                         */
+    margin-right: 1rem;                         /* you can use top, bottom, left, or right to specify a particular edge         */
+
+    padding: 0.5rem;                            /* creates 3 pixels of space all around the inside of box                    */
+    padding-bottom: 5px;                        /* you can use top, bottom, left, or right to specify a particular edge         */
+
+
+
+    /* ---------- Width (and specifying minimum width): ------------------------------------------------------------------------- */
+    width: 25%;                                  /* it's good to measure widths in percentage - to achieve a fluid layout         */
+    width: 75%;
+
+}
+
+
+/* Get title and nav divs on same row with space between, meaning left justify title and right justify nav */
+#titleNav {
+    display:flex; 
+    flex-direction: row;
+    justify-content: space-between; 
+}
+#title, #nav  {
+    white-space: nowrap;  
+    font-size: 2rem;
+}
+
+/* fix titleNav to the top and add top margin to content to allow for height of titleNav */ 
+#titleNav {
+    position: fixed;
+    top: 0;       /* element will align always with top of browser window */
+    width: 100%;  /* fixed elements are not automatically 100%, so must make this change */
+    z-index:1;    /* higher z-index value with be "on top of"  lower z-index value, default is 0 */
+    padding: 1rem;
+    font-size: 2rem;
+}
+#content {
+    margin-top: 5rem; /* dont let fixed titleNav hide top of content */
+}
+
+
+/* to position an element w.r.t. its parent */ 
+/* make the parent position:relative;
+   make the child position:absolute;
+   set the child properties like top:0 or bottom:0 or right:0 depending on how you want it positioned 
+   w.r.t. its parent. Dont forget z-index to say which is on top, add padding/margin to avoid unwanted 
+   overlap. 
+*/
+
+/* RESPONSIVE: title and Nav are on top of each other in mobile, but share a row in desktop width      */ 
+#titleNav {   /* this is mobile */
+    display:flex; 
+    flex-direction: column;
+}
+@media only screen and (min-width: 600px) {  /* this is desktop */
+    #titleNav {
+        /* flex attributes */
+        flex-direction: row;
+        justify-content: space-between; /* title will go left, nav will go right with "space between" */
+    }
+}

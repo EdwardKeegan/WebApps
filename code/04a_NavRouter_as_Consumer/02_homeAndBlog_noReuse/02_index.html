@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+
+        <meta charset="UTF-8">
+
+        <!-- Makes your page look better if viewed in a mobile device -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- Text that shows in the browser tab -->
+        <title>Navigation with no UI Reuse</title>
+
+        <!-- The little icon that shows in the browser tab -->
+        <link rel="shortcut icon" href="icons/smiley.png" />  
+
+        <!-- Link to external style sheet -->
+        <link href="style/myStyle.css" rel="stylesheet" type="text/css" />  
+
+        <!-- Internal Styles can be put here (would apply only to this page) -->
+        <style>
+
+        </style>
+    </head>
+    <body>
+        <div id="titleNav">
+            <div id="title">
+                Website Title
+            </div>
+            <div id="nav">
+                <a href="02_index.html">Home</a> | 
+                <a href="blog.html">Blog</a>
+            </div>
+        </div>
+        <div id="content">
+
+            <h3>Home</h3>
+
+            <p>
+                Here is how a web designer (with no ability to program) might make the 
+                Navigation Bar work. 
+                The web designer could copy index.html, rename it (e.g, blog.html), 
+                then edit the content area of the new page. Links within the Navigation Bar 
+                would reference these pages.  
+            </p>
+
+            <p>
+                Click on the two working links ("home" and "blog") to see how this simple 
+                navigation would work.
+            </p>
+
+            <p>
+                The problem with this approach is that there is no reuse of the User Interface. 
+                If you had a 500 page web site and you wanted to modify the Nav Bar, you'd 
+                have to edit each of the 500 pages.
+            </p>
+
+        </div>
+        <div id="footer">
+            Your Footer Goes Here
+        </div>
+    </body>
+</html>

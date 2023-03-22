@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<!-- Sample code: Car Object -->
+<html>
+    <head>
+        <title>Car Object Sample</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link href="carStyle.css" rel="stylesheet" type="text/css" /> 
+
+        <style>
+            body {
+                font-family:sans-serif;
+            }
+
+            * {
+                box-sizing: border-box;
+            }
+            .carContainer {
+                display: flex;
+                flex-direction: row;
+            }
+            .carContainer .carStyle {
+                width: 48%; 
+                margin: 1%;
+            }
+
+        </style>
+    </head>
+    <body>
+        <h2>Use Chrome: Press F12 to Open Up JS Console</h2>
+
+        <div id='carContainer'>
+        </div>
+
+        <script src="05_MakeCar.js"></script>
+        <script>
+            "use strict";
+            
+            var carDiv1 = MakeCar("White Audi", "great", 5000, "pics/audi.png", "carStyle");
+            document.getElementById("carContainer").appendChild(carDiv1);
+            
+            var carDiv2 = MakeCar("Red Pixar", "fair", 2500, "pics/redCar.png", "carStyle");
+            document.getElementById("carContainer").appendChild(carDiv2);
+
+        </script>
+    </body>
+</html>

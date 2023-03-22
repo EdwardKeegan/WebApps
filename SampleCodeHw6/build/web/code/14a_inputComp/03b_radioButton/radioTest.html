@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="style/radio.css" rel="stylesheet"/>
+        <style>
+
+        </style>
+    </head>
+    <body>
+        <h2>Test Page for MakeRadio.js</h2>
+        <div id="radioContent"></div>
+        <button onclick="showRadio()">Show</button>
+        <div id="msg"></div>
+
+        <script src="js/reusable/MakeTag.js"></script>
+        <script src="js/reusable/MakeRadio.js"></script>
+
+        <script>
+
+            // function MakeRadio(prompt, choices, selected) {
+            // objList properties: showOption and value
+            var radio = MakeRadio({
+                prompt: "Pizza Topping",
+                choices: ["cheeze", "mushrooms", "pepperoni"],
+                selected: "pepperoni"
+            });
+            document.getElementById("radioContent").appendChild(radio);
+
+
+            var radio2 = MakeRadio({
+                prompt: "College Class",
+                choices: ["Freshman", "Sophomore", "Junior", "Senior"]
+                        // selected: "fr"   if you dont provide a selected value (or if it doesnt match any value), 
+                        // no radio option is pre-selected.
+            });
+            document.getElementById("radioContent").appendChild(radio2);
+
+            function showRadio() {
+
+                document.getElementById("msg").innerHTML =
+                        "1st radio button has this value: " + radio.value +
+                        "<br/>2nd radio button has this value: " + radio2.value;
+            }
+        </script>
+
+    </body>
+</html>

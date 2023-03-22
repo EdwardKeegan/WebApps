@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+
+<html>
+
+    <!-- Here's how you make an HTML Comment -->
+
+    <head>
+        <title>About HTML</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    </head>
+    <body>
+
+        <h1>Your First HTML Page</h1>
+        <p>
+            HTML stands for HyperText Markup Language. Right click this page, select "View Source", and you'll 
+            see what HTML looks like. HTML has a finite list of about 50 elements, most of which 
+            have a starting tag and an end tag. For example, a "p" tag represents a paragraph and looks like this: 
+            &lt;p> ...the text of the paragraph ... &lt;/p>. There are also HTML tags for images, bullet items, tables, and more.
+        </p>
+
+        <h3>Head Element</h3>
+        <p>
+            In the head element you place information for the browser, things like: 
+        </p>
+        <ul>
+
+            <li>
+                the page <strong>title</strong> (shows up in the tab of your browser),
+            </li>
+            <li>
+                a <strong>character set</strong> specification (tells the browser 
+                which character set you'll use -- UTF-8 instead of ASCII or ANSI),
+            </li>
+            <li>
+                a <strong>viewport</strong> specification 
+                (helpful when designing web pages that look good on desktop as well as mobile viewports), and 
+            </li>
+            <li>
+                a <strong>&lt;style></strong> element inside which you can specify style rules to make our page
+                look better than just black/white. 
+            </li>
+        </ul>   
+        <h3>Body Element</h3>
+        <p>
+            In the body element, you put the HTML elements that will be seen in the browser window.
+            The body element of this page (right click and View Source) has examples of these HTML tags: 
+        </p>
+        <ul>
+
+            <li>
+                "<strong>h1</strong>" tag, "h2" tag, "h3" tags (different levels of headings),
+            </li>
+            <li>
+                "<strong>p</strong>" tags (paragraphs), 
+            </li>
+            <li>
+                "<strong>ul</strong>" and "li" tags (bullet items: ul stands for unordered list, li stands for list item), 
+            </li>
+            <li>
+                "<strong>strong</strong>" tags (define where to start/stop bolding), and
+            </li>
+            <li>
+                "<strong>a</strong>" tags (stands for anchor, lets you link):
+            </li>
+            <li>
+                "<strong>img</strong>" (image) and 
+                "<strong>video</strong>" are both shown in the next section - they are too big (visually) to put right here. 
+            </li>
+            <li>
+                We will learn about HTML <strong>tables</strong> and HTML <strong>inputs</strong> in future homework modules.
+            </li>
+            <li>
+                For a complete list of 
+                <strong>HTML tags and concepts and reference</strong>, visit
+                <a target="_blank" href='https://www.w3schools.com/html/default.asp'>W3Schools - HTML</a>. 
+            </li>
+        </ul>
+
+        <h4>Images</h4>
+        <p>
+            Without styling, image and video tags are treated like a really large character (generally not 
+            desirable). We'll soon learn how to use CSS to style them nicely, but for now, here's how they 
+            show up with no styling. First, an image: <img src="pet.png"/>. Note that this image uses 
+            the color "transparent" around the edges, but as far as the browser is concerned, it is a square 
+            image. 
+        </p>
+
+        <h4>Video</h4>
+        <p>
+            Next, here is an video tag
+            <video width="600" controls>
+                <source src="welcomeZoom_2min.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video> 
+            right in the middle of a sentence.
+        </p>
+
+    </body>
+</html>

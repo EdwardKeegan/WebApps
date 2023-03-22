@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div>Open Up Chrome's Console to See Output</div>
+        <script>
+
+            // "Regular" object destructuring:
+            // condition and price are both declared as plain variables and they take 
+            // on the values of the property of the object (on the R.H.S.) that has 
+            // the same name as the variables, if such properties exist. 
+            var {condition, price} = {condition: "fair", price: 2500};
+            console.log("regular object destructuring: price is " + price +
+                    ", condition is " + condition); 
+            // price is 2500, condition is fair
+
+            var {condition2, price2} = {price2: 500};
+            console.log("regular object destructuring (missing condition2 property): " +
+                    "price2 is " + price2 +
+                    ", condition2 is " + condition2);
+            // price2 is 500, condition2 is undefined (no exception thrown)
+
+            // object destructuring with default values
+            var {condition3 = "unknown", price3 = 0} = {};
+            console.log("object destructuring with default values: price3 is " + price3 +
+                    ", condition3 is " + condition3); 
+            // price3 is 0, condition3 is unknown
+
+
+            // Using object destructuring in function header
+            function makeCar( {condition4 = "not sure", price4 = -1} ) {
+
+                console.log("parameter object destructuring with default values: "+
+                        "price4 is " + price4 + ", condition4 is " + condition4); 
+                // price4 is -1, condition4 is "not sure"
+            }
+            
+            // call makeCar
+            makeCar({});
+
+        </script>
+    </body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Explosion Using Sprite Page</title>
+        <style>
+            body {
+                background-color: #CCFFCC; /* light green */
+            }
+            .fire {
+                width:64px;
+                height:64px;
+                background-image:url(pics/explode.png);
+            }
+            .fire1 {
+                background-position: 0px 0px;  /* left and top */
+            }
+            .fire2 {
+                background-position: -64px 0px;
+            }
+            .fire3 {
+                background-position: -128px 0px;
+            }
+            .fire4 {
+                background-position: -192px 0px;
+            }
+            .fire5 {
+                background-position: -0px -64px;
+            }
+            .fire6 {
+                background-position: -64px -64px;
+            }
+            .fire7 {
+                background-position: -128px -64px;
+            }
+            .fire8 {
+                background-position: -192px -64px;
+            }
+            .fire9 {
+                background-position: 0px -128px;
+            }
+            .fire10 {
+                background-position: -64px -128px;
+            }
+            .fire11 {
+                background-position: -128px -128px;
+            }
+            .fire12 {
+                background-position: -192px -128px;
+            }
+            .fire13 {
+                background-position: -0px -192px;
+            }
+            .fire14 {
+                background-position: -64px -192px;
+            }
+            .fire15 {
+                background-position: -128px -192px;
+            }
+            .fire16 {
+                background-position: -192px -192px;
+            }
+        </style>
+    </head>
+    <body>
+        <hr/>
+        <h2>Here's the image (png, transparent background) - google "sprites"</h2>
+        <img src="pics/explode.png" style="border:thin solid black;"/>
+        <hr/>
+        <h3>This is a div that we will control, initially it has class fire and fire1 (fire1 means upper left)</h3>
+        <div id="pic" class = "fire fire1"></div>
+        <hr/>
+        <input type="button" value="Advance Image" onclick="changeImage()"/>
+        <input type="button" value="Start Animation" onclick="startAnimation()"/>
+        <input type="button" value="Stop Animation" onclick="stopAnimation()"/>
+        <input type="button" value="Make it fire1" onclick="document.getElementById('pic').className = 'fire fire1';" />
+        <input type="button" value="Make it fire2" onclick="document.getElementById('pic').className = 'fire fire2';" />
+        <input type="button" value="Make it fire3" onclick="document.getElementById('pic').className = 'fire fire3';"/>
+        <hr/>
+
+        <div class="fire fire11"></div>
+        <div class="fire fire21"></div>
+        <div class="fire fire31"></div>
+
+        <script type="text/javascript">
+
+            var i = 1;
+            function changeImage() {
+                i = i + 1;
+                if (i > 16) {
+                    i = 1;
+                }
+                //var cname = 'fire fire' + i;
+                //alert ("cname is "+cname);
+                document.getElementById('pic').className = 'fire fire' + i;
+            }
+
+            var intervalHandle;
+            function startAnimation() {
+                changeImage();
+                intervalHandle = setInterval(changeImage, 90); /* name of function, how often to run it */
+            }
+
+            function stopAnimation() {
+                //alert ("trying to stop");
+                clearInterval(intervalHandle); // stop game, they won
+            }
+
+        </script>
+    </body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>[Title of YOUR web site]</title>
+        <link href="style/myStyle2.css" rel="stylesheet" type="text/css" />  
+
+        <style>
+
+            .parallax {
+                background-attachment:fixed;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                height:70vh;
+            }
+            #parallaxOne {
+                background-image: url(pics/waterFall_1600x900.jpg);
+            }
+            #parallaxTwo {
+                background-image: url(pics/ocean_hut_1728x1080.jpg);
+            }
+            #parallaxThree {
+                background-image: url(pics/autumn-trees_1619x1080.jpg);
+            }
+            .text {
+                font-size: 20px;
+                padding: 20px;
+                text-align: center;
+                background-color:#0B2153; 
+                color: white;
+                min-height: 30vh;
+            }
+
+        </style>
+
+    </head>
+    <body>
+
+        <div id="titleNav">
+
+            <!-- The style sheet has pageTitle floated left -->
+            <div id="pageTitle">
+                Nature Trips
+            </div>
+
+            <!-- The style sheet has nav floated right -->
+            <div id="nav">
+                <div><a onclick = " ajaxFillId('htmlPartials/homeContent.html', 'content')">Home</a></div>
+                <div><a onclick = " ajaxFillId('htmlPartials/blogContent.html', 'content')">Blog</a></div>
+            </div>
+
+            <!-- Must stop the floating so that elements below (e.g., content) 
+            don't float up into here. -->
+            <div class="stopFloat"></div>
+        </div>
+        <div id="content">
+
+            <div class="parallax" id="parallaxOne"></div>
+
+
+            <div class="text" id="textOne">
+                <h1>Content Here</h1>
+                <p>In this version, the text is "between" the fixed background images.</p>
+            </div>
+
+            <div class="parallax" id="parallaxTwo"></div>
+
+            <div class="text" id="textTwo">
+                <h1>More Stuff</h1>
+                <p>Then you can talk about more stuff too.</p>
+            </div>
+
+            <div class="parallax" id="parallaxThree"></div>
+
+        </div> <!-- content. [[Keep track of nesting]] -->
+
+    </body>  
+</html>

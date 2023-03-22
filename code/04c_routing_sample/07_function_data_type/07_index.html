@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h2>Reminder: JS Treats a "Function" as a Data Type</h2>
+        <h4>Press F12 to open up the console</h4>
+        <p>
+            In JavaScript, a function is a first class data type. 
+        </p>
+        <script>
+            function catFunc (name) {
+                console.log("I am a cat named " + name);
+            }
+
+            function dogFunc () {
+                console.log("I am a dog");
+            }
+
+            var x = 5;
+            console.log(x); // prints 5
+
+            x = dogFunc;
+            x(); // prints I am a dog
+
+            var y = catFunc;
+            y("tiger"); // prints I am a cat named tiger
+            
+        </script>
+    </body>
+</html>

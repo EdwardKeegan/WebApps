@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h2>Associative Array: Press F12 to See Console</h2>
+        <p>
+            We can use a JavaScript associative array as a hash table that stores 
+            key/value pairs.
+        </p>
+        <script>
+            
+            // Declare and instantiate an empty array
+            var assoc = [];
+            
+            // put in two key/value pairs
+            assoc['A123'] = "wrench";
+            assoc['B456'] = "hammer";
+
+            // extract value using key (twice)
+            console.log("part number A123 is " + assoc['A123']); // prints wrench
+            console.log("part number B456 is " + assoc['B456']); // prints hammer
+            
+            // what happens when key is not in the array
+            console.log("part number C789 is " + assoc['C789']); // prints undefined
+            
+            if (!assoc['C789']) {
+                console.log("C789 is not a key in the hash table");
+            }
+            
+            console.log("assoc3 is "+assoc[3]); 
+            
+        </script>
+    </body>
+</html>

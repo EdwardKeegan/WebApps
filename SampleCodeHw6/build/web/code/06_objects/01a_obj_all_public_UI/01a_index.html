@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<!-- Sample code: Car Object -->
+<html>
+    <head>
+        <title>Car Object Sample</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            /* this css selector applies to divs inside of elements with id "container" */
+            #container div { 
+                background-color: lightgrey;
+                padding: 1em;
+                margin: 1em;
+            }
+            body {
+                padding: 1rem;
+                font-family: sans-serif;
+            }
+
+        </style>
+    </head>
+    <body>
+        <h2>Press Chrome's F12 to Open Up Console - All Public, UI</h2>
+        <p>
+            In this code:
+        </p>
+        <ul>
+            <li>
+                MakeCar creates and returns a "div" (after adding public custom properties and 
+                methods to the div). The div can be appended into any DOM element on the page.  
+            </li>
+            <li>
+                Since the data members are public, you don't really need the getter/setter functions.
+            </li>
+        </ul>
+
+        <div id="container">
+        </div>
+
+
+        <script src="01a_MakeCar.js"></script>
+        <script>
+            "use strict";
+            // MakeCar returns a div now...
+            var myCarObj = MakeCar("blue toyota", "great", 5000);  // this is a div...
+            myCarObj.log();
+
+            var yourCarObj = MakeCar("red BMW", "fair", 2500);
+            yourCarObj.log();
+
+            // to see the divs, append them to something that's on the page
+            document.getElementById("container").appendChild(myCarObj);
+            document.getElementById("container").appendChild(yourCarObj);
+
+            // changes to the div objects are reflected in the UI (because the display 
+            // method updates the innerHTML of the div objects).
+            myCarObj.setCondition("poor");
+            myCarObj.log();
+            
+            yourCarObj.changePrice(0.1); // 10% increase in price
+            yourCarObj.log();
+
+        </script>
+    </body>
+</html>

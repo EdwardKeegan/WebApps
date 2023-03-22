@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>your title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h2>Right Way to Group Related JS Functions in a Single JS File</h2>
+        <h3>Press F12 for Chrome Console to see output</h3>
+        <h4>View code in NetBeans</h4>
+        <p>
+            This example shows how to place related JS functions in one JS file 
+            while still following the JS naming convention. 
+            You create a a global object (named the same as the JS file), then you can add as many public 
+            methods to that object as you like. 
+        </p>
+        <script src="js/validationUtils.js"></script>
+        <script>
+            validationUtils.validateDate();
+            validationUtils.validateInteger();
+            validationUtils.validateDecimal();
+        </script>
+    </body>
+</html>

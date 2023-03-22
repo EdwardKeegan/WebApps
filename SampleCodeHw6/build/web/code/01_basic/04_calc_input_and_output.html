@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>My Javascript Calculator</title>
+
+        <style>
+            body {
+                font-family:sans-serif;
+            }
+
+            input[type=button] {
+                background-color:#DDDDDD;
+            }
+            #answer {
+                background-color:yellow;
+                padding: 0.25em;
+            }
+
+        </style>
+
+    </head>
+    <body>
+        <h2>Adding Calculator - 3 Versions (3 grey buttons)</h2>
+        <ul>
+            <li>
+                Version 1: doesn't convert to numeric, concatenates instead of adding.
+                <pre>
+    function add_v1() { // this version does not convert the input values to numbers, so the result is concatenation, not addition.
+        document.getElementById("answer").innerHTML =
+                document.getElementById("leftside").value +
+                document.getElementById("rightside").value;
+    }
+                </pre>
+            </li>
+            <li>
+                Version 2: converts to numeric then adds. If either text box holds a non-number, 
+                the answer is NaN (stands for Not a Number).
+                <pre>
+    function add_v2() { // this version converts to numbers then adds, but it doesnt check to make sure the values are valid numbers.
+        document.getElementById("answer").innerHTML =
+                Number(document.getElementById("leftside").value) +
+                Number(document.getElementById("rightside").value);
+    }
+                </pre>
+            </li>
+            <li>
+                Version 3: checks that both values are numbers, converts, then adds.
+                <pre>
+    function add_v3() { // this version checks that the user input is a number "NaN" means "Not a Number"
+        if (isNaN(document.getElementById("leftside").value)) {
+            alert("Silly - if you don't put a number in the left side, how can I add up these numbers for you?");
+            return;
+        }
+        if (isNaN(document.getElementById("rightside").value)) {
+            alert("Duh - you have to put a number in the right side too !");
+            return;
+        }
+    }
+                </pre>
+            </li>
+        </ul>
+
+        <div>
+            <input type="text" id="leftside" value="12"/>
+            +
+            <input type="text" id="rightside" value="34"/>
+            <input type="button" value="= (v1)" onclick="add_v1()"/>
+            <input type="button" value="= (v2)" onclick="add_v2()" />
+            <input type="button" value="= (v3)" onclick="add_v3()"/>
+            <span id="answer">Answer Will Go Here</span>
+    </div>
+
+    <script>
+        function add_v1() { // this version does not convert the input values to numbers, so the result is concatenation, not addition.
+            document.getElementById("answer").innerHTML =
+                    document.getElementById("leftside").value +
+                    document.getElementById("rightside").value;
+        }
+
+        function add_v2() { // this version converts to numbers then adds, but it doesnt check to make sure the values are valid numbers.
+            document.getElementById("answer").innerHTML =
+                    Number(document.getElementById("leftside").value) +
+                    Number(document.getElementById("rightside").value);
+        }
+
+        function add_v3() { // this version checks that the user input is a number "NaN" means "Not a Number"
+            if (isNaN(document.getElementById("leftside").value)) {
+                alert("You are too funny!  If you don't put a number in the left side, how can I add up these numbers for you?");
+                return;
+            }
+            if (isNaN(document.getElementById("rightside").value)) {
+                alert("Now, you know that you have to put a number in the right side too - Duh !");
+                return;
+            }
+
+            document.getElementById("answer").innerHTML =
+                    Number(document.getElementById("leftside").value) +
+                    Number(document.getElementById("rightside").value);
+        }
+
+    </script>
+</body>
+</html>

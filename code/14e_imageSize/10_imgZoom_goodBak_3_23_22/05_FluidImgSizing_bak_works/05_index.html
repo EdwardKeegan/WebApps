@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="imgAndZoom.css" rel="stylesheet" type="text/css" /> 
+        <style>
+            body {
+                font-family: sans-serif;
+                background-color: beige;
+                line-height: 1.5rem;
+            }
+
+            * {box-sizing: border-box;}
+        </style>
+
+    </head>
+    <body>
+
+        <h1>Image Zoom</h1>
+
+        <p>Mouse over the image:</p>
+
+        <div id="content">
+        </div>
+
+
+        <h2>Add Float &amp; Allow Percentage Image Width</h2>
+
+        <p>
+            Now that I have "mechanically converted" the code to be reusable, I start 
+            thinking about the changes that I want to make:
+        </p>
+        <ul>
+            <li>
+                I want the Consumer (HTML coder) to be able to specify a percentage width 
+                for the zoomed picture (in the style sheet). This will enable the Consumer 
+                to have a fluid layout that works well on any sized viewport. I want things 
+                to continue to work properly even after resizing the browser.
+                To get the resizing to work properly, you just have to add code like this: 
+                <pre>
+    // After the component is on the page, do whatever needs to know about image size.  
+    setTimeout(setSizes, 200);
+    
+    // Then if the window is resized, call that same code again
+    window.addEventListener('resize', setSizes);                    </pre>
+            </li>
+            <li>
+                I want the zoomed result to be side by side with the zoom picture. 
+
+                <p>
+                    Originally, I used a flexbox (flex direction row) to hold the zoom image 
+                    and the zoom result. This worked fine when increasing the width of the browser.   
+                    However, when decreasing the browser's width, the image height would not 
+                    reduce (changing the image's aspect ratio, making the image tall and skinny). 
+                    So, I used float (instead of flexbox) to get things side by side. Everything
+                    works great now. Remember that, when using float, that you need to put a "clear:both" div 
+                    at the bottom of your component - to prevent elements below your component from 
+                    floating up into your component. 
+                </p>
+            </li>
+        </ul>
+
+        <script>
+            "use strict";
+        </script>
+        <script src="MakeImgAndZoom.js"></script>
+        <script>
+            var myImgAndZoom = MakeImgAndZoom("https://www.w3schools.com/howto/img_girl.jpg");
+            document.getElementById("content").appendChild(myImgAndZoom);
+        </script>
+
+    </body>
+</html>

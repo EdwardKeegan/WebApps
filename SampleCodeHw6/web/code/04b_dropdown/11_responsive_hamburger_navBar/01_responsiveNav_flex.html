@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<!-- HTML comments like this... -->
+<html>
+    <head>
+        <title>Title Nav Using Flexbox</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+
+
+            /* This rule makes everything use border-box sizing which is desireable. With border-box sizing, 
+               padding is not added to the width. For example, if you make the footer 100% and it has some padding, 
+               you'll see a horizontal because the footer becomes a little wider than 100%                            */
+            * { 
+                box-sizing: border-box;
+            }
+
+            /* mobile first design -- everything down to the media query is for mobile */
+
+            #titleNav {  
+                display:flex; 
+                flex-direction: row;
+                justify-content: space-between;
+
+
+                /* fixed to top */
+                position: fixed;
+                top: 0;
+                width: 100%;
+                z-index:1;
+
+                padding: 1rem;
+                background-color: #DDDDDD;
+            }
+
+
+            #title {
+                font-size: 2.5rem;
+                white-space: nowrap;  /* don't allow the title to wrap */
+            }
+
+            #nav {
+                font-size: 1rem;
+                white-space: nowrap;  /* don't allow nav links to wrap */
+                display: flex;
+                flex-direction: column;
+            }
+
+            #navIcon {
+                text-align: right;
+                margin-right: 1rem;
+            }
+            #navIcon img {
+                height: 3rem;
+            }
+
+            #navGroup {
+                display:flex;
+                flex-direction: column;
+                display:none;
+            }
+
+            .navLink {
+                background-color:white;
+                margin: 0.25rem;
+                padding: 0.5rem;
+                text-align:center;
+            }
+
+            #content {
+                padding: 1rem;
+                font-size: 1.5rem;
+                line-height: 2rem; 
+
+                /* dont allow titleNav to cover up top of content */
+                /* In Mobile, this is tall because of the nav links stacking vertically */
+                margin-top: 5rem;  
+
+
+                /* dont allow footer to cover up bottom of content */
+                margin-bottom: 2.5rem;
+            }
+
+            /* Fix the footer at the bottom, and make sure (z-index) it's on top of content */
+            #footer {
+
+                position: fixed; 
+                bottom:0px;
+                z-index: 1;
+
+                background-color: #DDDDDD;
+                padding: 0.5rem;
+
+                font-size: 1rem;
+                text-align: center;
+                width: 100%; 
+            }
+
+            /* desktop only */     
+            @media only screen and (min-width: 600px) {
+
+                /* in desktop the titleNav is not as tall, so less top margin needed to prevent titleNav from hiding top of for content */
+
+                #nav {
+                    flex-direction: row;
+                }
+                #navIcon {
+                    display:none;
+                }
+                #navGroup {
+                    flex-direction: row;
+                    display:flex;
+                }
+
+            }
+
+
+
+        </style>
+    </head>
+    <body>
+        <div id="titleNav">
+            <div id="title">
+                Website Title
+            </div>
+            <div id="nav">
+                <div id='navIcon'><img src='icons/menuIconWhite.png' onclick='menuToggle()'/></div>
+                <div id='navGroup'>
+                    <div class="navLink">London</div>
+                    <div class="navLink">Paris</div>
+                    <div class="navLink">Tokyo</div>
+                </div>
+            </div>
+        </div>
+        <div id="content">
+
+            First line of content (not hidden under TitleNav)<br/>
+
+            <p>
+                This version media query sets the nav links flex-direction:row in desktop width, but 
+                flex-direction:column in mobile width. In mobile width, the nav links are hidden and a
+                "hamburger" icon is shown. Click on the hamburger to open up the nav links 
+                in mobile (narrow) layout. 
+            </p>
+
+
+            <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
+
+            <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
+
+            <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
+
+            <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
+
+            <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
+
+
+            Last line of content (not hidden under Footer)
+
+        </div>
+        <div id="footer">
+            Your Footer Goes Here
+        </div>
+        <script>
+            
+            function menuToggle() {
+                
+                /* Note: for JS code to know initial CSS properties 
+                 * you have to use getComputedStyle. 
+                 */
+                var navGroup = document.getElementById("navGroup");
+                var navDisplay = getComputedStyle(navGroup).display;
+                if (navDisplay === "flex") {
+                    navGroup.style.display = "none";
+                } else {
+                    navGroup.style.display = "flex";
+                }
+            }
+            
+            
+            /* 
+             * The following function stops this particular problem:
+             * 
+             *  - the user' browser width is initially mobile.
+             *  - the user opens/closes the nav bar.
+             *  - when the user widens the browser (to desktop), the nav group is still hidden.
+             *  
+             *  The 600 used in the resize event should match whatever value was used in the media query
+             *  (for min-width).
+             */
+            window.onresize = function () {
+                var width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+                console.log("width is " + width);
+                var navGroup = document.getElementById("navGroup");
+                if (width >= 600) {
+                    navGroup.style.display = "flex";
+                } else {
+                    navGroup.style.display = "none";
+                }
+            };
+
+        </script>
+    </body>
+</html>

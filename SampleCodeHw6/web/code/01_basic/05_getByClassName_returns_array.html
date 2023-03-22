@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body {
+                line-height: 2rem;
+                font-size: 1.25rem;
+                font-family:sans-serif;
+            }
+            pre {
+                line-height: 1.5rem;
+            }
+            
+            div {
+                padding: 0.5rem;
+                margin:1rem;
+                border:thin solid black;
+            }
+            .example {
+                background-color:#DDDDDD;
+            }
+        </style>
+    </head>
+
+    <body>
+        <h3>Get Elements By Class Name, Modify innerHTML</h3>
+        <div class="example">First div element with class="example".</div>
+
+        <div>This div does not have class="example".</div>
+
+        <div class="example">Second div element with class="example".</div>
+
+        <p>
+            Click the button to modify all elements with class name "example":
+            <button onclick="myFunction()">Go</button>
+        </p>
+        <p>
+            Here's the function that gets run on button click:
+        </p>
+        <pre>
+    function myFunction() {
+        var x = 5;
+        var y = x + 1;
+        var list = document.getElementsByClassName("example");
+        for (var i = 0; i < list.length; i++) {
+            list[i].innerHTML += " -- has been changed !!";
+        }
+    }
+        </pre>
+
+        <script>
+            function myFunction() {
+                debugger;
+                var x = 5;
+                var y = x + 1;
+                var list = document.getElementsByClassName("example");
+                for (var i = 0; i < list.length; i++) {
+                    list[i].innerHTML += " -- has been changed !!";
+                }
+            }
+        </script>
+
+    </body>
+</html>

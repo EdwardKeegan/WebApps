@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Local Storage Example</title>
+        <style type="text/css">
+            body{ 
+                background-color:#BBBBEE;
+                font-family: sans-serif;
+            }
+        </style>
+
+    </head>
+
+    <body>
+        <h2>Run in Chrome (not View): Press F12 for Console Output</h2>
+
+        <h3>JS code to Read/Write Objects to Local Storage</h3>
+        <form name="myForm">
+            Friend Name: <input type="text" name="friendName" value="sally"> &nbsp; &nbsp;
+            Telephone: <input type="text" name="friendTel" value="123 456 9000"><br/>
+        </form>
+        <p>
+            <button onClick="addFriend()">Add to List</button> &nbsp;
+            <button onclick="printFriends()">Print List</button> &nbsp;
+            <br/><br/>
+            <button onclick="writeFriends()">Write List to Local Storage</button> &nbsp;
+            <button onclick="readFriends()">Read List from Local Storage</button> &nbsp;
+            <button onClick="readAllData()">Show All Data in Local Storage</button>
+        </p>
+        <p id="friendPrintout"></p>
+
+
+        <script>
+            "use strict";
+
+            function my$(ele) {
+                return document.getElementById(ele);
+            }
+
+            var friendList = [];
+            function addFriend() {
+                var newFriend = {
+                    name: document.myForm.friendName.value,
+                    tel: myForm.friendTel.value
+                };
+
+                friendList[friendList.length] = newFriend;
+                printFriends();
+            }
+
+            function printFriends() {
+                my$("friendPrintout").innerHTML = "<h3>Friend List</h3>";
+                for (var i = 0; i < friendList.length; i++) {
+                    my$("friendPrintout").innerHTML += friendList[i].name + ": " + friendList[i].tel + "<br/>";
+                }
+            }
+
+            function writeFriends() {
+                var json = JSON.stringify(friendList);
+                setData("myFriends", json);
+            }
+
+            function readFriends() {
+                var json = getData("myFriends");
+                console.log('json is '+json);
+                friendList = JSON.parse(json);
+                console.log(friendList);
+                printFriends();
+            }
+
+            printFriends();
+                      
+            
+            // Generic functions to read/write from/to Local Storage
+
+            function setData(key, data) {
+                localStorage.setItem(key, data);
+                console.log("key:value " + key + ":" + data + " written to Local Storage");
+            }
+
+            function getData(key) {
+                var data = localStorage.getItem(key);
+                console.log("The value of key '" + key + "' in Local Storage is: " + data);
+                return data;
+            }
+
+            // Show all data in localStorage
+            function readAllData() {
+                var s = "Local storage contains: ";
+                for (var i = 0; i < localStorage.length; i++) {
+                    var key = localStorage.key(i);
+                    s += key + ":" + localStorage.getItem(key) + ", ";
+                }
+                console.log(s);
+            }
+
+
+        </script>
+    </body>
+</html>

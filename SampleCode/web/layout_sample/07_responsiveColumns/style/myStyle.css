@@ -1,0 +1,111 @@
+
+/* This rule makes everything use border-box sizing which is desireable. With border-box sizing, 
+   padding is not added to the width. For example, if you make the footer 100% and it has some padding, 
+   you'll see a horizontal because the footer becomes a little wider than 100%                            */
+* { 
+
+    box-sizing: border-box;
+}
+
+body { 
+    margin:0;                   /* no white border around browser window */
+    font-family: sans-serif;    /* no tails on the font like Times New Roman */
+
+    background-color: #EEEEEE;  
+}
+
+/* To select background colors, I used the colorzilla chrome plugin to copy out a color from 
+an image, then I blended colors using the Meyer Color Blender web page ()google it)to blend the color 
+e.g., with white or black or grey to lighten it, darken it, or make it less saturated.  */
+
+
+
+/* Fix the titleNav always at the top, and make sure (z-index) it's on top of content. 
+   When you make the element fixed, the width defaults to as wide as it needs for it's content. 
+   We want the bar to fill the width, so make it 100% */
+#titleNav {
+
+    /* remember this is for mobile, title on top of nav */
+    display:flex; 
+    flex-direction: row;
+    justify-content: space-between; /* flex attribute will push title left and nav right, with "space between" */
+
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index:1;
+    padding: 1rem;
+
+    /* give a little "3D"  effect to the edges */
+    box-shadow: 0px 0px 5px black;  
+}
+
+#titleNav, #footer {
+    background-color: #94B5DD;
+}
+
+
+#title {
+    font-size: 2rem;
+    font-weight: bold;
+    letter-spacing: 0.2rem; /* spaces out letters a bit */
+    white-space: nowrap;  /* don't allow the title to wrap */
+}
+
+#nav {
+    font-size: 1rem;
+    font-weight: bold;
+    padding-top: 1rem;
+    text-align: right;
+    white-space: nowrap;  /* don't allow nav links to wrap */
+}
+
+#content {
+    font-size: 1rem;
+    line-height: 1.5rem;
+
+    /* dont allow titleNav to cover up top of content */
+    margin-top: 4.5rem;
+
+    /* dont allow footer to cover up bottom of content */
+    margin-bottom: 1.5rem;
+}
+
+/* Fix the footer at the bottom, and make sure (z-index) it's on top of content */
+#footer {
+
+    position: fixed; 
+    bottom:0px;
+    z-index: 1;
+
+
+
+    padding: 0.5rem;
+
+    font-size: 1rem;
+    text-align: center;
+    width: 100%;
+    box-shadow: 0px 0px 4px #444444;  
+}
+
+.row{
+    background-color:  #DDDDEE; /* this is the color of rows that hold text and images. */
+
+    /* give "3D"  effect to the edges */
+    box-shadow: 0px 0px 5px #AAAAAA;  
+}
+
+/* desktop only */
+@media only screen and (min-width: 600px) { 
+
+    /* in desktop the titleNav is not as tall, less margin for content needed */
+    #content {
+        margin-top: 4.5rem;
+    }
+
+    #titleNav {
+        /* flex attributes */
+        flex-direction: row;
+        justify-content: space-between; /* flex attribute will push title left and nav right, with "space between" */
+    }
+}

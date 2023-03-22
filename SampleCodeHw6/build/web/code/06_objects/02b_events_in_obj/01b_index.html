@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<!-- Sample code: Car Object -->
+<html>
+    <head>
+        <title>Car Object Sample</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            /* this css selector applies to divs inside of elements with id "container" */
+            #container div {
+                background-color: lightgrey;
+                padding: 1em;
+                margin: 1em;
+            }
+            body {
+                padding: 1rem;
+                font-family: sans-serif;
+            }
+        </style>
+    </head>
+    <body>
+
+        <h2>Press Chrome's F12 to Open Up Console - Some Private, UI</h2>
+        <p>
+            In this code:
+        </p>
+        <ul>
+            <li>
+                MakeCar creates and returns a "div" (after adding public and private custom properties and 
+                methods to the div). The div can be appended into any DOM element on the page.  
+            </li>
+            <li>
+                Now you can only access private data members through 
+                public getter/setter functions.
+            </li>
+        </ul>
+
+
+        <div id="container"></div>
+
+        <script src="01b_MakeCar.js"></script>
+        <script>
+            "use strict";
+
+            // Get a div that's enhanced with public and private properties and methods
+            var myCarObj = MakeCar("blue toyota", "great", 5000);
+            myCarObj.log();
+
+            // add the new car object to and element already on the page. 
+            document.getElementById('container').appendChild(myCarObj);
+
+            // Make a second div and add that to the page. 
+            var yourCarObj = MakeCar("red BMW", "fair", 2500);
+            yourCarObj.log();
+            document.getElementById('container').appendChild(yourCarObj);
+
+            // changes to properties should be reflected on page due to calling display fn 
+            // every time a property is changed.
+            myCarObj.setCondition("poor");
+            yourCarObj.changePrice(0.1); // 10% increase in price
+            console.log("yourCarObj: public property condition is " + yourCarObj.condition);
+            console.log("yourCarObj: private property price is (cannot access - private) " + yourCarObj.price);
+
+        </script>
+    </body>
+</html>

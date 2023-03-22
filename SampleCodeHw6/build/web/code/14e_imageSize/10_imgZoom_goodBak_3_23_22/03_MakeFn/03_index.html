@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="imgAndZoom.css" rel="stylesheet" type="text/css" /> 
+        <style>
+            body {
+                font-family: sans-serif;
+                background-color: beige;
+                line-height: 1.5rem;
+            }
+
+            * {box-sizing: border-box;}
+        </style>
+
+    </head>
+    <body>
+
+        <h1>Image Zoom</h1>
+
+        <p>Mouse over the image:</p>
+
+        <div id="content">
+
+        </div>
+
+        <h2>Adding a Make Function</h2>
+        <ol>
+
+
+            <li>
+                We create a "Make" function (mine was named "MakeImgAndZoom"). This function should 
+                create and return a div that is styled with class "imgAndZoom". That way, the returned 
+                div will pick up the styling from the CSS file that we just created. 
+                We also need to add a reference 
+                from our index page to this external JS function.
+            </li>
+
+            <li>
+                Our JS "Make" function needs to build the same DOM elements 
+                that were in the original w3Schools example (plus the extra wrapper div and class 
+                that we added). The HTML code below is what you can see in their HTML file, 
+                but also adding in the extra "lens" div that they added using JavaScript. 
+                You can see this extra "lens" div by inspecting the page that is rendered by their code.
+            </li>
+            <pre>
+    &lt;div class='imgAndZoom'>
+        &lt;div class="img-zoom-container">
+            &lt;div class="img-zoom-lens">&lt;/div>
+            &lt;img id="myimage" src="https://www.w3schools.com/howto/img_girl.jpg" width="300" height="240">
+            &lt;div id="myresult" class="img-zoom-result">&lt;/div>
+        &lt;/div>
+    &lt;/div>       </pre>
+
+            <li>
+                We see that the Make function needs input parameters like image file name and image 
+                dimensions (height and width). 
+            </li>
+            <li>
+                Since we will add the lens div using our own JS, we can remove their JS code 
+                that inserted the lens into the zoom container, before the image. 
+
+            </li>
+            <li>
+                They had a function called imageZoom that took two ids (id to the image to be zoomed, 
+                and id to the div that shows the magnified result). Since we are now creating these 
+                two DOM elements using JavaScript, we do not need or want them to have ids. So we change 
+                the input parameters to the imageZoom function so that they expect references to the two 
+                elements, not ids to the two elements.  
+            </li>
+            <li>
+                Then we have trouble because images created by JS do not have actual height and width 
+                until they are placed on the page (after the Make function returns the component to the 
+                Consumer Code). We can apply the solution from the previous examples which is to 
+                invoke with delay (using setTimeout) any code that needs to know image sizes. 
+                Since we are not overly familiar with their code just yet, we include a lot of the 
+                code (into what will be called with delay) and it works !
+            </li>
+        </ol>
+        <script>
+            "use strict";
+        </script>
+        <script src="MakeImgAndZoom.js"></script>
+        <script>
+            var myImgAndZoom = MakeImgAndZoom(
+                    "https://www.w3schools.com/howto/img_girl.jpg",
+                    "300",
+                    "240"
+                    );
+            document.getElementById("content").appendChild(myImgAndZoom);
+        </script>
+
+    </body>
+</html>

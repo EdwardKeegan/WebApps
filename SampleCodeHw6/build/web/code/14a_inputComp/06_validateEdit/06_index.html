@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>MakeEditArea</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="style/editArea.css" rel="stylesheet"/>
+        <style>
+            body {
+                font-family: sans-serif;
+                font-size: 0.9rem;
+            }
+            #messageArea {
+                margin:1rem;
+            }
+        </style>
+    </head>
+    <body>
+        <h3>Component that Pre-Fills then Validates User Input</h3>
+
+        <div id="editSpot">
+        </div>
+
+        <div id="messageArea">
+        </div>
+
+        <script>
+            // prevents a misspelled variable from getting a global auto-declared variable.
+            "use strict";
+        </script>
+        <script src="js/reusable/MakeTag.js"></script>
+        <script src="js/reusable/MakeEditArea.js"></script>
+
+        <script>
+
+            /*         
+             "webUserId": "1",
+             "userEmail": "abha@temple.edu",
+             "image": "http://cis-linux2.temple.edu/~sallyk/pics_users/abha.jpg",
+             "birthday": "11/22/2001",
+             "membershipFee": "",
+             "userRoleId": "3",
+             "userRoleType": "Member",
+             "errorMsg": ""
+             */
+
+            var userInputSpecs = [
+                {
+                    "prompt": "User Email: ",
+                    "fieldName": "userEmail",
+                    "dataType": "string",
+                    "minLen": 1, // required field
+                    "maxLen": 50
+                },
+                {
+                    "prompt": "User Image (URL): ",
+                    "fieldName": "image",
+                    "dataType": "string",
+                    "minLen": 0, // empty string is OK
+                    "maxLen": 500
+                },
+                {
+                    "prompt": "Birthday: ",
+                    "fieldName": "birthday",
+                    "dataType": "date",
+                    "minLen": 0 // means optional
+                },
+                {
+                    "prompt": "Membership Fee: ",
+                    "fieldName": "membershipFee",
+                    "dataType": "number",
+                    "minLen": 0, // means optional
+                    "maxLen": 10 // 10 characters including decimal point
+                }
+            ];
+
+            var msgArea = document.getElementById("messageArea");
+
+            function success(inpObj) {
+                msgArea.innerHTML += "We will process your request with these values:<br/>";
+                for (propName in inpObj) {
+                    msgArea.innerHTML += "&nbsp; &nbsp; " + propName + ": " +
+                            inpObj[propName] + "<br/>";
+                }
+                msgArea.innerHTML += "<br/>";
+
+                msgArea.innerHTML += "To show JS 'call by reference', here is the original 'userToEdit' object:<br/>";
+                for (propName in userToEdit) {
+                    msgArea.innerHTML += "&nbsp; &nbsp; " + propName + ": " +
+                            userToEdit[propName] + "<br/>";
+                }
+                msgArea.innerHTML += "<br/>";
+            }
+
+            function cancel() {
+                msgArea.innerHTML += "Sorry that you decided to cancel.<br/><br/>";
+            }
+
+            var userToEdit = {
+                //"webUserId": "352",
+                "userEmail": "sallyk@gmail.com",
+                "image": "http://cis-linux2.temple.edu/~sallyk/pics_users/sallyk.jpg",
+                "birthday": "02/02/1997",
+                "membershipFee": "14000.00"
+            };
+
+            var component = MakeEditArea({
+                inputSpecs: userInputSpecs,
+                successCallBack: success,
+                cancelCallBack: cancel,
+                editObj: userToEdit
+            });
+            document.getElementById("editSpot").appendChild(component);
+
+        </script>
+    </body>
+</html>

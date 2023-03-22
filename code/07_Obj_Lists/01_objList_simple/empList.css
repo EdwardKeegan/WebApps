@@ -1,0 +1,21 @@
+.empList {
+    background-color:lightblue;
+    padding: 1rem;
+}
+.empList .employee {
+    border: thin solid #AAAAAA;
+    /* a middle grey with 25% solidness, 75% transparent */
+    background-color: rgba(128,128,128,0.25);
+    margin: 1em;
+    padding: 0.5em;
+    border-radius: 0.5rem;
+}
+.empList .employee img {
+    width: 7rem;
+    border-radius: 0.5rem;
+    background-color:lightgreen;
+    box-shadow: 0.25rem 0.25rem 0.25rem #444444;
+}
+.empList .employee p {
+    text-align: center;
+}

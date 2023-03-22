@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body {
+                font-family: sans-serif;
+                line-height: 1.5rem;
+            }
+            form {
+                border: thin solid black; 
+                padding:0.5rem;
+                margin: 0rem 1.5rem;
+                margin-bottom: 1rem;
+            }
+            form div {
+                margin-left: 1.5rem;
+                margin-bottom: 1rem;
+            }
+            p {
+                margin: 1rem 1.5rem; /* 1st is top/bottom, 2nd is left/right */
+            }
+            h2 { 
+                text-align:center;
+                margin:0.5rem 0.5rem; /* first is top/bottom, second is left/right */ 
+            }
+            h3 { 
+                margin:0.5rem 0rem; /* first is top/bottom, second is left/right */ 
+                margin-top:0rem;
+            }
+            input {
+                padding:2px;
+            }
+        </style>
+    </head>
+    <body>
+        <h2>HTML5 Features for Validating Input</h2>
+        <p>
+            <em>There is no JavaScript on this page!</em> &nbsp; Any validation you see is implemented 
+            using (the newer) HTML5 validation features. When the user clicks a 
+            form's submit button, all the inputs of the form are validated (by the browser,
+            according to the validation rules specified in the HTML tags). 
+        </p>
+        <p>
+            HTML5 "input validation bubbles" only show the first error. If 
+            the user fixes the first error, they might see the next error. But finally, 
+            when all errors have been fixed, the inputs are sent to the server side program 
+            as specified in the form's action attribute.  
+        </p>
+        <p>
+            Like in the previous example, all forms on this page send their data to my generic server 
+            side program "receiveData.jsp". "receiveData.jsp" is a generic server side program
+            that just lists the names and values of all 
+            the inputs sent to it. 
+        </p>
+
+        <form method="post" action="http://cis-linux2.temple.edu:8080/sallyk/receiveData.jsp">
+            <h3>HTML5 &lt;input> Tags with Validation</h3>
+            <div>
+
+                (Required attribute) Your State?
+                <input name="myState" required /> <br/><br/>
+
+                Color Picker <input type="color" name="myColor"/>
+                Click off selector when done<br/>
+
+
+                Email <input type="email" name="myEmail" placeholder="name@domain.com" required/> 
+                like sk@temple.edu<br/>  
+
+                Telephone <input type="tel" name="myTel" placeholder="(###) ###-####" pattern="\(\d{3}\) \d{3}-\d{4}" required/>
+                like (610) 123-4567<br/>
+
+                URL <input type="url" name="myUrl" placeholder="http://www.domainname.com" size="40" required/>
+                like http://www.domainname.com<br/>
+            </div>
+            <input type="submit"/> &nbsp; <input type="reset" />
+        </form>
+
+        <form method="post" action="http://cis-linux2.temple.edu:8080/sallyk/receiveData.jsp">
+            <h3>HTML5 &lt;input> Tags for Dates</h3>
+            <div>
+                Date <input type="date" name="myDate"/><br/>
+                Time (hh:mm:ss.ff) <input type="time" name="myTime"/><br/>
+                DateTime-Local <input type="datetime-local" name="dtLocal"/><br/>
+                Week (week number and year) <input type="week" name="myWeek"/><br/>
+                Month (month and year) <input type="month" name="myMonth"/><br/>
+            </div>
+            <input type="submit"/> &nbsp; <input type="reset" />
+        </form>
+
+        <form oninput="myrangeout.value=parseInt(myrange.value)"  
+              method="post" action="http://cis-linux2.temple.edu:8080/sallyk/receiveData.jsp">
+            <h3>HTML5 &lt;input> Tags for Numbers, Calculated fields</h3>
+            <div>
+                Input tag with type = "number" (min:10, max:100, step:10, value:30) 
+                <input type="number" name="myNum" min="10" max="100" step="10" value="30"/><br/>
+
+                Input tag with type = "range" (min:2, max:20, value:12) 
+                <input type="range" name="myrange" min="2" max="20" value="12"/><br/>  
+
+                Output tag - form "oninput" event sets this value (shows whatever is in the above range): 
+                <output name="myrangeout" for="myrange"></output><br/>
+            </div>
+            <input type="submit"/> &nbsp; <input type="reset" />
+        </form>
+
+    </body>
+</html>

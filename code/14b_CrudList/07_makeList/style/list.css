@@ -1,0 +1,28 @@
+.list {
+    background-color: #CCCCCC;
+    margin:1rem;
+    border-radius: 0.5rem;
+    padding: 0.1rem 0rem; /* 1st is top/bottom, 2nd is left/right */;
+}
+
+.list .ele {
+    background-color: #DDDDDD;
+    margin:0.25rem; 
+    padding:0rem; /* 1st is top/bottom, 2nd is left/right */;
+    border-radius: 0.5rem;
+}
+
+.list .ele span {
+    height: 1.5rem;
+    font-size: 0.8rem;
+    margin: 0rem 0.5rem; /* 1st is top/bottom, 2nd is left/right */
+    position: relative; 
+    bottom: 1rem;
+}
+
+.list .ele img {
+    height: 3rem;
+    min-height: 3rem; /* if an invalid image url is provided, keeps the vertical sizing good */
+    margin-bottom:-0.25rem;
+    border-radius: 0.5rem;
+}

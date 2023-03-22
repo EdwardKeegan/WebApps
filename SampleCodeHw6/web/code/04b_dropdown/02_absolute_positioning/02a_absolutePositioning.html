@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+
+            .parent {
+                position: relative; /* has no effect other than making it non-static */ 
+                background-color: #EEEEEE; /* light grey */
+                border: 3px solid black;
+                margin: 3rem;
+            }
+
+            .a, .b, .c {
+                font-weight: bold;
+            }
+
+            .a {
+                background-color: pink;
+                position: absolute;
+                top: 0px;
+                left: 0px;
+                z-index:2; /* place on top */
+            }
+            .b {
+                background-color: lightblue;
+                position: absolute;
+                bottom: 0px;
+                right: 0px;
+                z-index:2; /* place on top */
+            }
+
+            .c {
+                background-color: yellow;
+                position: absolute;
+                top: 50px;
+                right: 0px;
+                z-index:2; /* place on top */
+            }
+
+        </style>
+    </head>
+    <body>
+        <h1>Absolute Positioning</h1>
+        <div class="parent">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
+            nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla 
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa 
+            qui officia deserunt mollit anim id est laborum.
+
+            <p>
+                <strong>The parent (grey div) is position:relative.</strong> Relative positioned elements can be "jogged" up
+                or down, left or right a little -- from where they would have been, but we did not add any 
+                left/right, top/bottom attributes to the grey parent, so the parent acts pretty much 
+                like any other (default/static) div. 
+
+            </p>
+            <p>
+                <strong>The pink, yellow, and blue children are position:absolute.</strong>
+            </p>
+            <ul>
+                <li>
+                    Absolutely positioned elements are 
+                    <strong>removed from the normal flow</strong>, 
+                    then (depending on top/bottom left/right) <strong>placed with respect to 
+                        the edges of their first non static parent</strong>. 
+                </li>
+                <li>
+                    Note that the absolute children overwrite
+                    the content of the parent. If you didn't want this, you'd add margin or padding 
+                    (like we added padding to the top of the content so it was not hidden by the fixed titleNav). 
+                </li>
+            </ul>
+
+            <p>
+                <strong>Absolutely positioned children are great for drop down menu content</strong> because the
+                size of the drop down menu content does not impact the size of the parent (dropHeader), especially 
+                as the drop content becomes visible/invisible.
+            </p>
+
+            <h2>&nbsp; Scroll Down to See the Second Example</h2>
+            <ul>
+                <li>
+                    The size of the first div was based on what's inside of it. 
+                </li>
+                <li>
+                    Because the second div doesn't have any content (other than the absolutely 
+                    positioned chidren which are removed from the normal flow), all you can see 
+                    is the border of the div. If there was no border, you wouldn't see that div at all. 
+                    BUT the absolutely positioned children are still placed w.r.t. the edges of their 
+                    1st non-static parent.
+                </li>
+            </ul>
+
+
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
+            nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla 
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa 
+            qui officia deserunt mollit anim id est laborum.
+
+
+            <div class="a">styled top 0 /left 0 </div>
+            <div class="b">styled bottom 0 / right 0</div>
+            <div class="c">styled top 50 / right 0</div>
+        </div>
+
+        <div class="parent">
+            <div class="a">styled top 0 / left 0</div>
+            <div class="b">styled bottom 0 / right 0</div>
+            <div class="c">styled top 50 / right 0</div>
+        </div>
+    </body>
+</html>

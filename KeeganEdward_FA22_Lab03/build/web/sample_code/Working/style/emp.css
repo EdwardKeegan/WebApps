@@ -1,0 +1,22 @@
+
+.emp {
+    background-color: lightblue;
+    width: 100%;
+    border-radius:0.5rem;
+    padding: 0.25rem;
+    margin: 1rem;
+}
+
+.name button {
+    background-color:greenyellow;
+    white-space: nowrap;
+    
+}
+.title button {
+    background-color:green;
+    white-space: nowrap;
+}
+.emp img {
+    width:20%;
+  
+}

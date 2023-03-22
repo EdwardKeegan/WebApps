@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="download/TableStyle.css" rel="stylesheet" type="text/css" />
+        
+    </head>
+    <body>
+         <script>
+            // Prevent browser from (globally) auto-declaring
+            // any referenced variable that was never declared.
+            "use strict";
+        </script>
+     
+        
+        <h2>Proof of Concept (Part of the Tutorial Proposal)</h2>
+        <p>
+            On this page, you will provide a model or prototype 
+            to help explain the reusable component you want to build. 
+         
+        </p>
+        <p>
+            You can have hard coded HTML tags with ids if you need them to 
+            show event handling. Your JS code can have global variables. 
+            It's just a model, not final reusable code).
+        </p>
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
+<script src="download/MakeTable.js"></script>
+<table id="myTable">
+    <tr class="header">
+        <th style="width:60%;"></th>
+        <th style="width:40%;">Beds</th>
+        <th style="width:40%;">Baths</th>
+    </tr>
+    <tr>
+        <td>
+            <img src="https://www.rocketmortgage.com/resources-cmsassets/RocketMortgage.com/Article_Images/Large_Images/TypesOfHomes/types-of-homes-hero.jpg" 
+                 alt="Real estate" 
+                 width="300"
+                 onclick="MySlideshow(1)">
+            <img class="slideshow-img" src="https://www.w3schools.com/howto/img_nature_wide.jpg" alt="Slideshow image">
+            <img class="slideshow-img" src="https://www.w3schools.com/howto/img_snow_wide.jpg" alt="Slideshow image">
+            <img class="slideshow-img" src="https://www.w3schools.com/howto/img_mountains_wide.jpg" alt="Slideshow image">
+        </td>    
+        <td>2</td>
+        <td>2</td>
+    </tr>
+    <tr>
+        <td>
+            <img src="https://www.rocketmortgage.com/resources-cmsassets/RocketMortgage.com/Article_Images/Large_Images/TypesOfHomes/types-of-homes-hero.jpg" 
+                 alt="Real estate" 
+                 width="300"
+                 onclick="MySlideshow(2)">
+            <img class="slideshow-img" src="https://www.w3schools.com/howto/img_nature_wide.jpg" alt="Slideshow image">
+            <img class="slideshow-img" src="https://www.w3schools.com/howto/img_snow_wide.jpg" alt="Slideshow image">
+            <img class="slideshow-img" src="https://www.w3schools.com/howto/img_mountains_wide.jpg" alt="Slideshow image">
+        </td>    
+        <td>3</td>
+        <td>3</td>
+    </tr>
+    <tr>
+        <td>
+            <img src="https://www.rocketmortgage.com/resources-cmsassets/RocketMortgage.com/Article_Images/Large_Images/TypesOfHomes/types-of-homes-hero.jpg" 
+                 alt="Real estate" 
+                 width="300"
+                 onclick="MySlideshow(3)">
+            <img class="slideshow-img" src="https://www.w3schools.com/howto/img_nature_wide.jpg" alt="Slideshow image">
+            <img class="slideshow-img" src="https://www.w3schools.com/howto/img_snow_wide.jpg" alt="Slideshow image">
+            <img class="slideshow-img" src="https://www.w3schools.com/howto/img_mountains_wide.jpg" alt="Slideshow image">
+        </td>    
+        <td>1</td>
+        <td>1</td>
+    </tr>
+  <tr>
+    <td><img src="https://www.rocketmortgage.com/resources-cmsassets/RocketMortgage.com/Article_Images/Large_Images/TypesOfHomes/types-of-homes-hero.jpg" 
+             alt="Real estate" 
+             width="300"
+            onclick="MySlideshow(4)">
+            <img class="slideshow-img" src="https://www.w3schools.com/howto/img_nature_wide.jpg" alt="Slideshow image">
+            <img class="slideshow-img" src="https://www.w3schools.com/howto/img_snow_wide.jpg" alt="Slideshow image">
+            <img class="slideshow-img" src="https://www.w3schools.com/howto/img_mountains_wide.jpg" alt="Slideshow image">
+    </td>    
+    <td>3</td>
+    <td>4</td>
+  </tr>
+</table>
+ <script>
+    function MySlideshow(index) {
+    var slideshowImages = document.querySelectorAll("#myTable tr:nth-child(" + (index + 1) + ") .slideshow-img");
+    var slideshowContainer = document.createElement("div");
+    slideshowContainer.classList.add("slideshow-container");
+    for (var i = 0; i < slideshowImages.length; i++) {
+        slideshowContainer.appendChild(slideshowImages[i].cloneNode());
+    }
+    document.body.appendChild(slideshowContainer);
+}
+
+        // Add the close button to the slideshow container
+        var closeButton = document.createElement("span");
+        closeButton.classList.add("slideshow-close");
+        closeButton.innerHTML = "&times;";
+        closeButton.onclick = function() {
+            slideshowContainer.parentElement.removeChild(slideshowContainer);
+        };
+        slideshowContainer.appendChild(closeButton);
+        // Add the slideshow container to the page
+        document.body.appendChild(slideshowContainer);
+        // Show the first slide and start the slideshow timer
+        var slideIndex = 1;
+        showSlide(slideIndex);
+        var timer = setInterval(function() {
+            showSlide(slideIndex += 1);
+        }, 3000);
+        // Define the function to show a slide
+        function showSlide(n) {
+            if (n > slideshowImages.length) {
+                slideIndex = 1;
+            }
+            if (n < 1) {
+                slideIndex = slideshowImages.length;
+            }
+            for (var i = 0; i < slideshowImages.length; i++) {
+                slideshowImages[i].style.display = "none";
+            }
+            slideshowImages[slideIndex - 1].style.display = "block";
+        }
+    
+</script>
+
+    </body>
+</html>

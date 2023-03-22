@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Click Sort Lab Activity</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="style/clickSort.css" rel="stylesheet" type="text/css" />  
+        <style>
+            body {
+                font-family: sans-serif;
+            }
+            #container {
+                display: flex;
+                flex-direction: row;
+            }
+
+            #container div {
+                width:50%;
+            }
+
+        </style>
+    </head>
+    <body>
+        <h1 style="text-align:center">Question C: MakeTableBetter from Data Returned by AJAX Call</h1>
+
+        <div id="container">
+        </div>
+
+
+        <script src="js/MakeTableBetter.js"></script>
+        <script src="js/TableUtils.js"></script>
+        <script src="js/ajax.js"></script>
+
+        <script>
+
+            "use strict"; // turn off the "auto variable declaration" feature of the browser.
+            // So, if we mispell a variable name, the browser will not auto-declare a new variable.  
+
+
+            // ***** THE FIRST COMPONENT IS DONE FOR YOU *****
+
+            var myDiv1 = document.createElement("div");
+            document.getElementById("container").appendChild(myDiv1);
+
+            // Make AJAX call to read users.json and if the call was successful, run function
+            // processUserData, otherwise, put an error message in the mydiv1 DOM element. 
+            ajax("json/users.json", processUserData, myDiv1);
+
+            function processUserData (userList) { // callback function
+
+                // now userList has been populated with data from the AJAX call to file users.json
+                console.log("user list (in processUserData) on next line - open triangle to see data");
+                console.log(userList); 
+
+                // Create new object list where all properties are <td> elements
+                var newUserList = [];
+                for (var i = 0; i < userList.length; i++) {
+                    newUserList[i] = {};
+                    newUserList[i].User_Email = TableUtils.makeText(userList[i].userEmail);
+                    newUserList[i].Image = TableUtils.makeImage(userList[i].image, "4rem");
+                    newUserList[i].Birthday = TableUtils.makeDate(userList[i].birthday);
+                }
+
+                // MakeTableBetter expects all properties to be <td> elements.
+                var myReport1 = MakeTableBetter("CIS Club", newUserList);
+                myReport1.classList.add("clickSort");
+                myDiv1.appendChild(myReport1);
+
+            } // processUserData 
+
+
+
+            // ***** MODIFY THE CODE TO MAKE THE SECOND COMPONENT WORK
+
+            var myDiv2 = document.createElement("div");
+            myDiv2.classList.add("clickSort");
+            document.getElementById("container").appendChild(myDiv2);
+            
+    
+            ajax("json/waterFun.json", processWaterFunData, myDiv1);
+
+            function processWaterFunData (WaterFunList) { // callback function
+
+                // now userList has been populated with data from the AJAX call to file users.json
+                console.log("user list (in processWaterFunData) on next line - open triangle to see data");
+                console.log(WaterFunList); 
+
+                // Create new object list where all properties are <td> elements
+                var newWaterFunList = [];
+                for (var i = 0; i < WaterFunList.length; i++) {
+                    newWaterFunList[i] = {};
+                    newWaterFunList[i].Make = TableUtils.makeText(WaterFunList[i].make);
+                    newWaterFunList[i].Image = TableUtils.makeImage(WaterFunList[i].image, "4rem");
+                    newWaterFunList[i].Price = TableUtils.makeNumber(WaterFunList[i].price,"true");
+                }
+
+                // MakeTableBetter expects all properties to be <td> elements.
+                var myReport2 = MakeTableBetter("Water Fun", newWaterFunList);
+                myReport2.classList.add("clickSort");
+                myDiv2.appendChild(myReport2);
+            }
+            // REPLACE THIS funList assignment statement with an AJAX call to file json/water.json 
+       
+
+            // The next two lines of code should be replaced with a call back function that: 
+            //   * creates a new object list (from funList) with all properties being <td>s 
+            //   * invokes MakeTableBetter to get a report div
+            //   * styles the report div 
+            //   * appends the report div onto the page. 
+
+
+        </script>
+    </body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>MakeEditArea</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="style/editArea.css" rel="stylesheet"/>
+        <link href="style/CRUD_List.css" rel="stylesheet"/>
+        <style>
+            body {
+                font-family: sans-serif;
+                font-size: 0.9rem;
+            }
+            #messageArea {
+                margin:1rem;
+            }
+        </style>
+    </head>
+    <body>
+     
+        <h3>List Component with Insert and Edit (uses AJAX and Templating)</h3>
+
+        <div id="content">
+        </div>
+
+        <script>
+            // prevents a misspelled variable from getting a global auto-declared variable.
+            "use strict";
+        </script>
+        <script src="js/reusable/MakeTag.js"></script>
+        <script src="js/reusable/MakeEditArea.js"></script>
+        <script src="js/reusable/MakeCRUD_List.js"></script>
+        <script src="js/reusable/ajax.js"></script>
+
+        <script src="js/content/userListContent.js"></script>
+
+        <script>
+
+            var content = document.getElementById("content");
+            content.appendChild(userListContent());
+
+        </script>
+    </body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+        <style>
+            body {
+                font-family: arial;
+                padding-left: 20px;
+            }
+
+            form {
+                background-color: #CCCCCC;
+                border: thin solid black; 
+                padding-left: 10px;
+                padding-bottom: 5px;
+                margin-left: 5ex;
+                line-height: 1.75em;
+            }
+
+            input {
+                padding:2px;
+                border-color: lightgray; 
+            }
+
+            input:focus { /* When your cursor is in the field... */
+                box-shadow: 0px 0px 9px #668899;
+            }
+
+        </style>
+    </head>
+    <body>
+
+        <h3>Example Form With HTML5 Validation - Server Side Processing (no JavaScript)</h3>
+        <form method="post" action="http://www.temple.edu/cgi-bin/mail?sallyk@temple.edu">  
+
+            Email 
+            <input name="emailAddress"  type="email" placeholder="name@domain.com" required=""> 
+            (uses HTML5 "required" attribute)
+
+            <br/>Your college 
+            <input name="college"  required/>
+            (also uses HTML5 "required" attribute)
+
+            <br/><input type="submit" value="An Actual Submit Button"> &nbsp; 
+            <p>
+                When the user clicks the Submit button,
+            </p>
+            <ul>
+                <li>
+                    If any input does not pass HTML5 validation rules, the 
+                    user will see an HTML5 "bubble" validation pop up (of 
+                    the first error only).
+                </li>
+                <li>
+                    If all input passes HTM5 validation rules, then all the input data 
+                    is sent to the server side program that is specified by the "action" 
+                    attribute of the form tag. In this case, it invokes a Temple Mail 
+                    (server side program) that sends all the user's input values to 
+                    sallyk@temple.edu.
+                    <ul>
+                        <li>
+                            NOTE: Temple recently retired the server side program that 
+                            used to send mail, but you can find a hoster that would provide 
+                            similar functionality.
+                        </li>                        </li>
+
+                    </ul>
+                </li>
+            </ul>
+
+        </form> 
+
+        <h3>JavaScript code invokes HTML5 Validation (no submit to server side page)</h3>
+        <form id="myFormId"> 
+
+            Email 
+            <input  id="emailAddressId" type="email" placeholder="name@domain.com" required=""> 
+            (uses HTML5 "required" attribute)
+
+            <br/>Your college 
+            <input  id="collegeId" required/>
+            (also uses HTML5 "required" attribute)
+
+            <br/><input type="submit" id="submitButtonId" value="Actual Submit Button"> 
+            should be hidden, e.g., inside &lt;div style='display:none;'>&lt;/div> 
+            - but we need the submit button since the JS will reference it.
+            <p style='margin-left:5ex;'>
+                If you do click the Actual Submit Button (to test/to understand) and if all input passes validation, 
+                nothing happens because the form has no action attribute.
+            </p>
+
+            <button onclick="validateMe()">Not a Submit Button</button> If passes all HTML5 validation, invokes JavaScript. 
+        </form>       
+
+        <script>
+            function validateMe() {
+
+                // This causes HTML5 validation bubbles to appear if anything is invalid
+                if (!document.getElementById('myFormId').checkValidity()) {
+
+                    // clicking a (visible or hidden) submit button is what causes HTML5 to 
+                    // validate all inputs within a particular form
+                    document.getElementById('submitButtonId').click();
+                    
+                    // If there was code here, it would never run, because when the form is invalid, 
+                    // the HTML5 validation behavior stops the submit process.
+
+                } else {
+                    alert("Your data passes all validation. " +
+                            "Your JS code would probably invoke some AJAX call at this point.");
+                }
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            form {
+                font-weight: bold;
+            }
+            form p {
+                font-weight: normal;
+                margin: 0rem;
+            }
+        </style>
+    </head>
+    <body>
+        <h2>3. Planning For The Radio Button Component</h2>
+        <p>
+            Do we want to require the consumer to supply a value and a label for 
+            each radio button option, or do we want to keep things simpler and 
+            let them just supply a list of choices (and we make the value 
+            match the label)? 
+        </p>
+        <p>
+            Here's how it would look if we "merge" the radio button option values 
+            with their labels: 
+        </p>
+
+        <form name="pizzaForm">
+            Select Your Pizza:
+            <p>
+                <input type="radio" name="radName" value="Cheese" /> Cheese 
+            </p>
+            <p>
+                <input type="radio" name="radName" value="Mushroom" checked /> Mushroom
+            </p>
+            <p>
+                <input type="radio" name="radName" value="Pepperoni" /> Pepperoni 
+            </p>
+        </form>
+        <br/>
+        <form name="collegeYearForm">
+            What Year in College are you?
+            <p>
+                <input type="radio" name="radName" value="Freshman" /> Freshman 
+            </p>
+            <p>
+                <input type="radio" name="radName" value="Sophomore" /> Sophomore 
+            </p>
+            <p>
+                <input type="radio" name="radName" value="Junior" /> Junior 
+            </p>
+            <p>
+                <input type="radio" name="radName" value="Senior" /> Senior 
+            </p>
+        </form>
+        <br/>
+        <button onclick="showValues()">Show Values</button>
+        <br/>
+        <br/>
+        <div id="msg"></div>
+        <script>
+            function showValues() {
+                var msgArea = document.getElementById("msg");
+                msgArea.innerHTML = "You have selected a " + document.pizzaForm.radName.value + " pizza." +
+                        "<br/>Your college class is: " + document.collegeYearForm.radName.value;
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+
+            html, body {
+                margin:0;    /* avoid tiny white border inside browser window */
+                padding:0;   /* avoid tiny white border inside browser window */
+               /* height: 100vh; /* had to do this so that my background element could also be 
+                              exactly 100%, filling up the window vertically, but with 
+                              no vertical scroll bar */
+                background-color: #BBCCFF; /* light blue */
+            }
+
+            #background {
+                background-image: url("pics/mountains-plainbg.png");
+                height: 90vh; /* had to do this so that my background element could also be 
+                              exactly 100%, filling up the window vertically, but with 
+                              no vertical scroll bar */
+            }
+            #middleground {
+                position: fixed;
+                background-image: url("pics/clouds708x200.png");
+                background-repeat: repeat;
+                top: 100px;
+                z-index:1;
+                height: 200px;
+                /*width: 400%; /* 1416 */
+            }
+
+            #foreground {
+                position: fixed;
+                bottom: 0px;
+                height: 150px;
+                width: 800%;
+                z-index: 2;
+                background-image: url("pics/grass_tulips.png");
+                background-repeat: repeat;
+                background-position: left top;
+            }
+        </style>
+    </head>
+    <body onscroll="doScroll()">
+        <div id="background"> 
+            <h2>&nbsp;Scroll Left/Right to see Parallax Effect</h2>
+
+            <div id='middleground'>
+            </div>
+            <div id="foreground"> </div>
+            
+        </div>
+        <script>
+            "use strict";
+            function my$(ele) {
+                return document.getElementById(ele);
+            }
+
+            // The background has to be wider than the screen to be sure there will 
+            // be a horizontal scroll bar
+            my$("background").style.width = (2 * window.innerWidth) + "px";
+
+            // Add custom properties to each div:
+            // Set min left so that the image is invisible off left of viewing area
+            // and set max left so that it is invisible off the right of the 
+            // viewing area.
+            var EXTRA_SPACE = -50;
+            my$("middleground").style.width = "1416px";
+            my$("middleground").minLeft = -parseInt(my$("middleground").style.width) - EXTRA_SPACE;
+            my$("middleground").maxLeft = window.innerWidth + EXTRA_SPACE;
+            console.log("middleground minLeft is " + my$("middleground").minLeft);
+            console.log("middleground maxLeft is " + my$("middleground").maxLeft);
+            my$("middleground").style.left = my$("middleground").minLeft + "px";
+
+            my$("foreground").style.width = (7 * window.innerWidth) + "px";
+            my$("foreground").minLeft = -(4 * window.innerWidth);
+            my$("foreground").maxLeft = 0;
+            console.log("foreground minLeft is " + my$("foreground").minLeft);
+            console.log("foreground maxLeft is " + my$("foreground").maxLeft);
+            my$("foreground").style.left = my$("foreground").minLeft + "px";
+
+            //var myScrollTop;
+            var myScrollLeft;
+            function doScroll() {
+                //myScrollTop = window.scrollY || window.scrollTop || document.getElementsByTagName("html")[0].scrollTop;
+                myScrollLeft = window.scrollX || window.scrollLeft || document.getElementsByTagName("html")[0].scrollLeft;
+
+                //console.log("myScrollTop is " + myScrollTop);
+                //console.log("myScrollLeft is " + myScrollLeft);
+
+                var horizontalPct = myScrollLeft / window.innerWidth;
+                //var verticalPct = myScrollTop / window.innerHeight;
+
+                console.log("horizontal Pct is " + horizontalPct);
+                //console.log("vertical Pct is " + verticalPct);
+
+                horizontalSet(my$("middleground"), horizontalPct);
+                horizontalSet(my$("foreground"), horizontalPct);
+            }
+
+            function horizontalSet(ele, horizontalPct) {
+
+                var difference = ele.maxLeft - ele.minLeft;
+
+                // determine proportion of difference (multiply differece by horizontalPct 
+                // that measures scroll position)
+                var ratio = (difference * horizontalPct);
+
+                // Add the leftmost possible value to the proportion 
+                var myLeft = ele.maxLeft - ratio; // add to minLeft (left offset)
+                console.log('myLeft is ' + myLeft);
+                ele.style.left = myLeft + "px";
+            }
+
+        </script>
+
+    </body>
+</html>

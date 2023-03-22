@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<!-- HTML comments like this... -->
+<html>
+    <head>
+        <title>Title Nav Using Flexbox</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+
+
+            /* This rule makes everything use border-box sizing which is desireable. With border-box sizing, 
+               padding is not added to the width. For example, if you make the footer 100% and it has some padding, 
+               you'll see a horizontal because the footer becomes a little wider than 100%                            */
+            * { 
+
+                box-sizing: border-box;
+            }
+
+            body { 
+                margin:0;                   /* no white border around browser window */
+                font-family: sans-serif;    /* no tails on the font like Times New Roman */
+
+                /* NEW */
+                /* subtle background image - make sure it is SUBTLE (must be able to easily read all text) */
+                background-image: url("worldBg.jpg"); 
+                background-attachment: fixed;
+                /* END OF NEW */
+            }
+
+            #titleNav {
+                padding: 1rem;
+                background-color: #74A5FD;
+
+                /* give a little "3D"  effect to the edges of titleNav and footer */
+                box-shadow: 0px 0px 5px black;  
+            }
+
+
+            #title {
+                font-size: 3rem;
+                font-weight: bold;
+                letter-spacing: 0.2rem; /* spaces out letters a bit */
+                white-space: nowrap;  /* don't allow the title to wrap */
+            }
+
+            #nav {
+                text-align: right;
+                font-size: 1rem;
+                font-weight: bold;
+                padding-top: 2rem;
+                padding-right: 2rem;
+                white-space: nowrap;  /* don't allow nav links to wrap */
+            }
+
+            #content {
+                padding: 1rem;
+                font-size: 1.5rem;
+                line-height: 2rem; 
+            }
+
+            #footer {
+
+                /* To select this color, I used the colorzilla chrome plugin to copy out the color of the title
+                   then I blended that color with various shades of grey (dark/light) until I liked it. */
+                background-color: #B4C1D9;
+                padding: 0.5rem;
+
+                font-size: 1rem;
+                text-align: center;
+                width: 100%;
+                box-shadow: 0px 0px 9px #74A5FD; /* lighter than titleNav */
+            }
+
+
+        </style>
+    </head>
+    <body>
+        <div id="titleNav">
+            <div id="title">
+                Website Title
+            </div>
+            <div id="nav">
+                Home | Account | Search | Tutorial | Blog
+            </div>
+        </div>
+        <div id="content">
+
+            <p>
+                This example shows how images would look with no styling, no floating. Not so nice!
+            </p>
+
+            <p>
+                <img src='pics/london_750x500.jpg' alt='London'>
+                
+                <strong>London</strong> is the capital and largest city of both England and the United Kingdom.
+                Standing on the River Thames in the south-east of England, at the head of its 50-mile 
+                (80 km) estuary leading to the North Sea, London has been a major settlement for two millennia. 
+                Londinium was founded by the Romans. The City of London (colloquially known as the Square Mile) 
+                retains boundaries that follow closely its medieval limits.
+            </p>
+
+            <p>
+                <img src='pics/tokyo_800x533.jpg' alt='Tokyo'>
+
+                <strong>Tokyo</strong> has served as the Japanese 
+                capital since 1869. As of 2018, the Greater Tokyo Area is the most populous 
+                metropolitan area in the world. Tokyo was formerly named Edo in 1603 
+                by Shogun Tokugawa - it was renamed Tokyo
+                in 1868 by emperor Meiji. Tokyo is often referred to as a city but it is officially 
+                a "metropolitan prefecture", which combines the elements of a city 
+                and a prefecture, a characteristic unique to Tokyo.
+            </p>
+
+        </div>
+        <div id="footer">
+            Your Footer Goes Here
+        </div>
+    </body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>List of Car Objects</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="style_fixed_headers/clickSort.css" rel="stylesheet" type="text/css" />  
+        <style>
+
+            body {
+                font-family: sans-serif;
+                padding: 0rem 1rem; /* 1st is top/bottom, 2nd is left/right */
+            }
+        </style> 
+    </head>
+    <body>
+        <h3>Fixed Column Headings in HTML Table</h3>
+        <p>
+            To test this code, scroll up and down within the data rows of the 
+            HTML table (which should show a vertical scroll bar to its right). 
+            When you do this, you should see the column headings do not disappear.
+            This styling is especially helpful in Mobile Layout (where 
+            screen space is limited), but it is also helpful 
+            in Desktop Layout when there are a lot of data rows. 
+        </p>
+        <p>
+            Look for /* NEW */ in the clickSort.css to see the relevant styling rules:
+        </p>
+        <ul>
+            <li>
+                The first thing you do is make the container of the HTML 
+                table be a certain height (it's set to 20rem in the example, but 
+                make it what you want), then set "overflow: auto" which enables 
+                scrolling behavior within the HTML table container. 
+            </li>
+            <li>
+                Then you just have to style the &lt;th> tags to be "position:sticky" 
+                (rather like absolute behavior relative to the HTML table container, 
+                keeps them always at the top). Also, make sure you specify "top:0" 
+                (so that the column headers "stick" to the top) and a z-index value 
+                that's high enough (so that the column headers are on top of the 
+                HTML table's data rows). 
+            </li>
+        </ul>
+
+
+        <div id="listHere">
+        </div>
+
+        <script src="js/MakeTableBetter.js"></script>
+        <script src="js/TableUtils.js"></script>
+        <script>
+            "use strict"; // turn off the "auto variable declaration" feature of the browser.
+
+            // last two objects are there to see how it handles "weird" objects.
+            var carList = [
+                {make: "Chevrolet", image: "http://cis-linux2.temple.edu/~sallyk/pics_car/white_audi.png", condition: "fair", price: 21000, available: "1/2/2022"},
+                {make: "Buick", image: "http://cis-linux2.temple.edu/~sallyk/pics_car/buick.png", condition: "great", price: "$15,000", available: "12/27/2021"},
+                {make: "Ford", image: "http://cis-linux2.temple.edu/~sallyk/pics_car/ford.png", condition: "poor", price: "x5000", available: "3/4/2020"},
+                {image: "http://cis-linux2.temple.edu/~sallyk/pics_car/default_car.png"},
+                {}
+            ];
+
+            var newCarList = []; // empty array
+            // modify properties (image and price) of the array of objects so it will look 
+            // better on the page.
+            for (var i = 0; i < carList.length; i++) {
+                newCarList[i] = {}; // i-th element of array is empty object.
+                newCarList[i].Make = TableUtils.makeText(carList[i].make);
+                newCarList[i].Image = TableUtils.makeImage(carList[i].image, "width:10rem");
+                newCarList[i].Condition = TableUtils.makeText(carList[i].condition);
+                newCarList[i].Price = TableUtils.makeNumber(carList[i].price, true); // true --> format as currency
+                newCarList[i].Available = TableUtils.makeDate(carList[i].available);
+            }
+
+            document.getElementById("listHere").appendChild(MakeTableBetter(newCarList));
+
+        </script>
+
+    </body>
+</html>

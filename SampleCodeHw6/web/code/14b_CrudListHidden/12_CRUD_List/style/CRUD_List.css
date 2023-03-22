@@ -1,0 +1,41 @@
+.CRUD_List {
+    background-color: #CCCCCC;
+    margin:1rem;
+    border-radius: 0.5rem;
+    padding: 0.1rem 0rem; /* 1st is top/bottom, 2nd is left/right */;
+}
+
+.CRUD_List * {
+    box-sizing: border-box; 
+}
+
+.CRUD_List .ele {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between; /* put extra space between eleInfo and the x delete icon */
+
+    background-color: #DDDDDD;
+    margin:0.25rem; 
+    padding:0rem; /* 1st is top/bottom, 2nd is left/right */;
+    border-radius: 0.5rem;
+}
+
+.CRUD_List .eleInfo span {
+    height: 1.5rem;
+    font-size: 0.8rem;
+    margin: 0rem 0.5rem; /* 1st is top/bottom, 2nd is left/right */
+    position: relative; 
+    bottom: 1rem;
+}
+
+.CRUD_List .eleInfo img {
+    height: 3rem;
+    min-height: 3rem; /* if an invalid image url is provided, keeps the vertical sizing good */
+    margin-bottom:-0.25rem;
+    border-radius: 0.5rem;
+}
+
+.CRUD_List .ele .x {  /* the delete x in upper right corner of ele */
+    font-size:1.25rem;
+    padding-right: 0.25rem;
+}

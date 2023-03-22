@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            p {font-weight:bold;}
+        </style>
+    </head>
+    <body>
+        <h3>Demonstrating Filter - Press F12 to See Output</h3>
+        <p>
+            Creating a new array as a filtered copy of another array without needing a "for loop".
+        </p>
+        <pre>
+     const carList = [
+        {id: 1, name: "Duster", year: 1980},
+        {id: 2, name: "Accord", year: 2019},
+        {id: 3, name: "Prius", year: 2010},
+        {id: 4, name: "Mustang", year: 2012}
+    ];
+
+    let newCars = [];
+    console.log("filter, the old way");
+    for (let i = 0; i < carList.length; i++) {
+        if (carList[i].year > 2011) {
+            newCars.push(carList[i]);
+        }
+    }
+    console.log(newCars);
+
+    console.log("filter, functional programming, anonymous function");
+    newCars = carList.filter(function (car) {
+        if (car.year > 2011) {
+            return true;
+        }
+    });
+    console.log(newCars);
+
+    console.log("named arrow function");
+    newCars = carList.filter(doOne = (car) => {
+        if (car.year > 2011) {
+            return true;
+        }
+    });
+    console.log(newCars);
+
+    console.log("anonymous arrow function");
+    newCars = carList.filter(car => {
+        return (car.year > 2011);
+    });
+    console.log(newCars);
+
+    console.log("arrow function abbreviated");
+    newCars = carList.filter(car => car.year > 2011);
+    console.log(newCars);   
+        </pre>
+        <script>
+
+            // https://www.youtube.com/watch?v=rRgD1yVwIvE&list=TLPQMzAxMDIwMTk9ycJkiKUMvw&index=2
+
+
+            const carList = [
+                {id: 1, name: "Duster", year: 1980},
+                {id: 2, name: "Accord", year: 2019},
+                {id: 3, name: "Prius", year: 2010},
+                {id: 4, name: "Mustang", year: 2012}
+            ];
+
+            let newCars = [];
+            console.log("filter, the old way");
+            for (let i = 0; i < carList.length; i++) {
+                if (carList[i].year > 2011) {
+                    newCars.push(carList[i]);
+                }
+            }
+            console.log(newCars);
+
+            console.log("filter, functional programming, anonymous function");
+            newCars = carList.filter(function (car) {
+                if (car.year > 2011) {
+                    return true;
+                }
+            });
+            console.log(newCars);
+
+            console.log("named arrow function");
+            newCars = carList.filter(doOne = (car) => {
+                if (car.year > 2011) {
+                    return true;
+                }
+            });
+            console.log(newCars);
+
+            console.log("anonymous arrow function");
+            newCars = carList.filter(car => {
+                return (car.year > 2011);
+            });
+            console.log(newCars);
+
+            console.log("arrow function abbreviated");
+            newCars = carList.filter(car => car.year > 2011);
+            console.log(newCars);
+
+        </script>
+    </body>
+</html>

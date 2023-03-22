@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<!-- Sample code: Car Object -->
+<html>
+    <head>
+        <title>Car Object Sample</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            body {
+                padding: 1rem;
+                font-family: sans-serif;
+            }
+        </style>
+    </head>
+    <body>
+        <h2>Press Chrome's F12 to Open Up Console - Some Private, No UI</h2>
+        <p>
+            This code:
+        </p>
+        <ul>
+            <li>
+                Still has no user interface (it just prints to the console log). 
+            </li>
+            <li>
+                Makes two objects, each having some private properties and private methods. 
+            </li>
+            <li>
+                Since the data members are private, you can't access them except through 
+                public getter/setter functions.
+            </li>
+            <li>
+                Scroll down for discussion of JavaScript "closure".
+            </li>
+        </ul>
+
+        <h4>What is JavaScript Closure?</h4>
+        <p>
+            If you look at the MakeCar function through the eyes of a Java programmer, you might 
+            ask "Why declare condition and price as local variables when these variables will 
+            just be destroyed when the MakeCar function finishes running?" 
+        </p>
+        <p>
+            JavaScript variables are not destroyed when the function that created them goes 
+            out of scope. JavaScript variables (like Java Static variables) retain their values 
+            even after the function that created them is "closed" -- I think this is why they 
+            call it "JavaScript Closure". 
+        </p>
+        <script>
+            "use strict";
+        </script>
+        <script src="00b_MakeCar.js"></script>
+        <script>
+
+            var myCarObj = MakeCar("blue toyota", "great", 5000);
+            myCarObj.log();
+
+            var yourCarObj = MakeCar("red BMW", "fair", 2500);
+            yourCarObj.log();
+
+            myCarObj.setCondition("poor");
+            myCarObj.log();
+
+            yourCarObj.changePrice(0.1); // 10% increase in price
+            yourCarObj.log();
+
+            console.log("trying to print private property condition:");
+            console.log("condition of myCarObj is " + myCarObj.condition);
+
+            console.log(formatCurrency(2.3));
+
+            console.log("all done");
+
+        </script>
+    </body>
+</html>

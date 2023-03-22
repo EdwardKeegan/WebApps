@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=windows-1252" />
+        <style>
+            body {
+                font-family: arial;
+                padding-left: 1.5rem;
+                line-height: 1.5rem; 
+            }
+            h2 { 
+                text-align:center;
+                margin:0.5rem 0.5rem; /* first is top/bottom, second is left/right */ 
+                line-height: 2rem;
+            }
+            form {
+                background-color: #CCCCCC;
+                border: thin solid black; 
+                padding: 0.5rem;
+                margin-left: 1rem;
+            }
+
+            input {
+                padding:0.25rem;
+                border-color: lightgray; 
+            }
+
+            input:focus { /* When your cursor is in the field... */
+                box-shadow: 0px 0px 9px #668899;
+            }
+
+            .example {
+                background-color: #DDEEFF;
+                padding: 1.5rem;
+                padding-top:0.25rem;
+                border-radius: 0.5rem;
+                margin: 1rem;
+                font-size: 0.9rem;
+            }
+
+            pre {
+                background-color: #EEEEEE;
+                border-radius:0.5rem;
+                padding: 0.5rem;
+                font-size: 0.8rem;
+                line-height: 1.2rem;
+            }
+
+        </style>
+    </head>
+    <body>
+        <h2>Using HTML5 Validation in a Single Page Application</h2>
+        <p>
+            Single Page Applications (like we have been writing all semester) 
+            do not post user input to a server side page. They gather up the user's input, 
+            validate them (client side), then (if all input is OK), they may make 
+            an ajax call to ask a server side program that will do something with the user's input. 
+        </p>
+
+        <p>
+            First, let's review to see how a form would use HTML5 validation to send data 
+            to a server side program:
+        </p>
+
+        <div class="example">
+
+            <h4>Final Version - uses JavaScript code to invoke HTML5 Validation for SPA</h4>
+            <form> 
+
+                Email 
+                <input name="email" type="email" placeholder="name@domain.com" required=""/> 
+                (uses HTML5 "required" attribute)
+
+                <br/>Your college 
+                <input name="college" required  />
+                (also uses HTML5 "required" attribute)
+
+                <br/>
+
+                <button type="submit" style="display:none">Actual Submit Button (hidden)</button> 
+
+                <br/>
+                <button type="button" onclick="validateForm(this)">Regular Button (Not Submit)</button>
+
+            </form>       
+
+        </div>
+
+        <script>
+            "use strict";
+
+            function validateForm(clickedButton) {
+
+                var form = clickedButton.parentElement;
+
+                // for this to work, the actual (hidden) submit button must be a <button> tag
+                // <button> tags default to type = "submit". 
+                // and the visible button must be an <input type="button"/> tag
+                var submitButton = form.getElementsByTagName("button")[0];
+
+                // This causes HTML5 validation bubbles to appear if anything is invalid
+                if (!form.checkValidity()) {
+
+                    // clicking a (visible or hidden) submit button is what causes HTML5 to 
+                    // validate all inputs within a particular form
+                    submitButton.click();
+
+                    // If there was code here, it would never run, because when the form is invalid, 
+                    // the HTML5 validation behavior stops the submit process.
+
+                } else {
+                    alert("Your data passes all validation. \n" +
+                          "Your JS code would probably make an AJAX call at this point, \n"+
+                          "using the data from the object printed in the console.");
+                    var inpObj = {};
+                    var inputs=form.getElementsByTagName("input");
+                    for (var inp of inputs){
+                        inpObj[inp.name]=inp.value;
+                    }
+                    console.log(inpObj);
+                }
+            }
+        </script>
+    </body>
+</html>

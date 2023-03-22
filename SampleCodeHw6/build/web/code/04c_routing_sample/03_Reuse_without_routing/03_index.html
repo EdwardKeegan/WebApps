@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Building a simple router</title>
+    </head>
+    <body>
+
+        <div style ="background-color: #DDDDDD; padding: 1ex;">
+            <p>
+                This achieves User Interface reuse but without routing. Instead of having an 
+                "href" attribute, the links in the nav bar have an onclick function that 
+                invokes the correct JavaScript component (function) to inject the right content. 
+
+                Note that we are following our strict naming convention that every JS file 
+                is named for the single function (or single object) defined in that file. 
+                Each of these two functions, just specifies some HTML code, then "injects" 
+                that code into the content area, in this example, the div with id "view". 
+            </p>
+            <p>
+                The downside to this simple approach is that you never see any changes in the URL and 
+                the user cannot use the browser's navigation buttons (forward/back). 
+            </p>
+        </div>
+
+        <br/>
+        <br/>
+
+        <!-- THE NAV BAR -->
+        <a onclick = "inject(home())">Home</a> |
+        <a onclick = "inject(blog())">Blog</a> 
+        <br/>
+        <br/>
+
+        <!-- Note: the JavaScript code expects there to be a DOM object with id "view" -->
+        <!-- This is where the content is placed. -->
+        <div id="view">
+
+        </div>
+
+        <script src="js/components/home.js"></script>
+        <script src="js/components/blog.js"></script>
+
+        <script>
+
+            "use strict";
+
+            // cleans out the container and then injects (into container) whatever was passed in.
+            // if you don't clean out first, it appends, not replaces.
+            function inject(what) {
+                document.getElementById("view").innerHTML = "";
+                document.getElementById("view").appendChild(what);
+            }
+
+            // sends the output of the call to home() to the inject function 
+            inject(home());
+
+        </script>
+    </body>
+</html>

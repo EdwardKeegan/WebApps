@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Local Storage Example</title>
+        <style type="text/css">
+            body{ 
+                background-color:beige;
+                padding: 1em;
+            }
+
+            hr {
+                margin-top: 1.5em;
+                margin-bottom: 1.5em;
+            }
+        </style>
+    </head>
+
+    <body>
+        <h3>Local Storage Demo: Open Up Chrome Console To See Output</h3>
+
+        <p>
+            Since HTML5, <strong>localStorage</strong> is preferred over using Cookies because:
+        </p>
+        <ul>
+            <li>
+                More data can be stored and more securely.
+            </li>
+            <li>
+                Web application performance is not impaired because local storage data is NOT sent to the server with every HTTP request. 
+            </li>
+        </ul>
+
+        <p>
+            If you want to clear out the values whenever the browser tab is closed, 
+            use <strong>sessionStorage</strong> instead of localStorage 
+            (has the same methods: getItem, setItem, and removeItem). 
+        </p>
+
+        <div>
+            <form name="myForm"> 
+                <hr/>
+                Key:
+                <input type="text" name="localStorageKey">
+                &nbsp;&nbsp;
+                Value:
+                <input type="text" name="localStorageValue">
+                &nbsp;&nbsp;&nbsp;
+                <input type="button" value="Write Key:Value to Local Storage" 
+                       onClick="setData(document.myForm.localStorageKey.value,
+                                       document.myForm.localStorageValue.value)"/>
+
+                <hr/>
+
+                <input type="button" value="Show Value of Key" 
+                       onClick="getData(document.myForm.inquireKey.value)"/>
+                <input type="text" name="inquireKey">
+
+                <hr/>
+
+                <input type="button" value="Show All Data in Local Storage" 
+                       onClick="readAllData()"/>
+
+            </form>
+        </div>
+        <script>
+            
+/* localStorage Examples:
+    localStorage.setItem("lastname", "Smith"); // store value 
+    var theLastName = localStorage.getItem("lastname");  // retrieve value
+    localStorage.removeItem("lastname"); // remove value
+*/
+
+        // I only created these functions so that all actions are displayed to the console. 
+        // I could have just used the localStorage methods directly. 
+            function setData(key, data) {
+                localStorage.setItem(key, data);
+                console.log("key:value " + key + ":" + data + " written to Local Storage");
+            }
+
+            function getData(key) {
+                var data = localStorage.getItem(key);
+                console.log("The value of key '" + key + "' in Local Storage is: " + data);
+                return data;
+            }
+
+            // Show all data in localStorage
+            function readAllData() {
+                var s = "Local storage contains: ";
+                for (var i = 0; i < localStorage.length; i++) {
+                    var key = localStorage.key(i);
+                    s += key + ":" + localStorage.getItem(key) + ", ";
+                }
+                console.log(s);
+            }
+
+        </script>
+
+    </body>
+</html>

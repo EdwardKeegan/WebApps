@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <!-- HTML Comment -->
+        <title>HTML Semantics</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            body {
+                font-family: sans-serif; /* "no tail" font, e.g., arial not Times New Roman */
+                
+                margin: 0;  /* no white border around browser window */
+                padding: 0; /* no white border around browser window */
+            }
+            header {
+                background-color:purple;
+                color: white;
+                padding: 1em;
+            }
+            aside {
+                background-color:yellow;
+                padding: 1em;
+            }
+            main {
+                background-color:lightgrey;
+                padding: 1em;
+            }
+            footer {
+                background-color:purple;
+                color: white;
+                padding: 1em;
+            }
+        </style>
+
+    </head>
+    <body>
+        <header>My Title</header>
+        <aside>Nav bar which sometimes is on the side... </aside>
+        <main>
+            <h1>My Content Area</h1>
+            <p>
+                A newer addition to HTML is the use of "semantics". Instead of having a div with an id like "header", 
+                there are several new HTML tag names that you can use (like header, aside, main, footer). These act 
+                like divs but just have "better" (more meaningful) names. To style any HTML element (like p or body), you 
+                specify the CSS selector with just the HTML name (not starting with # like you would do to style an id). 
+            </p>
+        </main>
+        <footer>My Footer</footer>
+    </body>
+</html>

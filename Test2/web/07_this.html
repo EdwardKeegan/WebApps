@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .container {
+            text-align: center;
+        }
+        .child {
+            background-color: lightgrey;
+            margin-bottom:1rem;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="content"></div>
+    <script>
+        "use strict";
+        function MakeComponent(params) {
+            var container = document.createElement("div");
+            container.classList.add("container");
+            var objList = params.salesList;
+
+            var componentTitle = document.createElement("h1");
+            componentTitle.innerHTML = params.title;
+            container.appendChild(componentTitle);
+
+            for (var i = 0; i < objList.length; i++) {
+                var childDiv = document.createElement("div");
+                childDiv.classList.add("child");
+
+                childDiv.innerHTML = objList[i].month;
+                childDiv.index = i;
+
+                childDiv.onclick = function () {
+                    childDiv.innerHTML += "<br/>Sales: " + objList[this.index].sales +
+                            " i is " + i;
+                };
+                container.appendChild(childDiv);
+            }
+            return container;
+        } // function MakeComponent
+
+        // ENTRY POINT FOR SCRIPT ON HTML PAGE
+        var content = document.getElementById("content");
+        var compDiv = MakeComponent({
+            title: "Sales Report",
+            salesList: [
+                {month: "Jan", sales: "$550"},
+                {month: "Feb", sales: "$790"},
+                {month: "Mar", sales: "$660"}
+            ]
+        });
+        content.appendChild(compDiv);
+    </script>
+</body>
+</html> 

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Local Storage Example</title>
+        <style type="text/css">
+            body{ 
+                background-color:#BBBBEE;
+                font-family: sans-serif;
+            }
+        </style>
+
+    </head>
+
+    <body>
+        <h2>JS code to Read/Write Objects to Local Storage</h2>
+        <h3>Run in Chrome (not View): Press F12 for Console Output</h3>
+        <form name="myForm">
+            <button type="button" onClick="addFriend()">Add to List &gt;&gt;</button> &nbsp; 
+            Friend Name: <input type="text" name="friendName" value="sally"> &nbsp;
+            Telephone: <input type="text" name="friendTel" value="123 456 9000"> &nbsp;
+
+            <p>
+                <button type="button" onclick="persistFriends()">Persist List to Local Storage</button> 
+                &nbsp;  &nbsp;  &nbsp;  
+                <button type="button" onclick="restoreFriends()">Restore List from Local Storage</button> 
+                &nbsp;  &nbsp;  &nbsp; 
+                <button type="button" onClick="removeFriends()">Remove List from Local Storage</button>
+            </p>
+        </form>
+        <p id="friendPrintout"></p>
+
+        <script src="persist.js"></script>
+        <script>
+                    "use strict";
+
+                    function my$(ele) {
+                        return document.getElementById(ele);
+                    }
+
+                    var friendList = [];
+
+                    function addFriend() {
+                        var newFriend = {
+                            name: document.myForm.friendName.value,
+                            tel: myForm.friendTel.value
+                        };
+
+                        friendList[friendList.length] = newFriend;
+                        console.log("now there are " + friendList.length + " friends.");
+                        printFriends();
+                    }
+
+                    function printFriends() {
+                        my$("friendPrintout").innerHTML = "<h3>Friend List</h3>";
+                        for (var i = 0; i < friendList.length; i++) {
+                            my$("friendPrintout").innerHTML += friendList[i].name + ": " + friendList[i].tel + "<br/>";
+                        }
+                    }
+
+                    function persistFriends() {
+                        persist.setObj("myFriends", friendList);
+                    }
+
+                    function restoreFriends() {
+                        var json = persist.getObj("myFriends");
+                        if (json === null) {
+                            console.log("Local Storage for 'myFriends' is null");
+                            my$("friendPrintout").innerHTML = "you have no friends";
+                        } else {
+                            friendList = json; 
+                            console.log(friendList);
+                            printFriends();    // show list of friends on page
+                        }
+                    }
+
+                    function removeFriends() {
+                        persist.removeItem("myFriends");
+                    }
+
+        </script>
+    </body>
+</html>

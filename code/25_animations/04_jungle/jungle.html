@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>TODO supply a title</title>
+        <style>
+            body {
+                margin:0;
+                padding:0;
+                background-color:#888888;
+            }
+            #bg {
+                position:relative;
+                left:-20px;
+                z-index:1;
+                background-image:url(jungleBg2.jpg);
+                background-repeat:no-repeat;
+                height:580px;
+                width:1130px;
+                border-radius:20px;
+                box-shadow: 02px 02px 05px black;
+            }
+            #zebra {
+                position:absolute;
+                top:0px;
+                left:0px;
+                z-index:4;
+                height: 50px; /*225px;*/
+                width:  50px; /*315px;*/
+                background-image:url(jungleSprites.png);
+                background-repeat:no-repeat;
+                background-position-y: -12px; 
+            }
+
+            .zebra1 {
+                background-position-x: -4px; /* x then y */  
+            }
+            .zebra2 {
+                background-position-x: -54px; /* x then y */  
+            }
+            .zebra3 {
+                background-position-x: -104px; /* x then y */  
+            }
+            .zebra4 {
+                background-position-x: -154px; /* x then y */  
+            }
+            .zebra5 {
+                background-position-x: -204px; /* x then y */  
+            }
+            .zebra6{
+                background-position-x: -262px; /* x then y */  
+            }
+        </style>
+    </head>
+    <body>
+        <input type ="button" value="Change zebra pose" onclick="advancePose()"/> 
+        <input type ="button" value="Move zebra" onclick="move()"/><br/>
+
+        <div id="bg">
+            <div id="zebra" class="zebra1"> </div> 
+        </div> 
+
+        <script>
+
+
+            function $(element) {
+                return document.getElementById(element);
+            }
+
+
+            function advancePose() {
+                zebra.advancePose();
+            }
+
+            function move() {
+                zebra.move();
+            }
+
+            function makeRandomNumber(low, high) { // returns an integer in this range: low..high
+                var random = Math.random();  // returns a real number between 0 and 1
+                var diff = high - low + 1;  // determine the distance between the high and low. 
+                // Math.floor returns an integer truncating any real number after the decimal point.
+                return Math.floor(random * diff + low);
+            }
+
+            function makeZebra() {
+
+                myZebra = $("zebra");
+
+                myZebra.imgNum = 2;
+                myZebra.maxImgNum = 6;
+
+                myZebra.top = 380;
+                myZebra.left = 1480;
+                myZebra.dx = -16;
+
+                myZebra.advancePose = function () {
+                    // advance to next position of running zebra
+                    myZebra.imgNum++;
+                    if (myZebra.imgNum > myZebra.maxImgNum) {
+                        myZebra.imgNum = 1;
+                    }
+                    myZebra.className = "zebra" + myZebra.imgNum;
+                    //console.log("zebra class name is " + $("zebra").className);
+                };
+
+                myZebra.move = function () {
+                    myZebra.top +=  makeRandomNumber(-2,2);
+                    myZebra.left += myZebra.dx;
+                    myZebra.style.top = myZebra.top + "px";
+                    myZebra.style.left = myZebra.left + "px";
+                    console.log("top style " + myZebra.style.top);
+                    console.log("left style " + myZebra.style.left);
+                };
+
+                return myZebra;
+
+            }
+
+            function render() {
+                zebra.move();
+                zebra.advancePose();
+
+                if (zebra.left > -70) {
+                    timer = setTimeout('render()', 125);
+                }
+            }
+
+            zebra = makeZebra();
+            render();
+
+        </script>
+    </body>
+</html>

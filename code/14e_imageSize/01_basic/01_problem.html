@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<!-- HTML comments must be like this... -->
+<html>
+    <head>
+        <title>Title Nav Using Flexbox</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <style>
+
+            body {
+                font-family: sans-serif;
+                line-height: 1.25rem;
+            }
+
+            img {
+                width:30%;
+            }
+
+        </style>
+    </head>
+    <body>
+        <h2>Problem: Can't Tell Size of &lt;img> Until It's On The Page</h2>
+        <h4>Open Chrome's Console To See Output</h4>
+        <p>
+            In this page, we are trying to create an &lt;img> tag using JS and then 
+            we want to know the size of the image (e.g., in pixels) right away. 
+            We may need to know the actual (pixel) image size for various "effects" 
+            like image zoom. 
+        </p>
+        <p>
+            The problem is that the size of the image (especially if being 
+            set from a CSS style, possibly as a percentage) 
+            will not be known until after the &lt;img> has been added to the page. 
+            BUT the image is not added to the page until after our "Make" function 
+            creates and returns the component with the image in it. 
+        </p>
+        <p>
+            Notice (from Chrome's console) that imgHeight and imgWidth are both showing 
+            as 0...
+        </p>
+
+        <div id="content">
+
+        </div>
+
+        <script>
+            "use strict";
+        </script>
+        <script>
+            function MakeImage(imageFileName) {
+
+                // this is an image created by javaScript
+                var jsImage = document.createElement("img");
+                jsImage.src = imageFileName;
+
+                // for various things (like image zoom, etc), we need to know 
+                // how big the image is (in pixels). 
+
+                // the console will show image height and imgWidth both as 0... 
+                console.log("image height is " + jsImage.height +
+                        " and width is " + jsImage.width);
+
+                return jsImage;
+            } // MakeImage
+
+            var newImage = MakeImage("pics/london_750x500.jpg");
+            document.getElementById("content").appendChild(newImage);
+
+        </script>
+    </body>
+</html>

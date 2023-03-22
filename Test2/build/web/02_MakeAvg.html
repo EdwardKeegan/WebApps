@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            div, h2 {
+                margin:0rem;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="content"></div>
+        <script>
+            function MakeAvg(initTitle) {
+                var div = document.createElement("div");
+
+                var myTitle = initTitle;
+                var total = 0;
+                var count = 0;
+
+                var heading = document.createElement("h2");
+                div.appendChild(heading);
+
+                var displayDiv = document.createElement("div");
+                div.appendChild(displayDiv);
+
+                function display() {
+                    heading.innerHTML = myTitle;
+                    if (count === 0) {
+                        displayDiv.innerHTML = "No Items in Average";
+                    } else {
+                        displayDiv.innerHTML = "Average is " + total / count +
+                                " (" + total + "/" + count + ")";
+                    }
+                }
+
+                div.setTitle = function (newTitle) {
+                    myTitle = newTitle;
+                    display();
+                };
+
+                div.record = function (val) {
+                    total += val;
+                    count += 1;
+                    display();
+                };
+                display();
+
+                return div;
+            } // MakeAvg
+
+            var avgDiv = MakeAvg("Candy Bars");
+            document.getElementById("content").appendChild(avgDiv);
+            avgDiv.record(10);
+            avgDiv.record(6);
+            avgDiv.setTitle("Miles Run");
+
+        </script>
+    </body>
+</html>

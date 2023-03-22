@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<!-- HTML comments must be like this... -->
+<html>
+    <head>
+        <title>Title Nav Using Flexbox</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <style>
+
+            body {
+                font-family: sans-serif;
+                line-height: 1.25rem;
+            }
+            img {
+                width:30%;
+            }
+
+        </style>
+    </head>
+    <body>
+
+        <h2>Solution: Use setTimeout() to Learn Size of JS Created &lt;img></h2>
+        <h4>Open Chrome's Console To See Output</h4>
+        <p>
+            In this example, we create an &lt;img> using JS and declare private 
+            data members (imgHeight and imgWidth) that will hold the dimensions 
+            of that image. BUT these values are not known until "a little after" 
+            the &lt;img> is created and returned (to be placed on the page, perhaps 
+            by the HTML coder, or a router). 
+        </p>
+        <p>
+            This code waits 200 milliseconds (a fifth of a second), then determines 
+            the actual dimensions of the image (in pixels). And if the window is 
+            resized (possibly changing the size of the image), the dimensions are 
+            updated.
+        </p>
+        <p>
+            Notice (from Chrome's console) that imgHeight and imgWidth are now showing 
+            the actual dimensions (which change if you resize the browser). 
+        </p>
+
+        <div id="content">
+
+        </div>
+
+        <script>
+            "use strict";
+        </script>
+        <script>
+            function MakeImage(imageFileName) {
+
+                var jsImage = document.createElement("img");
+                jsImage.src = imageFileName;
+
+                console.log("initial height and width of image are both 0 (see next line)");
+                seeDimensions();
+
+                // wait for image to get added to the page, 
+                // so you know how many pixels high and wide it actually is.
+                console.log("after a short delay, dimensions are available (see next line)");
+                setTimeout(seeDimensions, 200);
+
+                function seeDimensions() {
+                    console.log("image height: " + jsImage.height +
+                            ", width: " + jsImage.width);
+                }
+
+                window.addEventListener('resize', resizedWindow);
+
+                function resizedWindow() {
+                    console.log("after resized window, dimensions are updated (see next line)");
+                    seeDimensions();
+                }
+
+                return jsImage;
+            } // MakeImage
+
+            var newImage = MakeImage("pics/london_750x500.jpg");
+            document.getElementById("content").appendChild(newImage);
+
+        </script>
+    </body>
+</html>

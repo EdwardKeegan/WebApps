@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h3>Press F12 to Open Console</h3>
+        This code example reviews what we know about JavaScript objects:
+        <ul>
+            <li>
+                That you can create an object "on the fly" with all 
+                object properties being public.
+            </li>
+            <li>
+                Any object property can be a function, just like any other data type.
+            </li>
+            <li>
+                You can dynamically add properties to an object.
+            </li>
+            <li>
+                You can console.log an object and this shows 
+                you all the properties of the object and their values.
+            </li>
+            <li>
+                You can access an object's property using associative 
+                array notation.
+            </li>
+            <li>
+                You can iterate over all the properties in an object 
+                and discover the property names and values.
+            </li>
+        </ul>
+            
+            
+        <script>
+            // create object "on the fly"
+            // all properties are public
+            // a property can be any data type including function.
+            var obj = {
+                name:"sally",
+                birthYear: 1990,
+                sayHello: function() {
+                    console.log('hello');
+                }
+            };
+            
+            // print public property
+            console.log(obj.name); // prints sally
+            
+            // run public method of object
+            obj.sayHello(); // prints hello
+            
+            // dynamically add property (can be function) to object
+            obj.sayGoodBye = function () {
+                console.log('goodbye');
+            };
+            obj.sayGoodBye(); // prints goodbye
+            
+            // if you console log just the object, you can discover what's in the object
+            // from the console.
+            console.log(obj); // prints discoverable properties of obj
+            
+            // this does not work to show you what's in the object: 
+            console.log("The object has this inside "+obj);
+            
+            // you can also access properties using associative array notation
+            console.log("using assoc array notation: " + obj["name"]); // prints using ... sally
+            
+            // if you do not know the properties of an object, you can 
+            // programatically discover them:
+            for (prop in obj) {
+                console.log("obj has a property named "+prop+ 
+                        " with value: "+obj[prop]);
+            }
+            
+        </script>
+    </body>
+</html>

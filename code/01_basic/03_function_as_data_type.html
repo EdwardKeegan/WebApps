@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<!-- comments -->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            body {
+                line-height: 2rem;
+                font-size: 1.25rem;
+                font-family:sans-serif;
+            }
+            pre {
+                line-height: 1.5rem;
+            }
+        </style>
+    </head>
+    <body>
+        <h2>Function is a Data Type: Click F12 to See Console Output</h2>
+        <p>
+            In JavaScript, you don't have to specify data type when you declare a variable. 
+            You just use the keyword "var". The type of a variable depends on what value 
+            happens to be in the variable and that can change over time 
+            (as code example shows). 
+        </p>
+        <p>
+            In JavaScript, a function is a first class data type, just like integer or 
+            real number or string.
+        </p>
+        <p>
+            Here's the code that's being run:
+        </p>
+        <pre>
+    var x = 5;
+    console.log(x); // prints 5
+    x = "sally";
+    console.log(x); // prints sally
+    function myFunc(y) {
+        console.log(y + 1);
+    }
+    x = myFunc;
+    x(50); // prints 51 (invokes myFunc, passing in 50).
+        </pre>
+        <script>
+            var x = 5;
+            console.log(x); // prints 5
+            x = "sally";
+            console.log(x); // prints sally
+            function myFunc(y) {
+                console.log(y + 1);
+            }
+            x = myFunc;
+            x(50); // prints 51 (invokes myFunc, passing in 50).
+        </script>
+    </body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="imgAndZoom.css" rel="stylesheet" type="text/css" /> 
+        <style>
+            body {
+                font-family: sans-serif;
+                background-color: beige;
+                line-height: 1.5rem;
+            }
+
+            * {box-sizing: border-box;}
+        </style>
+
+    </head>
+    <body>
+
+        <h1>Image Zoom</h1>
+
+        <p>Mouse over the image:</p>
+
+        <div id="content">
+        </div>
+
+        <h2>Making The Code Your Own (Reorganize, Rename)</h2>
+
+        <p>
+            Now, we really study the code, to see what it is doing. 
+            We refactor the code so that it is more direct, better organized, and 
+            as simple as possible. We add comments. 
+            These are the things I did to this code: 
+        </p>
+        <ol>
+            <li>
+                Made moveLens be the first private function within my new MakeImgAndZoom 
+                function. Placed function getCursoPos inside of moveLens because moveLens 
+                is the only function calling getCursorPos. 
+            </li>
+            <li>
+                We make sure that any variables being accessed by function moveLens are 
+                accessible to it, e.g., img (the image being zoomed), lens (the little 
+                div that moves around the zoom image), and result (the magnified 
+                area of the zoom image). moveLens also accesses variables cx and cy 
+                which are poorly named. We rename these to be xMagnifyRatio and yMagnifyRatio 
+                because they tell how many times bigger (than the lens) the zoom result should be. 
+                To make sure moveLens can access all that it needs, we declare those variables 
+                "global" to MakeImgAndZoom. 
+            </li>
+            <li>
+                So, function "ImageZoom" (the original code from the w3schools example) 
+                now has just a little code in it -- just the code that needs to know the size of 
+                the image. We call ImageZoom with a slight delay so that it can correctly set 
+                the values that need to know the size of the image.                
+            </li>
+        </ol>
+  
+        <script>
+            "use strict";
+        </script>
+        <script src="MakeImgAndZoom.js"></script>
+        <script>
+            var myImgAndZoom = MakeImgAndZoom(
+                    "https://www.w3schools.com/howto/img_girl.jpg",
+                    "300",
+                    "240"
+                    );
+            document.getElementById("content").appendChild(myImgAndZoom);
+        </script>
+
+    </body>
+</html>

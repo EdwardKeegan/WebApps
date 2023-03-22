@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<!-- HTML comments like this... -->
+<html>
+    <head>
+        <title>Title Nav Using Flexbox</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- Link to an External Style Sheet --> 
+        <!-- Layout should be single column, good for Mobile. -->
+        <link href="style/myStyle.css" rel="stylesheet" type="text/css" />  
+
+        <!-- Additional rules for Mobile responsive, followed by desktop rules grouped in Media Query -->
+        <link href="style/multi_column.css" rel="stylesheet" type="text/css" />
+
+        <style>
+
+
+        </style>
+    </head>
+    <body>
+        <div id="titleNav">
+            <div id="title">
+                Website Title
+            </div>
+            <div id="nav">
+                Home | Account | Search | Tutorial | Blog
+            </div>
+        </div>
+        <div id="content">
+ 
+            <div class="row">
+                <div class='column column66'>
+                    <strong>London</strong> is the capital and largest city of both England and the United Kingdom.
+                    Standing on the River Thames in the south-east of England, at the head of its 50-mile 
+                    (80 km) estuary leading to the North Sea, London has been a major settlement for two millennia. 
+                    Londinium was founded by the Romans. The City of London (colloquially known as the Square Mile) 
+                    retains boundaries that follow closely its medieval limits.
+                </div>
+
+                <div class='column column33'>
+                    <img src='pics/london_750x500.jpg' alt='London'>
+                </div>
+                <div class='stopFloat'></div>
+            </div>
+
+            <div class="row">
+                <div class='column column33'>
+                    <img src='pics/paris_800x534.jpg' alt='Paris'>
+                </div>
+
+                <div class='column column66'>
+                    <strong>Paris</strong> is the capital and most populous city of France, with an area 
+                    41 square miles and an official estimated population of over two million 
+                    residents (as of 2019). Since the 17th century, Paris has been one of Europe's 
+                    major centers of finance, diplomacy, commerce, fashion, science, and the arts.
+                </div>
+
+                <div class='stopFloat'></div>
+            </div>
+
+            <div class="row">
+                <div class='column column66'>
+                    <strong>Tokyo</strong> has served as the Japanese 
+                    capital since 1869. As of 2018, the Greater Tokyo Area is the most populous 
+                    metropolitan area in the world. Tokyo was formerly named Edo in 1603 
+                    by Shogun Tokugawa - it was renamed Tokyo
+                    in 1868 by emperor Meiji. Tokyo is often referred to as a city but it is officially 
+                    a "metropolitan prefecture", which combines the elements of a city 
+                    and a prefecture, a characteristic unique to Tokyo.
+                </div>
+
+                <div class='column column33'>
+                    <img src='pics/tokyo_800x533.jpg' alt='Tokyo'>
+                </div>
+                <div class='stopFloat'></div>
+            </div>
+
+        </div>
+        <div id="footer">
+            Your Footer Goes Here
+        </div>
+    </body>
+</html>

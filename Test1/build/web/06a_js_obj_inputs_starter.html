@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            .car {
+                border: thick solid black;
+                margin:1rem;
+            }
+        </style>
+    </head>
+    <body>
+        <div id='content'></div> 
+        <script>
+            function MakeCar(theOwner, theMilage) {
+                var car = document.createElement("div");
+                car.classList.add("car");
+                var owner = theOwner;
+                var milage = theMilage;
+                var carInfo = document.createElement("div");
+                car.appendChild(carInfo);
+                function display() {
+                    carInfo.innerHTML = "Car's owner: " + owner +
+                            "<br/>" + "Milage: " + milage;
+                }
+                display();
+                var driveButton = document.createElement("button");
+                driveButton.innerHTML = "Drive Some Miles";
+                car.appendChild(driveButton);
+                driveButton.onclick = function () {
+                    milage = milage + 10;
+                    display();
+                };
+                return car;
+            }
+            var mc = MakeCar("Sally", 50000);
+            var yc = MakeCar("Joe", 75000);
+            document.getElementById("content").appendChild(mc);
+            document.getElementById("content").appendChild(yc);
+        </script>
+    </body>
+</html>

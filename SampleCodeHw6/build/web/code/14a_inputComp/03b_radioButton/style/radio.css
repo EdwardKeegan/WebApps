@@ -1,0 +1,11 @@
+.radio {
+    font-weight: bold; /* this makes the prompt bold */
+    padding:0.5rem;
+    border:thin solid black; /* puts a box around the radio button options */
+    margin:0.5rem;
+}
+.radio p {
+    margin:0rem;
+    margin-left: 0.5rem;
+    font-weight:normal; /* this makes the choices not bold */
+}

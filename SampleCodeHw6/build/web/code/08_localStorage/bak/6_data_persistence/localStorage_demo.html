@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Local Storage Example</title>
+        <style type="text/css">
+            body{ 
+                background-color:beige;
+                padding: 1em;
+            }
+
+            hr {
+                margin-top: 1.5em;
+                margin-bottom: 1.5em;
+            }
+        </style>
+    </head>
+
+    <body>
+        <h2>Run in Chrome (not View): Press F12 for Console Output</h2>
+
+        <h3>Local Storage Demo</h3>
+        <p>
+            Since HTML5, Local Storage is preferred over using Cookies because:
+        </p>
+        <ul>
+            <li>
+                More data can be stored and more securely.
+            </li>
+            <li>
+                Web application performance is not impaired because local storage data is NOT sent to the server with every HTTP request. 
+            </li>
+        </ul>
+
+        <div>
+            <form name="myForm"> 
+
+                <hr/>
+                Key:
+                <input type="text" name="localStorageKey">
+                &nbsp;&nbsp;
+                Value:
+                <input type="text" name="localStorageValue">
+                &nbsp;&nbsp;&nbsp;
+                <input type="button" value="Write Key:Value to Local Storage" 
+                       onClick="setData(document.myForm.localStorageKey.value,
+                                       document.myForm.localStorageValue.value)"/>
+
+                <hr/>
+
+                <input type="button" value="Show Value of Key" 
+                       onClick="getData(document.myForm.inquireKey.value)"/>
+                <input type="text" name="inquireKey">
+
+                <hr/>
+
+                <input type="button" value="Show All Data in Local Storage" 
+                       onClick="readAllData()"/>
+
+            </form>
+        </div>
+        <script>
+
+            // Store
+            localStorage.setItem("lastname", "Smith");
+            // Retrieve
+            var theLastName = localStorage.getItem("lastname");
+            // Remove
+            localStorage.removeItem("lastname");
+
+            function setData(key, data) {
+                localStorage.setItem(key, data);
+                console.log("key:value " + key + ":" + data + " written to Local Storage");
+            }
+
+            function getData(key) {
+                var data = localStorage.getItem(key);
+                console.log("The value of key '" + key + "' in Local Storage is: " + data);
+                return data;
+            }
+
+            // Show all data in localStorage
+            function readAllData() {
+                var s = "Local storage contains: ";
+                for (var i = 0; i < localStorage.length; i++) {
+                    var key = localStorage.key(i);
+                    s += key + ":" + localStorage.getItem(key) + ", ";
+                }
+                console.log(s);
+            }
+
+        </script>
+
+    </body>
+</html>

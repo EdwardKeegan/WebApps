@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<!--   comment   -->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h2>Parameter Object: Press F12 to See Console Output</h2>
+        <script>
+
+            function favoritesParamList(color, food) {
+                console.log("favoritesParamList");
+                console.log("your favorite color is " + color);
+                console.log('and your favorite food is ' + food);
+                console.log('...');
+            }
+
+            function favoritesParamObj(params) {
+                console.log("favoritesParamObj");
+                var color = params.color || "red";
+                var food = params.food || "pizza";
+                console.log("your favorite color is " + color);
+                console.log('and your favorite food is ' + food);
+                console.log('...');
+            }
+
+            function paramObjNoInpOK(params) {
+                console.log("paramObjNoInpOK");
+                if (!params) {
+                    params = {};
+                }
+                var color = params.color || "red";
+                var food = params.food || "pizza";
+                console.log("your favorite color is " + color);
+                console.log('and your favorite food is ' + food);
+                console.log('...');
+            }
+
+            function paramObjRestructured( {color, food}) {
+                console.log("paramObjRestructured");
+                var color = color || "red";
+                var food = food || "pizza";
+                console.log("your favorite color is " + color);
+                console.log('and your favorite food is ' + food);
+                console.log('...');
+            }
+
+            function paramObjRestructuredAlt( {color = 'red', food = 'pizza'} ) {
+                console.log("paramObjRestructuredNoInpOK");
+                console.log("your favorite color is " + color);
+                console.log('and your favorite food is ' + food);
+                console.log('...');
+            }
+
+            console.log("passing parameter list: (green, ice cream)");
+            favoritesParamList("green", "ice cream");
+
+            console.log('passing parameter object: ({color: "pink", food: "chocolate"})');
+            favoritesParamObj({color: "pink", food: "chocolate"});
+
+            console.log('passing partial parameter obj ({color:"blue"}) gets you color=blue, food=pizza (default value)');
+            favoritesParamObj({color: "blue"});
+
+            console.log("passing in an empty object ({}) gets you both default values (color=red, food=pizza)");
+            favoritesParamObj({});
+
+            console.log("passing nothing () to favoritesParamObj would throw an exception (so not doing this)");
+            //favoritesParamObj();
+
+            console.log("passing nothing () is OK if you check for empty object in the fn");
+            paramObjNoInpOK();
+
+            console.log('passing parameter object: ({color: "pink", food: "chocolate"}) to fn that uses restructuring');
+            paramObjRestructured({color: "pink", food: "chocolate"});
+
+            console.log("passing an empty object ({}) to Restructured fn gets you both defaults");
+            paramObjRestructured({});
+
+            console.log("passing an empty object ({}) to RestructuredAlt works and less lines of code");
+            paramObjRestructuredAlt({});
+
+            console.log("passing nothing () to Restructured or RestructuredAlt both would throw an exception");
+            //paramObjRestructuredAlt();
+
+        </script>
+    </body>
+</html>

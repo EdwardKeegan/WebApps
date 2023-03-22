@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            p {font-weight:bold;}
+        </style>
+    </head>
+    <body>
+        <h3>Demonstrating Reduce - Press F12 to See Output</h3>
+        <p>
+            Suppose you wanted to "reduce" an array to the sum of its elements, or to 
+            the concatenation of all its elements. You can use the reduce function, 
+            passing in two parameters. The second parameter is the initial value 
+            for the cumulating variable (e.g., 0 for sum or "" for concatenation). The first 
+            parameter is a function that takes in the cumulating variable and an element 
+            of the array, then tells how to affect the cumulating variable by the array element. 
+        </p>
+        <pre>
+   const carList = [
+        {id: 1, name: "Duster", price: 3000},
+        {id: 2, name: "Accord", price: 20000},
+        {id: 3, name: "Prius", price: 15000},
+        {id: 4, name: "Mustang", price: 8000}
+    ];
+
+    console.log("Summation - old way");
+    let total = 0;
+    for (let i = 0; i < carList.length; i++) {
+        total += carList[i].price;
+    }
+    console.log(total);
+
+    console.log("Summation - using reduce");
+    // reduce 1st param: function
+    // reduce 2nd param: initial value for group variable/total.
+    total = carList.reduce(function (total, car) {
+        return total + car.price;
+    }, 0);
+    console.log(total);
+
+    console.log("Summation - named arrow Fn");
+    // reduce 1st param: function
+    // reduce 2nd param: initial value for group variable/total.
+    total = carList.reduce(doOne = (total, car) => {
+        return total + car.price;
+    }, 0);
+    console.log(total);
+
+    console.log("anonymous arrow Fn");
+    // reduce 1st param: function
+    // reduce 2nd param: initial value for group variable (total).
+    total = carList.reduce((total, car) => {
+        return total + car.price;
+    }, 0);
+    console.log(total);
+
+    console.log("abbreviated arrow Fn");
+    // reduce 1st param: function
+    // reduce 2nd param: initial value for group variable/total.
+    total = carList.reduce((total, car) => total + car.price, 0);
+    console.log(total);
+        </pre>
+        <script>
+
+            // https://www.youtube.com/watch?v=rRgD1yVwIvE&list=TLPQMzAxMDIwMTk9ycJkiKUMvw&index=2
+
+            const carList = [
+                {id: 1, name: "Duster", price: 3000},
+                {id: 2, name: "Accord", price: 20000},
+                {id: 3, name: "Prius", price: 15000},
+                {id: 4, name: "Mustang", price: 8000}
+            ];
+
+            console.log("Summation - old way");
+            let total = 0;
+            for (let i = 0; i < carList.length; i++) {
+                total += carList[i].price;
+            }
+            console.log(total);
+
+            console.log("Summation - using reduce");
+            // reduce 1st param: function
+            // reduce 2nd param: initial value for group variable/total.
+            total = carList.reduce(function (total, car) {
+                return total + car.price;
+            }, 0);
+            console.log(total);
+
+            console.log("Summation - named arrow Fn");
+            // reduce 1st param: function
+            // reduce 2nd param: initial value for group variable/total.
+            total = carList.reduce(doOne = (total, car) => {
+                return total + car.price;
+            }, 0);
+            console.log(total);
+
+            console.log("anonymous arrow Fn");
+            // reduce 1st param: function
+            // reduce 2nd param: initial value for group variable (total).
+            total = carList.reduce((total, car) => {
+                return total + car.price;
+            }, 0);
+            console.log(total);
+
+            console.log("abbreviated arrow Fn");
+            // reduce 1st param: function
+            // reduce 2nd param: initial value for group variable/total.
+            total = carList.reduce((total, car) => total + car.price, 0);
+            console.log(total);
+
+        </script>
+    </body>
+</html>

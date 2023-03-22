@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>TODO supply a title</title>
+        <style>
+            body {
+                margin:0;
+                padding:0;
+                background-color:#888888;
+            }
+            #bg {
+                position:relative;
+                z-index:1;
+                background-image:url(political_crowd6.jpg);
+                background-size:cover;
+                height:600px;
+                width:1200px;
+                border-radius:20px;
+                box-shadow: 02px 02px 05px black;
+            }
+            #obama {
+                height:300px;
+                position:absolute;
+                z-index:4;
+                opacity:0;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="bg">
+            <img src="obama3.png" id="obama" />
+        </div> 
+
+        <script>
+
+            function $(element) {
+                return document.getElementById(element);
+            }
+
+            function makeObama() {
+
+                myObama = $("obama");
+                myObama.numMoves = 100;
+
+                myObama.top = -300;
+                myObama.left = -395;
+                myObama.dx = 8;
+                myObama.dy = 6;
+
+                myObama.opacity = 0;
+                myObama.dOpacity = 0.015;
+
+                myObama.move = function () {
+                    myObama.numMoves--;
+                    myObama.top += myObama.dy;
+                    myObama.left += myObama.dx;
+                    myObama.style.top = myObama.top + "px";
+                    myObama.style.left = myObama.left + "px";
+                    console.log("top style " + myObama.style.top);
+                    console.log("left style " + myObama.style.left);
+                }
+
+                myObama.changeOpacity = function () {
+                    myObama.opacity += myObama.dOpacity;
+                    myObama.style.opacity = myObama.opacity;
+                }
+                
+                return myObama;
+
+            }
+
+            function render() {
+
+                obama.move();
+                obama.changeOpacity();
+
+                if (obama.numMoves > 0) {
+                    timer = setTimeout('render()', 25);
+                }
+            }
+
+            obama = makeObama();
+            render();
+
+        </script>
+    </body>
+</html>

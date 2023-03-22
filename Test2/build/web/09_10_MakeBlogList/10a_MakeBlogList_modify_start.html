@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            body {
+                background-color:lightblue;
+            }
+            * {
+                box-sizing: border-box;
+            }
+            .blog{
+                background-color: beige;
+                padding: 2rem;
+            }
+            .blog .postContainer {
+                width:50%;
+                background-color: #DDDDDD;
+                padding: 0.5rem;
+                border-radius:0.5rem;
+            }
+
+            .blog .postContainer p {
+                padding: 0.25rem;
+                padding-bottom: 0.5rem;
+                border-bottom: thin solid #BBBBBB;
+            }
+
+            .blog h1, .blog h3 {
+                margin:0rem;
+                margin-top:1rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .blog h1 {
+                margin-left:-1rem;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="content"></div>
+        <script>
+            "use strict";
+        </script>
+        <script src="10a_MakeBlogList_start.js"></script>
+        <script>
+            var blogTopics = [
+                {bTitle: "Pollution", firstPost: "Is global warming is real?"},
+                {bTitle: "Afganistan", firstPost: "Did we pull out the right way?"},
+                {bTitle: "COVID", firstPost: "Should vaccinations be mandated?"}
+            ];
+            var myComp = MakeBlogList(blogTopics, "Blogger's Paradise");
+            document.getElementById("content").appendChild(myComp);
+        </script>
+    </body>
+</html>

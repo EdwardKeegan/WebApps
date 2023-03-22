@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h2>1. Planning For The Radio Button Component</h2>
+        <p>
+            In this example, we have just one form with two radio button groups. 
+            The radio button options are grouped by their name attribute. There is 
+            no styling.
+        </p>
+
+        <form name="myForm">
+            Select Your Pizza:<br/>
+            <input type="radio" name="favTopping" value="Ch" /> Cheese  <br/>
+            <input type="radio" name="favTopping" value="Mush" checked /> Mushrooms <br/>
+            <input type="radio" name="favTopping" value="Pep" /> Pepperoni <br/>
+            <br/>
+            What Year in College are you?<br/>
+            <input type="radio" name="collegeClass" value="FR" /> Freshman  <br/>
+            <input type="radio" name="collegeClass" value="SO" /> Sophomore <br/>
+            <input type="radio" name="collegeClass" value="JR" /> Junior <br/>
+            <input type="radio" name="collegeClass" value="SR" /> Senior <br/>
+        </form>
+        <br/>
+        <button onclick="showValues()">Show Values</button>
+        <br/>
+        <br/>
+        <div id="msg"></div>
+        <script>
+            function showValues() {
+                var msgArea = document.getElementById("msg");
+                msgArea.innerHTML = "You have selected a " + document.myForm.favTopping.value + " pizza." +
+                        "<br/>Your college class is: " + document.myForm.collegeClass.value;
+            }
+        </script>
+    </body>
+</html>

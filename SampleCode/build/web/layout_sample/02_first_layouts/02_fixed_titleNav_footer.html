@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <!-- Use this type of comment within HTML -->
+        <title>[Title of YOUR web site]</title>
+
+        <!-- this is your internal style sheet -->
+        <style> 
+
+            /*  Use ONLY the "slash star ... star slash" style comment inside a style sheet */
+
+            /* This rule makes everything use border-box sizing which is desireable. With border-box sizing, 
+    padding is not added to the width. For example, if you make the footer 100% and it has some padding, 
+    you'll see a horizontal because the footer becomes a little wider than 100%                            */
+            * { 
+                box-sizing: border-box;
+            }
+
+            body { /* move the content colors to the body and then change the titleNav and footer to be different */ 
+                margin:0; /* Don't want tiny white border inside browser window */
+                background-color: rgb(160, 200, 180); /* this is the turqoise color */
+                color: black;  /* color is color of font */
+                font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif; /* no tail font is more readable for small font */
+            }
+
+            #titleNav { /* make the titleNav fixed, always at the top */
+
+                /* position fixed removes the element from the normal flow, placing it where you specify with top/bottom, left/right */
+                position:fixed; 
+                top:0px;
+                left:0px;
+                z-index: 1;     /* To make sure titleNav is on top of content, give it a higher z-index than content 
+                                (content would have default value of zero). */
+                width: 100%;    /* fixed elements don't fill out the width automatically, so set the width */
+
+
+                background-color:black;
+                color: white;
+                font-family: serif; 
+                font-weight: bold;
+                padding: 1rem;
+                font-size: 2rem;
+            }
+
+            #title{ /* no change */
+                white-space:nowrap; /* do not allow multi-word title to wrap to next line */
+            }
+
+            #nav { /* no change */
+                text-align:right;
+                font-size:1rem;;
+            }
+
+
+            #nav a {  /* no change */
+                text-decoration:none;  /* Do not want links in "nav" to be underlined */
+                color: #C8C8C8; /* light gray: to provide color for links, you have to style the "a" tag */
+            }
+
+            #content {  /* Add padding top so that the top of the content is not hidden under the titleNav.
+                        Add padding bottom so that the bottom of the content is not hidden under the footer */
+                padding:1rem;
+                padding-top: 5rem; /* with titleNav fixed at top, prevent the top of the content from getting 
+                                    hidden under titleNav. */ 
+                padding-bottom: 4rem; /* with footer fixed, prevent the bottom of the content from getting 
+                                      hidden under the footer. */ 
+            }
+
+            #footer { /* make the footer fixed, always at the bottom */
+                position: fixed;
+                bottom: 0px; 
+                left: 0px; 
+                z-index: 1; /* make sure footer is on top of content which would have default z-index value of 0 */
+
+                width: 100%;    /* fixed elements don't fill out the width automatically, so set the width */
+
+                background-color:black;
+                color: white;
+                text-align:center;
+                font-size: 1rem;
+                padding:1rem;	 	 
+            }
+
+            p {
+                margin-left: 1.5rem;
+            }
+
+
+        </style>
+    </head>
+    <body>
+
+        <div id="titleNav">
+
+            <div id="pageTitle">
+                [Website Title]
+            </div>
+
+            <div id="nav">
+                <a href="02_fixed_titleNav_footer.html">Home</a>
+                &nbsp; <!-- non breaking space used to give more space -->
+                | <!-- vertical bar used as separator -->
+                &nbsp; <!-- non breaking space used to give more space -->
+                <a href="blog.html">Blog</a>
+                &nbsp; <!-- non breaking space used to give more space -->
+                &nbsp; <!-- non breaking space used to give more space -->
+            </div>
+
+        </div>
+
+        <div id="content">
+            <h3>Fixed Positioning (titleNav and footer)</h3>
+            <p>
+                When an element has fixed positioning (as we have done in this example with the titleNav and footer), 
+                that element is "removed from the normal flow"
+                and placed wherever you specified (top/bottom, right/left) 
+                with respect to the edges of the browser window. 
+            </p>
+
+            <ul>
+                <li>
+                    This typically places the fixed element on top of (or underneath) some other element. 
+                    So, you need to use z-index to control which element you want on top (higher value is on top). 
+
+                </li>
+                <li>
+                    Then apply padding or margin to make sure that (for example) that the titleNav does not cover up 
+                    the top of the content and the footer does not cover up the bottom of the content.
+                </li>
+            </ul>
+            
+            <p>
+                Notice also that I made the titleNav and footer both black and the body color is the green showing 
+                through the content. You can test this page with very little content. It still looks good - the 
+                green color of the content goes all the way down to the footer (because it's actually the color of the 
+                body).
+            </p>
+
+            <h3>More Text So you can Scroll</h3>
+            <p>
+                Lorem ipsum dolor sit amet, essent electram consectetuer ex cum, habemus instructior vel no. Hinc mollis fabellas vix et. Mei reque suscipit an. Qui at equidem praesent. Quo vocibus explicari adversarium at, ei sit cetero appareat. Lorem timeam vel ne, et per accusam disputationi vituperatoribus, qui natum omnium copiosae ex.
+            </p>
+ 
+            <p>
+                Lorem ipsum dolor sit amet, essent electram consectetuer ex cum, habemus instructior vel no. Hinc mollis fabellas vix et. Mei reque suscipit an. Qui at equidem praesent. Quo vocibus explicari adversarium at, ei sit cetero appareat. Lorem timeam vel ne, et per accusam disputationi vituperatoribus, qui natum omnium copiosae ex.
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet, essent electram consectetuer ex cum, habemus instructior vel no. Hinc mollis fabellas vix et. Mei reque suscipit an. Qui at equidem praesent. Quo vocibus explicari adversarium at, ei sit cetero appareat. Lorem timeam vel ne, et per accusam disputationi vituperatoribus, qui natum omnium copiosae ex.
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet, essent electram consectetuer ex cum, habemus instructior vel no. Hinc mollis fabellas vix et. Mei reque suscipit an. Qui at equidem praesent. Quo vocibus explicari adversarium at, ei sit cetero appareat. Lorem timeam vel ne, et per accusam disputationi vituperatoribus, qui natum omnium copiosae ex.
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet, essent electram consectetuer ex cum, habemus instructior vel no. Hinc mollis fabellas vix et. Mei reque suscipit an. Qui at equidem praesent. Quo vocibus explicari adversarium at, ei sit cetero appareat. Lorem timeam vel ne, et per accusam disputationi vituperatoribus, qui natum omnium copiosae ex.
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet, essent electram consectetuer ex cum, habemus instructior vel no. Hinc mollis fabellas vix et. Mei reque suscipit an. Qui at equidem praesent. Quo vocibus explicari adversarium at, ei sit cetero appareat. Lorem timeam vel ne, et per accusam disputationi vituperatoribus, qui natum omnium copiosae ex.
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet, essent electram consectetuer ex cum, habemus instructior vel no. Hinc mollis fabellas vix et. Mei reque suscipit an. Qui at equidem praesent. Quo vocibus explicari adversarium at, ei sit cetero appareat. Lorem timeam vel ne, et per accusam disputationi vituperatoribus, qui natum omnium copiosae ex.
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet, essent electram consectetuer ex cum, habemus instructior vel no. Hinc mollis fabellas vix et. Mei reque suscipit an. Qui at equidem praesent. Quo vocibus explicari adversarium at, ei sit cetero appareat. Lorem timeam vel ne, et per accusam disputationi vituperatoribus, qui natum omnium copiosae ex.
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet, essent electram consectetuer ex cum, habemus instructior vel no. Hinc mollis fabellas vix et. Mei reque suscipit an. Qui at equidem praesent. Quo vocibus explicari adversarium at, ei sit cetero appareat. Lorem timeam vel ne, et per accusam disputationi vituperatoribus, qui natum omnium copiosae ex.
+            </p>
+            
+        </div> <!-- content. [[Keep track of nesting]] -->
+        <div id="footer">
+            [ your name goes here ]
+        </div>
+    </body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="imgAndZoom.css" rel="stylesheet" type="text/css" /> 
+        <style>
+            body {
+                font-family: sans-serif;
+                background-color: beige;
+            }
+
+            * {box-sizing: border-box;}
+        </style>
+
+    </head>
+    <body>
+
+        <h1>Image Zoom</h1>
+
+        <p>Mouse over the image:</p>
+
+        <div id="content">
+
+        </div>
+
+
+        <p>The image must be placed inside a container with relative positioning.</p>
+        <p>The result can be put anywhere on the page, but must have the class name "img-zoom-result".</p>
+        <p>Make sure both the image and the result have IDs. These IDs are used when a javaScript initiates the zoom effect.</p>
+
+        <script>
+            "use strict";
+        </script>
+        <script src="MakeImgAndZoom.js"></script>
+        <script>
+            var myImgAndZoom = MakeImgAndZoom(
+                    "https://www.w3schools.com/howto/img_girl.jpg",
+                    "300",
+                    "240"
+                    );
+            document.getElementById("content").appendChild(myImgAndZoom);
+        </script>
+
+    </body>
+</html>

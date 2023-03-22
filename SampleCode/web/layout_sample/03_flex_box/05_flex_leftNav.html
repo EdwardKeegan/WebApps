@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Basic Left Nav Layout from W3Schools</title>
+        <style>
+            /* This rule makes everything use border-box sizing which is desireable. With border-box sizing, 
+    padding is not added to the width. For example, if you make the footer 100% and it has some padding, 
+    you'll see a horizontal because the footer becomes a little wider than 100%                            */
+            * { 
+                box-sizing: border-box;
+            }
+            body {
+                margin:0; /* don't want tiny white border inside browser window */
+                font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+                background-color: black;
+            }
+
+            #title {
+                background-color:black;
+                color:white;
+                white-space:nowrap; /* do not allow multi-word title to wrap to next line */
+                text-align:center;
+                padding:0.5rem;
+            }
+            #navContent {
+                display:flex;
+                flex-direction: row;
+            }
+            #nav {
+                font-size: 1rem;
+                line-height:2rem;
+                white-space:nowrap; /* do not allow elements of nav bar to wrap to next line */
+                background-color:#EEEEEE;
+                padding: 1rem; /* 1st number is top/bottom, 2nd is left/right */
+                text-align:center;
+                border: thin solid black;
+            }
+            #content {
+                background-color: rgb(160, 200, 180);
+                padding:1rem;	              
+            }
+            #footer {
+                background-color:black;
+                color:white;
+                clear:both;
+                text-align:center;
+                padding:0.5rem;	 	 
+            }
+        </style>
+    </head>
+    <body>
+
+        <div id="title">
+            <h1>City Gallery</h1>
+        </div>
+        <div id='navContent'>
+            <div id="nav">
+                <p>London</p>
+                <p>Paris</p>
+                <p>Tokyo</p>
+            </div>
+
+            <div id="content"> 
+                <p>
+                    This version shows a nav bar on the left. Keep in mind that your layout should look good no 
+                    matter how wide the browser is. It should look good with a really long or really short list of 
+                    links, with really long or really short content.
+                </p>
+
+                <p>
+                    London is the largest city of Europe with a surface of about 1.000 square kilometers and some 7 million inhabitants. This is the same amount as in 1900, when London was the biggest city on earth. Although it no longer ranks among the world's most populous cities, London is still one of the world's major financial and cultural capitals.
+                    London is divided into many districts which seem still to be functioning as separate villages, like they used to be in the past and they still have their own typical identities. Therefore London shows many faces with many different attractions for tourists, pituresque sceneries, historical monuments, many green parks, theatres, luxurious shops etcetera.
+                    The centre of the city owes it's layout to the great fire in 1666 and the Blitz in World War II. Both events left the city in ruins and when it was reconstructed, urbanistic improvements were carried out to a great extent. After 1666 the streets were broadened and buildings had to be made out of stone. After the Blitz there was more focus on the development 
+                    of the suburbs and the redevelopment of the slum areas.
+                </p>
+
+            </div>
+        </div>
+        <div id="footer">
+            Copyright W3Schools.com
+        </div>
+    </body>
+</html>

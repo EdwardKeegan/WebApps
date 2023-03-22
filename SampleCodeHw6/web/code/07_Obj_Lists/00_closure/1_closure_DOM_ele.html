@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Closure DOM ele</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style> 
+            div {
+                border-radius:50%;
+                padding:2rem;
+                margin:1rem;
+                color: white;
+                text-align:center;
+                font-size: 1.5rem;
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="content"></div>
+        <script>
+            
+            function MakeCounterDOM(initVal, color) {
+                var counterDiv = document.createElement("div");
+                counterDiv.style.backgroundColor=color;
+                
+                // val is a local variable defined within MakeCounterDOM
+                var val = initVal; 
+                function show() {
+                    counterDiv.innerHTML = val;
+                }
+                show();
+                
+                // like java, val is accessible from this onclick function
+                counterDiv.onclick = function () {
+                    val++;
+                    show();
+                };
+                return counterDiv;
+            }
+            // When MakeCounterDOM is done running, its local variables 
+            // are not destroyed (like they would have been in java).
+            // This is similar to a java static data member. 
+            
+            // Each div object created and returned by MakeCounterDOM has 
+            // it's own set of local variables (just like each java object 
+            // has it's own set of data members). 
+
+            // global code 
+            var c1 = MakeCounterDOM(100, "red");
+            document.getElementById("content").appendChild(c1);
+            
+            var c2 = MakeCounterDOM(200, "green");
+            document.getElementById("content").appendChild(c2);
+            
+            var c3 = MakeCounterDOM(300, "blue");
+            document.getElementById("content").appendChild(c3);
+
+        </script>
+    </body>
+</html>

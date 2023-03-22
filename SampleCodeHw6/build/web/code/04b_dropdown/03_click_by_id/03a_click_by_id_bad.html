@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<!-- HTML comments like this... -->
+<html>
+    <head>
+        <title>Title Nav Using Flexbox</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link href="style/main.css" rel="stylesheet" type="text/css" />  
+        <link href="style/dropdown.css" rel="stylesheet" type="text/css" />  
+
+        <style>
+
+
+        </style>
+    </head>
+    <body>
+        <div id="titleNav">
+            <div id="title">
+                Website Title
+            </div>
+            <div id="nav">
+                <div class="dropdown">
+                    <a>Home</a>
+                </div>
+                <div class="dropdown">
+                    <div class="dropHeader" onclick="toggle_bad('actContent')">Account</div>
+                    <div class="dropContent" id="actContent">
+                        <a>Register</a> <br/>
+                        <a>Log In</a> <br/>
+                        <a>Profile</a> <br/>
+                        <a>Log Out</a>
+                    </div> 
+                </div>
+                <div class="dropdown">
+                    <div class="dropHeader" onclick="toggle_bad('searchContent')">Search</div>
+                    <div class="dropContent" id="searchContent">
+                        <a>Users</a> <br/>
+                        <a>Cars</a> 
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <div class="dropHeader" onclick="toggle_bad('tutContent')">Tutorial</div>
+                    <div class="dropContent" id="tutContent">
+                        <a>Proposal</a> <br/>
+                        <a>Proof Of Concept</a> <br/>
+                        <a>Tutorial Home</a> <br/>
+                        <a>Demo</a> <br/>
+                    </div> 
+                </div>          
+                <div class="dropdown">
+                    <a>Blog</a>
+                </div>
+            </div>
+        </div>
+        <div id="content">
+            
+            <p>
+                This code is perhaps the simplest way to use JS to implement a drop down menu, but it has some 
+                problems.  The "HTML coder" has to assign ids to all the drop content
+                divs and they have to add a click event to all the drop header divs. Also, this code also 
+                violates software dependency injection because it presumes that there are two CSS class names 
+                (that were NOT passed in) - "show" and "hide".
+                Finally, if the user clicks somewhere outside of the nav area, the drop downs do not close 
+                (and you can open more than one drop down menu at the same time).
+            </p>
+
+        </div>
+        <div id="footer">
+            Your Footer Goes Here
+        </div>
+
+        <script src="js/toggle_bad.js"></script>
+    </body>
+</html>

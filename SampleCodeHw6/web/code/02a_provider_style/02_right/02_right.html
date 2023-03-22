@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>your title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            .error {
+                color: red;
+                height: 1rem;
+                margin-bottom: 2rem;
+            }
+            .demo {
+                border: thin solid black;
+                padding: 0.5rem;
+            }
+            .demo div {
+                padding: 0.5rem;
+            }
+        </style>
+    </head>
+    <body>
+        <h3>Press F12 to see console</h3>
+        <p>
+            This code in validationUtils.js follows the JS file naming 
+            convention and it DOES NOT VIOLATE Software Dependency Injection because it does not assume 
+            things about the HTML page. This time, the ids are passed into it. 
+        </p>
+        <p>
+            Here's the reusable code in validationUtils.js:
+        </p>
+        
+        <pre>
+    var validationUtils = {}; // global object
+
+    // public methods added to global (public) object
+
+    validationUtils.validateDate = function (inputId, msgId) {
+        var dateValue = document.getElementById(inputId).value;
+        var msg = "Please re-enter a valid date";
+        var parsedDate = Date.parse(dateValue);
+        if (isNaN(dateValue) && !isNaN(parsedDate)) {
+            msg = ""; // dateValue contains a good date, so error message blanked out.
+        }
+        document.getElementById(msgId).innerHTML = msg;
+    };
+
+    validationUtils.validateInteger = function (inputId, msgId) {
+        var integerValue = document.getElementById(inputId).value;
+        var msg = "Please re-enter a valid integer";
+        if (isNaN(integerValue)) {
+            // a problem...
+        } else if (integerValue.includes(".")) {
+            // also a problem. 
+        } else {
+            // should be OK
+            msg = "";
+        }
+        document.getElementById(msgId).innerHTML = msg;
+    };
+        </pre>
+        
+        
+       <div class='demo'>
+            <div>
+                Enter your birthday: 
+                <input type='text' id='birthdayTextBox' value="xx1/2/2002"/>
+                <span class="error" id="birthdayMsg"></span>
+            </div>
+            <div>
+                How many years of college have you completed? 
+                <input type='text' id='collegeYearsTextBox' value="xx2"/>
+                <span class="error" id="collegeYearsMsg"></span>
+            </div>
+            <div>
+                <input type='button' value="OK" onclick="validateAll()"/>
+            </div>
+        </div>
+
+
+        <script src="js/validationUtils.js"></script>
+        <script>
+            function validateAll() {
+                validationUtils.validateDate("birthdayTextBox", "birthdayMsg");
+                validationUtils.validateInteger("collegeYearsTextBox", "collegeYearsMsg");
+            }
+        </script>
+    </body>
+</html>

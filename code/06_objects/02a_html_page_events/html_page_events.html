@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<!-- Sample code: Car Object -->
+<html>
+    <head>
+        <title>Car Object Sample</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            div {
+                background-color: lightgrey;
+                padding: 1em;
+                margin: 1em;
+            }
+        </style>
+    </head>
+    <body>
+        <h3>Events from HTML page Trigger Public Methods of Object</h3>
+        <h4>Press Chrome's F12 to Open Up JS Console</h4>
+        
+        <div onclick=" alert('I have been clicked'); ">Click Me</div>
+
+        Click on this box to increase the price by 10%
+        <div id="myCar"></div>
+
+        <br/>
+
+        Move your mouse over this box to decrease the price by 10%
+        <div id="yourCar"></div>
+
+        <script src="MakeCar.js"></script>
+        <script>
+            "use strict";
+
+            // cleans out the container and then injects (into container) whatever was passed in.
+            // if you don't clean out first, it appends, not replaces.
+            function inject(what, id) {
+                document.getElementById(id).innerHTML = "";
+                document.getElementById(id).appendChild(what);
+            }
+
+
+            var myCarObj = MakeCar("blue toyota", "great", 5000);
+            inject(myCarObj,"myCar");
+            
+            var yourCarObj = MakeCar("red BMW", "fair", 2500);
+            inject(yourCarObj,"yourCar");
+
+            myCarObj.onclick = function () { // when user clicks on div associated with this object
+                console.log("will increase price of my car object by 10%");
+                myCarObj.changePrice(0.10); // change price by 10%
+            };
+
+            yourCarObj.onmouseover = function () { // when user clicks on div associated with this object
+                console.log("will decrease price of your car object by 10%");
+                yourCarObj.changePrice(-0.10); // reduce price by 10%
+            };
+            
+            // could also add events programmatically like this: 
+            // document.getElementById("yourCar").onmouseover = function() { ... }
+
+        </script>
+    </body>
+</html>

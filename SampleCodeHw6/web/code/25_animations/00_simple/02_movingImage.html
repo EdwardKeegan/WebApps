@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Moving and Image</title>
+        <style>
+            #pic {
+                position:absolute;
+                top:30px;
+                left:30px;
+            }
+
+        </style>
+    </head>
+    <body>
+
+        <img src="pics/plus.png" width="100" height="100" id="pic"/>
+
+        <input type="button" value="Advance Image" onClick="changeImage()"/>
+        <input type="button" value="Start Animation" onClick="startAnimation()"/>
+        <input type="button" value="Stop Animation" onClick="stopAnimation()"/>
+
+        <script type="text/javascript">
+
+            var x = 30;
+            var y = 30;
+            //alert ("x is " + x + " and y is "+y);
+
+            function changeImage() {
+                x = x + 10;
+                y = y + 10;
+                //alert ("x is " + x + " and y is "+y);
+
+                document.getElementById('pic').style.left = x + "px";
+                document.getElementById('pic').style.top = y + "px";
+            }
+
+            var intervalHandle;
+            function startAnimation() {
+                changeImage();
+                intervalHandle = setInterval(changeImage, 90); /* name of function, how often to run it */
+            }
+
+            function stopAnimation() {
+                //alert ("trying to stop");
+                clearInterval(intervalHandle); // stop calling changeImage over and over
+            }
+        </script>
+    </body>
+</html>

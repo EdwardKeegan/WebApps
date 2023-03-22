@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Templating with ES6 Backtick and Binding</title>
+    </head>
+    <body>
+        <h3>
+            Templating with ES6 Backtick and Binding. Press F12 (open JS console) to see output.
+        </h3>
+        <p>
+            With ES6, you can place something like 
+        </p>
+            <div style="margin-left:3em; font-family:sans-serif">
+                $(varName)
+            </div>
+        <p>
+            inside of a backtick delimited string. The value of the variable 
+            will be placed into the string. Using backtick with binding makes 
+            it easy to create HTML templates.
+        </p>
+        <p>            
+            Here's the code:
+        </p>
+        <pre>
+    var personName = "sally";
+    var dept = "CIS";
+    var message = `${personName} is an instructor in the ${dept} department`;
+    console.log(message);
+    document.getElementById("output").innerHTML = message;  
+        </pre>
+
+        <h3>The Output (Below)</h3>
+        <div id="output">TODO write content</div>
+        <script>
+            var personName = "sally";
+            var dept = "CIS";
+            var message = `${personName} is an instructor in the ${dept} department`;
+            console.log(message);
+            document.getElementById("output").innerHTML = message;            
+        </script>
+    </body>
+</html>

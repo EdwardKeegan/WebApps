@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<!-- HTML comments like this... -->
+<html>
+    <head>
+        <title>Title Nav Using Flexbox</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            /* This rule makes everything use border-box sizing which is desireable. With border-box sizing, 
+                padding is not added to the width. For example, if you make the footer 100% and it has some padding, 
+                you'll see a horizontal because the footer becomes a little wider than 100%                            */
+            * { 
+                box-sizing: border-box;
+            }
+
+            #titleNav {
+                display:flex; 
+                flex-direction: row;
+                justify-content: space-between; 
+            }
+
+            #title, #nav  {
+                white-space: nowrap;  
+                font-size: 2rem;
+            }
+
+            #titleNav, #footer {
+                background-color: #DDDDDD;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div id="titleNav">
+            <div id="title">
+                Very Very Long Website Title
+            </div>
+            <div id="nav">
+                Link1 | Link2 | Link3 | Link4 
+            </div>
+        </div>
+        <div id="content">
+            <h3>Using Flex Box to Place Two Divs on the Same Row</h3>
+            <p>
+                This example puts the title div and the nav div on the same row by assigning 
+                CSS declarations "display:flex" and "flex-direction:row" to the titleNav 
+                (container of title and nav). Without this styling, the title div and nav div
+                would both start and stop on a new line because divs are block elements 
+                that (by default) have that behavior. To make the title 
+                align left and the nav align right, use the "justify-content:space-between" 
+                CSS declaration (on titleNav, the container).
+            </p>
+            
+            <h3>Narrow the Browser</h3>
+            <p>
+                As always, narrow your browser to see how things change with different viewport widths. 
+                What you'll see in this case is that once the title begins to "run into" the nav bar, 
+                a horizontal scroll bar kicks in - to allow you to see all the links in the nav bar. 
+                This is not ideal. We'll see ways to improve on this when we learn about Responsive Design.                
+            </p>
+            
+            <h3>More Text To Fill Out the Content Area</h3>
+            <p>
+                Lorem ipsum dolor sit amet, essent electram consectetuer ex cum, habemus instructior vel no. Hinc mollis fabellas vix et. Mei reque suscipit an. Qui at equidem praesent. Quo vocibus explicari adversarium at, ei sit cetero appareat. Lorem timeam vel ne, et per accusam disputationi vituperatoribus, qui natum omnium copiosae ex.
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet, essent electram consectetuer ex cum, habemus instructior vel no. Hinc mollis fabellas vix et. Mei reque suscipit an. Qui at equidem praesent. Quo vocibus explicari adversarium at, ei sit cetero appareat. Lorem timeam vel ne, et per accusam disputationi vituperatoribus, qui natum omnium copiosae ex.
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet, essent electram consectetuer ex cum, habemus instructior vel no. Hinc mollis fabellas vix et. Mei reque suscipit an. Qui at equidem praesent. Quo vocibus explicari adversarium at, ei sit cetero appareat. Lorem timeam vel ne, et per accusam disputationi vituperatoribus, qui natum omnium copiosae ex.
+            </p>
+
+        </div>
+        <div id="footer">
+            Your Footer Goes Here
+        </div>
+    </body>
+</html>

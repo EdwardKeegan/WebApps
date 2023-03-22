@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Screen Size</title>
+    </head>
+    <body>
+        <h3>Resize this window and see how many pixels it is wide and high</h3>
+        <h3 id="width">Screen Width</h3>
+        <h3 id="height">Screen Height</h3>
+        
+        <script type="text/javascript">
+
+            var screenWidth;
+            var screenHeight;
+            setSize();
+
+            window.onresize = function (event) {
+                setSize();
+            };
+
+            function setSize() {
+                screenWidth = window.innerWidth;
+                screenHeight = window.innerHeight;
+                document.getElementById("width").innerHTML = "Screen width is " + screenWidth;
+                document.getElementById("height").innerHTML = "Screen height is " + screenHeight;
+            }
+
+        </script>
+    </body>
+</html>

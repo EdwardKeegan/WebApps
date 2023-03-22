@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            h3 {
+                margin: 0rem;
+                margin-top: 2rem;
+            }
+        </style>
+    </head>
+    <body>
+
+
+        <div id="content">
+        </div>
+
+        <script>
+
+            function writeObj(msg, obj) {
+                var spot = document.getElementById("content");
+                spot.innerHTML += `<h3>${msg}</h3>`;
+                for (var prop in obj) {
+                    spot.innerHTML += "&nbsp; &nbsp; " + prop + ":" + obj[prop] + "<br/>";
+                }
+            }
+
+            function changeObj(myObj) {
+                writeObj("Before Changes in the Function", myObj);
+                myObj.name = "fred";
+                myObj.age = 50;
+                writeObj("After Changes in the Function", myObj);
+            }
+            var obj = {name: "sally", age: 35};
+            writeObj("Original Global Object", obj);
+
+            changeObj(obj);
+            writeObj("Global Object After Function Call", obj);
+            
+            function changeScalar(x) {
+                x++;
+            }
+            
+            var myX=5;
+            changeScalar(myX);
+            console.log("myX is still "+myX);
+
+        </script>
+    </body>
+</html>

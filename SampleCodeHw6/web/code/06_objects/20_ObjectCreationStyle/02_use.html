@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h3>Press Chrome's F12 and Click on Console to See Output</h3>
+        <pre>
+    function MakePerson(first, last, birthYear) {
+        var person = {};
+        person.firstName = first;
+        person.lastName = last;
+        person.birthYear = birthYear;
+        person.setBirthYear = function (newBirthYear) {
+            person.birthYear = newBirthYear;
+        };
+        person.show = function () {
+            return person.firstName + " " + person.lastName + " was born in " + person.birthYear;
+        };
+        return person;
+    }
+
+    var p1 = MakePerson("sally", "key", 1980);
+    var p2 = MakePerson("joe", "smith", 1970);
+    console.log(p1.show());
+    console.log(p2.show());
+    p1.setBirthYear(2012);
+    console.log(p1.show());
+        </pre>
+        <script>
+
+            function MakePerson(first, last, birthYear) {
+                var person = {};
+                person.firstName = first;
+                person.lastName = last;
+                person.birthYear = birthYear;
+                person.setBirthYear = function (newBirthYear) {
+                    person.birthYear = newBirthYear;
+                };
+                person.show = function () {
+                    return person.firstName + " " + person.lastName + " was born in " + person.birthYear;
+                };
+                return person;
+            }
+
+            var p1 = MakePerson("sally", "key", 1980);
+            var p2 = MakePerson("joe", "smith", 1970);
+            console.log(p1.show());
+            console.log(p2.show());
+            p1.setBirthYear(2012);
+            console.log(p1.show());
+        </script>
+    </body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>ES6 Backtick</title>
+    </head>
+    <body>
+        <h3>
+            ES6 Backtick - a third type of quote.
+        </h3>
+        <p>
+            When using JavaScript to create HTML, a lot of quotes are involved. 
+            You can use single quotes ' and/or double quotes ", but sometimes
+            you may need three levels of quotes (quotes inside of quotes 
+            inside of quotes). That's where the backtick can come in handy.
+            AND with a backtick, you can define multi-line String literals. 
+            This is very nice when defining a large block of HTML code as a 
+            JavaScript String literal. 
+        </p>
+        <p>
+            Here's the code.
+        </p>
+        <pre>                                            
+    var message = `
+        &lt;h1 id="welcome">Welcome&lt;/h1>
+        &lt;p>We love having you here&lt;/p>
+    `;
+    document.getElementById("output").innerHTML = message;
+        </pre>
+
+        <p>
+            Here's the output produced by the code.
+        </p>
+
+        <div id="output" style='margin-left:3em'>TODO write content</div>
+        <script>
+            /* We can use the back tick (upper left of your keyboard) to 
+             * help us build multiline strings and this is a good way to 
+             * work with HTML code that often already has single and double 
+             * quotes in it.                                                  */
+            var message = `
+                <h1 id="welcome">Welcome</h1>
+                <p>We love having you here</p>
+            `;
+            document.getElementById("output").innerHTML = message;
+
+        </script>
+    </body>
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+    <head>
+        <title>Moving Sprites</title>
+        <style>
+            body {
+                background-color: #00BBBB;
+                font-family:Verdana, Geneva, sans-serif;
+                font-size:12px;
+            }
+            #boundary {
+                position:relative;
+                border:2px solid #222222;
+                width: 500;
+                height: 500;
+                background-color: white;
+                margin:auto;
+            }
+            #sprite {
+                position: absolute;
+            }
+            .spriteImage {
+                background-image:url(images/henson11-hp-3o_all_sprites.png);
+                background-position: 0px 204px;  /* left and top */
+            }
+            .TL {
+                background-position: 0px 0px;  /* upper left: left and top */
+            }
+            .TR {
+                background-position: -168px 0px; /* upper right */
+            }
+            .open {
+                background-position: -326px 98px;  /* open mouth: in middle */
+            }
+            .BL {
+                background-position: 0px 204px;  /* lower left */
+            }
+            .BR {
+                background-position: -168px 204px;  /* lower right */
+            }
+        </style>
+
+    </head>
+    <body>
+        <input type="button" id="stopbutton" value="stop" onClick="stopMovement()">
+        <input type="button" id="startbutton" value="start" onClick="startMovement()">
+        <input type="button" id="reversebutton" value="reverse" onClick="reverse()">
+        <span style="background-color:#FFF;"> Change speed to:</span> &nbsp;
+        <input type="text" value="12" size="4" onChange="change_speed(this)">
+        &nbsp; <span style="background-color:#FFF;"><span id="show_info">show debug info here</span> </span>
+        <br/><br/>
+        <div id="boundary">
+            <div id="sprite"> </div>
+        </div>
+        <script language="JavaScript">
+
+            function $(id) {
+                return document.getElementById(id);
+            }
+            // global variables
+
+            // set boundary height and width
+            var boundary_width = 500;  // make sure this matches the width  of your CSS "boundary" 
+            var boundary_height = 500; // make sure this matches the height of your CSS "boundary"  
+            $("boundary").style.width = boundary_width;
+            $("boundary").style.height = boundary_height;
+
+            // set sprite height and width
+            var sprite = $("sprite");  // reference to the div that holds the sprite.
+            var sprite_width = 73;
+            var sprite_height = 98;
+            sprite.style.width = sprite_width;
+            sprite.style.height = sprite_height;
+
+            // set initial position for sprite in the middle of the boundary
+            var spriteLeft = boundary_width / 2;
+            var spriteTop = boundary_height / 2;
+            sprite.style.left = spriteLeft;
+            sprite.style.top = spriteTop;
+
+            // Selecting the initial sprite (the one that looks bottom and right). 
+            var spriteTopOrBottom = "B"; // the initial sprite is looking bottom.
+            var spriteLeftOrRight = "R";  // the initial sprite is looking right.
+
+            //initial speed and direction
+            var speed = 12;      // # of pixels that the sprite moves (X and Y) each time it's loc'n is changed.
+            var directionX = 1;  // if 1, moves Right (-1 would move Left)
+            var directionY = 1;  // if 1, moves Down  (-1 would move Up)
+
+            var recentCollision = 0;  // initially assume there's been no recent collision (between sprite and boundary)
+
+            var timer;  // declare timer object globally so that two functions may access it: start() and stop()
+
+            function startMovement() {
+                //game loop
+                movesprite();
+                timer = setTimeout('startMovement()', 100);  // call function 'startMovement' every 100 milliseconds.
+            }
+
+            function stopMovement() {
+                clearTimeout(timer);
+            }
+
+            function collisionX() {
+                //check left and right boundaries
+                if (spriteLeft < speed) { // sprite collided with left boundary 
+                    spriteLeftOrRight = "R"; // sprite will now look right
+                    return true;
+                }
+                if (spriteLeft > boundary_width - sprite_width - speed) { // sprite collided with right boundary
+                    spriteLeftOrRight = "L"; // sprite will now look left
+                    return true;
+                }
+                return false;
+            }
+
+            function collisionY() {
+                //check top and bottom boundaries
+                if (spriteTop < speed) { // sprite collided with top boundary
+                    spriteTopOrBottom = "B"; // sprite will now look bottom 
+                    return true;
+                }
+                if (spriteTop > (boundary_height - sprite_height - speed)) {  // sprite collided with bottom boundary
+                    spriteTopOrBottom = "T";  // sprite will now look top
+                    return true;
+                }
+                return false;
+            }
+
+            function movesprite() {
+                //change the left/right direction if the sprite ran into the left or right boundary.
+                if (collisionX()) {
+                    directionX = -directionX; // If moving right, start moving left or vice versa
+                    recentCollision = 2;  // recentCollision != 0 means there was a collision. Sprite collision image lasts two movement interations
+                }
+
+                //change the up/down direction if the sprite ran into the top or bottom boundary.
+                if (collisionY()) {
+                    directionY = -directionY; // If moving down, start moving up or vice versa 
+                    recentCollision = 2; // recentCollision != 0 means there was a collision. Sprite collision image lasts two movement interations
+                }
+
+                // change the sprite's position
+                spriteLeft += (directionX * speed);
+                spriteTop += (directionY * speed);
+                sprite.style.left = spriteLeft;
+                sprite.style.top = spriteTop;
+
+                // change the sprite image to the one that's looking in top or bottom, left or right.
+                looking = spriteTopOrBottom + spriteLeftOrRight;
+
+                if (recentCollision > 0) { // If there's been a collison, show the open-mouthed sprite image.
+                    setSprite('open');
+                    recentCollision -= 1;
+                }
+                else { // show a sprite with mouth closed looking top or bottom, left or right
+                    setSprite(looking);
+                }
+
+                // for debugging -- show important values.
+                document.getElementById("show_info").innerHTML = "X:" + spriteLeft + " Y:" + spriteTop +
+                        " Speed:" + speed + " Looking Top/Bottom Left/Right: " + looking +
+                        " Recent collision:" + recentCollision;
+                ;
+            }
+
+            function change_speed(obj) {
+                if (isNaN(obj.value)) {  // if the speed input is not a number
+                    alert("Speed is not a number!");
+                }
+                else {
+                    var num = Number(obj.value);
+                    if ((num < spriteLeft) && (num < spriteTop)) {
+                        speed = num;
+                    }
+                }
+            }
+            function reverse() {
+                directionX = -directionX;
+                directionY = -directionY;
+            }
+
+            function setSprite(position) {
+                // position tells what position the sprite will be looking, e.g., "TL" means top/left 
+                $("sprite").className = "spriteImage " + position;
+                //alert ("set the sprite");
+            }
+
+        </script>
+
+    </body>
+</html>

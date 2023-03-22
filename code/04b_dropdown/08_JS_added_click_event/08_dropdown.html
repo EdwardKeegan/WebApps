@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<!-- HTML comments like this... -->
+<html>
+    <head>
+        <title>Title Nav Using Flexbox</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link href="style/main.css" rel="stylesheet" type="text/css" />  
+        <link href="style/dropdown.css" rel="stylesheet" type="text/css" />  
+
+        <style>
+
+
+        </style>
+    </head>
+    <body>
+        <div id="titleNav">
+            <div id="title">
+                Website Title
+            </div>
+            <div id="nav">
+                <div class="dropdown">
+                    <a>Home</a>
+                </div>
+                <div class="dropdown">
+                    <div class="dropHeader" >Account</div>
+                    <div class="dropContent">
+                        <a>Register</a> <br/>
+                        <a>Log In</a> <br/>
+                        <a>Profile</a> <br/>
+                        <a>Log Out</a>
+                    </div> 
+                </div>
+                <div class="dropdown">
+                    <div class="dropHeader" >Search</div>
+                    <div class="dropContent">
+                        <a>Users</a> <br/>
+                        <a>Cars</a> 
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <div class="dropHeader" >Tutorial</div>
+                    <div class="dropContent">
+                        <a>Proposal</a> <br/>
+                        <a>Proof Of Concept</a> <br/>
+                        <a>Tutorial Home</a> <br/>
+                        <a>Demo</a> <br/>
+                    </div> 
+                </div>          
+                <div class="dropdown">
+                    <a>Blog</a>
+                </div>
+            </div>
+        </div>
+        <div id="content">
+
+            This example shows <strong>JavaScript code that automatically adds onclick events to all Drop Header elements</strong>.
+            For your homework, you do not need to use code like this, because the next example has a better solution 
+            for this particular problem. But, study this code anyway (in this context where you know what you are trying to do) 
+            since you might need to do something like this in another context. 
+
+        </div>
+        <div id="footer">
+            Your Footer Goes Here
+        </div>
+        <script src="js/autoDrop.js"></script>
+        <script>
+
+            autoDrop("dropHeader", "hide", "show");
+
+        </script>
+    </body>
+</html>

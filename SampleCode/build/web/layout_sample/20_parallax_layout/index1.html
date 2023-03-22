@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>[Title of YOUR web site]</title>
+
+        <style>
+            body, html {
+                height: 100%;
+                margin:0;
+            }
+            .parallax {
+                background-attachment:fixed;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                height:80vh;
+            }
+            #parallaxOne {
+                background-image: url(pics/waterFall_1600x900.jpg); 
+            }
+            #parallaxTwo {
+                background-image: url(pics/ocean_hut_1728x1080.jpg);
+            }
+            #parallaxThree {
+                background-image: url(pics/autumn-trees_1619x1080.jpg);
+            }
+            .text {
+                font-size: 50px;
+                padding: 50px;
+                text-align: center;
+            }
+            #textOne {
+                background-color: beige;
+            }
+            #textTwo {
+                background-color: #CCEECC;
+            }
+        </style>
+
+    </head>
+    <body>
+        <div class="parallax" id="parallaxOne"></div>
+
+        <div class="text" id="textOne">Content Here</div>
+
+        <div class="parallax" id="parallaxTwo"></div>
+
+        <div class="text" id="textTwo">More Content Here</div>
+
+        <div class="parallax" id="parallaxThree"></div>
+
+    </body>  
+</html>

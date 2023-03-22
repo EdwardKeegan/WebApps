@@ -1,0 +1,19 @@
+[
+
+    {
+        "place": "Nevada",
+        "photo": "http://cis-linux2.temple.edu/~sallyk/pics_travel/balloons.png"
+    },
+    {
+        "place": "Greece",
+        "image": "http://cis-linux2.temple.edu/~sallyk/pics_travel/boat.png"
+    },
+    {
+        "place": "Sydney",
+        "image": "http://cis-linux2.temple.edu/~sallyk/pics_travel/sydney.png"
+    },
+    {
+        "place": "Japan",
+        "image": "http://cis-linux2.temple.edu/~sallyk/pics_travel/japan.png"
+    }
+]

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<!-- HTML comments like this... -->
+<html>
+    <head>
+        <title>Title Nav Using Flexbox</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <style>
+
+            /* This rule makes everything use border-box sizing which is desireable. With border-box sizing, 
+               padding is not added to the width. For example, if you make the footer 100% and it has some padding, 
+               you'll see a horizontal because the footer becomes a little wider than 100%                            */
+            * { 
+                box-sizing: border-box;
+            }
+
+            /* Fix the titleNav always at the top, and make sure (z-index) it's on top of content. 
+               When you make the element fixed, the width defaults to as wide as it needs for it's content. 
+               We want the bar to fill the width, so make it 100% */
+            #titleNav {
+                padding: 1rem;
+                background-color: #CCCCCC;
+            }
+
+
+            #title {
+                font-size: 2rem;
+                font-weight: bold;
+                white-space: nowrap;  /* don't allow the title to wrap */
+            }
+
+            #nav {
+                font-size: 1rem;
+                font-weight: bold;
+                padding-top: 1rem;
+                text-align: right;
+                white-space: nowrap;  /* don't allow nav links to wrap */
+            }
+
+            #footer {
+                background-color: #CCCCCC;
+                padding: 0.5rem;
+
+                font-size: 1rem;
+                text-align: center;
+            }
+
+            .row{
+                background-color: #EEEEEE; 
+            }
+
+
+            /* MULTI-COLUMN */
+            /* Mobile first -- all styles up to the media query are for mobile */
+
+            .row {  /* acts like a 'row' to hold columns that add up to 98-100% wide (can be a bit less, but not more 
+                    to prevent wrapping) */
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                padding: 0.5rem 0.5rem;  /* 1st is top/bottom, 2nd is left/right */
+                margin-bottom: 1rem;  /* the space between sections */
+            }
+
+            .column {
+                padding: 0.5rem 0.5rem; /* 1st is top/bottom, 2nd is left/right */
+                width: 100%;
+            }
+
+            .column img { /* images will fill their container */
+                width:100%;
+                border-radius: 0.5rem;
+                box-shadow: 5px 5px 5px grey;
+            }
+
+
+            /* desktop only */
+            @media only screen and (min-width: 600px) { 
+
+                .row { 
+                    flex-direction: row;
+                }
+
+                /* add as many more of these different width styles as you need */
+                .column33 {
+                    width: 33%;
+                }
+                .column66 {
+                    width: 66%;
+                }
+
+            }
+
+        </style>
+    </head>
+    <body>
+        <div id="titleNav">
+            <div id="title">
+                Website Title
+            </div>
+            <div id="nav">
+                Home | Account | Search | Tutorial | Blog
+            </div>
+        </div>
+        <div id="content">
+
+            <div style='padding:0.25rem 1rem;'> <!-- top/bottom then left/right -->
+                <p>
+                    This version demonstrates multiple columns in the content area and is responsive. 
+                    Narrow the browser and note how the multi-columns convert to 
+                    single columns when in mobile mode. The multiple columns are implemented using flex box, 
+                    like we did to get the title and nav to be in the same row. 
+                </p>
+                <p>
+                    The styles for the multiple columns have been placed in a separate style sheet to maximize reusability. 
+                    We specifically excluded any styles that would not be reusable 
+                    (e.g., color choices). This very short style sheet accomplishes a lot of what "Bootstrap" provides
+                    regarding responsive multiple columns and responsive images. Bootstrap is a CSS Responsive Design 
+                    Framework. 
+                </p>
+            </div>
+
+            <div class="row">
+                <div class='column column66'>
+                    <strong>London</strong> is the capital and largest city of both England and the United Kingdom.
+                    Standing on the River Thames in the south-east of England, at the head of its 50-mile 
+                    (80 km) estuary leading to the North Sea, London has been a major settlement for two millennia. 
+                    Londinium was founded by the Romans. The City of London (colloquially known as the Square Mile) 
+                    retains boundaries that follow closely its medieval limits.
+                </div>
+
+                <div class='column column33'>
+                    <img src='pics/london_750x500.jpg' alt='London'>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class='column column33'>
+                    <img src='pics/paris_800x534.jpg' alt='Paris'>
+                </div>
+
+                <div class='column column66'>
+                    <strong>Paris</strong> is the capital and most populous city of France, with an area 
+                    41 square miles and an official estimated population of over two million 
+                    residents (as of 2019). Since the 17th century, Paris has been one of Europe's 
+                    major centers of finance, diplomacy, commerce, fashion, science, and the arts.
+                </div>
+            </div>
+
+            <div class="row">
+                <div class='column column66'>
+                    <strong>Tokyo</strong> has served as the Japanese 
+                    capital since 1869. As of 2018, the Greater Tokyo Area is the most populous 
+                    metropolitan area in the world. Tokyo was formerly named Edo in 1603 
+                    by Shogun Tokugawa - it was renamed Tokyo
+                    in 1868 by emperor Meiji. Tokyo is often referred to as a city but it is officially 
+                    a "metropolitan prefecture", which combines the elements of a city 
+                    and a prefecture, a characteristic unique to Tokyo.
+                </div>
+
+                <div class='column column33'>
+                    <img src='pics/tokyo_800x533.jpg' alt='Tokyo'>
+                </div>
+            </div>
+
+        </div>
+        <div id="footer">
+            Your Footer Goes Here
+        </div>
+    </body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Random Numbers</title>
+    </head>
+    <body>
+        <input type="button" value="Next Random Number" onClick="showRandomNumber()"/>
+        <input type="button" value="Keep Generating" onClick="startAnimation()"/>
+        <input type="button" value="Stop Generating" onclick="stopAnimation()"/>
+        <h3>Generate Random Numbers between 1 and 100</h3>
+        <span id="showRandom"></span>
+
+        <script type="text/javascript">
+
+            function makeRandomNumber(low, high) { // returns an integer in this range: low..high
+                var random = Math.random();  // returns a real number between 0 and 1
+                var diff = high - low + 1;  // determine the distance between the high and low. 
+                // Math.floor returns an integer truncating any real number after the decimal point.
+                return Math.floor(random * diff + low);
+            }
+
+            function showRandomNumber() {
+                document.getElementById("showRandom").innerHTML += makeRandomNumber(1, 100) + ", ";
+            }
+
+            var intervalHandle;
+            function startAnimation() {
+                showRandomNumber();
+                intervalHandle = setInterval(showRandomNumber, 90); /* name of function, how often to run it */
+            }
+
+            function stopAnimation() {
+                //alert ("trying to stop");
+                clearInterval(intervalHandle); // stop game, they won
+            }
+
+        </script>
+    </body>
+</html>

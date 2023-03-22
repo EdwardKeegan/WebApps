@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<!-- Sample code: Car Object -->
+<html>
+    <head>
+        <title>Car Object Sample</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link href="carStyle.css" rel="stylesheet" type="text/css" /> 
+
+        <style>
+
+        </style>
+
+    </head>
+    <body>
+
+        <h2>Check for Errors in Chrome (Press F12 to Open Up JS Console)</h2>
+
+        <div id="container">
+        </div>
+
+        <script>
+            "use strict";
+        </script>
+
+        <script src="06b_MakeCar.js"></script>
+
+        <script>
+
+            document.getElementById("container").appendChild(MakeCar("great", 5000, "carStyle"));
+            document.getElementById("container").appendChild(MakeCar("fair", 2500, "carStyle"));
+
+        </script>
+    </body>
+</html>

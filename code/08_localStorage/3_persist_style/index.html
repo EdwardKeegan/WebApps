@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <!-- Use this type of comment within HTML -->
+        <title>[Title of YOUR web site]</title>
+
+
+        <link href="style1.css" id="linkId" rel="stylesheet" type="text/css" />  
+        <!-- this is your internal style sheet -->
+        <style> 
+
+
+        </style>
+    </head>
+    <body>
+
+        <div id="titleNav">
+
+            <div id="pageTitle">
+                Website Title
+            </div>
+
+            <div id="nav">
+                <img title="Home" src="icons/dark_home_icon_H24.png" alt="Home">
+                &nbsp; 
+                <img title="Account"  onclick="toggle('accountDropDown', 160)" src="icons/dark_account_dd_icon_H24.png" alt="Account" >
+                &nbsp;
+                <img title="Search" onclick="toggle('searchDropDown', 60)" src="icons/dark_search_dd_icon_H24b.png" alt="Search" >
+                &nbsp; 
+                <img title="Tutorial"  onclick="toggle('tutorialDropDown', 30)" src="icons/dark_tutorial_dd_icon_H24.png" alt="Account" >
+                &nbsp; 
+                <img  title="Blog" src="icons/dark_blog_icon_H24.png" alt="Blog">
+                &nbsp; 
+                &nbsp; 
+            </div>
+
+            <!-- Drop Down Menus -->
+            <div class="dropDown" id="searchDropDown">
+                <a>Destinations</a> <br/>
+                <a>Travelers</a> <br/>
+                <a>Bookings</a>
+            </div>
+
+            <div class="dropDown" id="accountDropDown">
+                <a>Register</a> <br/>
+                <a>Log In</a> <br/>
+                <a>Profile</a> <br/>
+                <a>Log Out</a>
+            </div> 
+
+            <div class="dropDown" id="tutorialDropDown">
+                <a>Proposal</a> <br/>
+                <a>Demo</a> <br/>
+                <a>Writeup</a> <br/>
+            </div> 
+
+        </div>  <!-- end of titleNav -->
+
+        <div id="content">
+
+            <select id = "selectStyle" onchange="changeStyle(this.value);">
+                <option value="style1.css">All Business</option>
+                <option value="style2.css">Moody Purple</option>
+                <option value="style3.css">Warm and Fuzzy</option>
+            </select>
+
+            <button onclick="localStorage.removeItem('style')">Clear Style Sheet From Local Storage</button>
+
+            <p>
+                <strong>
+                    Notice that when you pick a different style sheet, you immediately see the effect of the 
+                    new style sheet. When you refresh the page, the most recent style sheet selection is 
+                    read from local storage and used to style the page, but it is also pre-selected in the 
+                    select tag.
+                </strong>
+            </p>
+
+            <!-- unordered (bulleted) list, li means "list item" -->
+            <ul>
+                <li>
+                    <strong>Code Indentation</strong>: always indent your code while programming 
+                    indented using Alt-Shift-F or 
+                    "Source - Format" from the NetBeans menu. 
+                </li>
+
+                <li>
+                    <strong>Text</strong>: Make sure that all of your text is 
+                    <strong><em style="margin-right:0.5ex;">ALWAYS</em></strong> 
+                    easy to read - make your text large enough and with enough contrast w.r.t. 
+                    its background. Background images are nice, but never allow them to 
+                    interfere with readability. Use size, opacity (partial transparency), color selection, 
+                    and/or "box shadow"
+                    to help with legibility of text on background images.
+                    Use padding and/or margin to prevent 
+                    text from being too close to any visible edge. Remember to style link text 
+                    (&lt;a&gt; tags) as well as "regular text".
+                </li>
+                <li>
+                    <strong>Fluid Design/Measurements</strong>: Your web site must have a fluid (not fixed) design. 
+                    With fluid design, your text will wrap (according to how wide the browser window is) - 
+                    instead of having a horizontal scroll bar that forces the user to work hard 
+                    to read the text on the page. You get a fluid design by specifying widths in % not pixels.
+                    At very narrow widths, wrapping will be undesirable (e.g., your nav links may wrap 
+                    down on top of content). To prevent this, apply the CSS 
+                    "min-width" property (in pixels) to your titleNav. Then whenever the user tries 
+                    to size the browser narrower that the min-width that you specified, 
+                    they will get the horizontal scroll bar, preventing the nav links
+                    from undesirable wrapping. 
+
+                    It is fine (and recommended) to use pixels to measure things vertically 
+                    (like font sizes, padding, and margins), but try to use percentages for widths. 
+                    <strong>Before you finalize your layout</strong>, narrow 
+                    your browser width slowly and make sure it looks good at all widths. 
+                </li>
+
+            </ul>  
+
+
+        </div> <!-- content. [[Keep track of nesting]] -->
+        <div id="footer">
+            [ your name goes here ]
+        </div>
+        <script>
+            // read stored style from Local Storage (like cookie)
+            var storedStyle = localStorage.getItem("style");
+            console.log ("stored style is " + storedStyle);
+
+
+            if (storedStyle !== null) {
+                 console.log("setting the stored style to be the current style sheet for the page");
+
+                // make that saved style be the style for the HTML page
+                changeStyle(storedStyle);
+
+                // make that saved style show also as the selected item in the style pick list.
+                var selectList = document.getElementById("selectStyle");
+                for (var i = 0; i < selectList.options.length; i++) {
+                    if (selectList.options[i].value === storedStyle) {
+                        selectList.selectedIndex = i;
+                    }
+                }
+            }
+            
+
+            // This gets called whenever the user picks a different styld from the pick list
+            function changeStyle(sheetName) {
+                document.getElementById("linkId").href = sheetName;
+                localStorage.setItem("style", sheetName);
+            }
+
+            // Get reference to DOM element with the given id. If that element is currently visible, 
+            // then make it hidden and set the right attribute way off to the right (out of sight). 
+            // If the element is currently hidden, set it to visible and set the right attribute 
+            // according to where the web designer wants the drop down to be show up left/right (in pixels)-
+            // the top/bottom is set by the web designer (in CSS) according to the height of the title area. 
+            // Note: you ave to use the "visibility" (CSS) rather than "display" if you want to use 
+            // transitions (provide the animation for opening and closing the Drop down).  
+            function toggle(id, right) {
+
+                // get reference to the dropdown (parent) that is to be opened or closed
+                var ele = document.getElementById(id);
+
+                // when one dropdown is clicked, make sure to close any other ones
+                // that the user may have left open.
+                var dropdowns = document.getElementsByClassName("dropDown");
+                console.log(dropdowns);
+                for (var i = 0; i < dropdowns.length; i++) {
+                    if (dropdowns[i] !== ele) {
+                        dropdowns[i].style.right = "-500px";  // set it off screen to right so animates next opening
+                        dropdowns[i].style.visibility = "hidden";
+                    }
+                }
+
+                // Tip: JS doesnt understand the initial CSS values (the values 
+                // set by style sheet instead of by JS), unless you use a function that is 
+                // something like "getComputedStyle". But you can avoid this by having the 
+                // if condition test for the way CSS does NOT have it initially set. 
+                // (In other words, do not reverse the order of the if/else block.)                      
+                if (ele.style.visibility === "visible") {
+                    ele.style.right = "-500px"; // set it off screen to right so animates next opening
+                    ele.style.visibility = "hidden";
+
+                } else {
+                    ele.style.visibility = "visible";
+                    ele.style.right = right + "px";
+                }
+            } // end function toggle
+
+        </script>
+    </body>
+</html>

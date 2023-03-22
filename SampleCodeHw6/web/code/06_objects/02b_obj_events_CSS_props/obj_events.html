@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<!-- Sample code: Car Object -->
+<html>
+    <head>
+        <title>Car Object Sample</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            div {
+                background-color: lightgrey;
+                padding: 1em;
+                margin: 1em;
+            }
+        </style>
+    </head>
+    <body>
+        <h3>Car Object with Built in Events</h3>
+        <h4>Swipe mouse through the divs to see their colors change</h4>
+        <div id="myCar"></div>
+
+        <br/>
+
+        <div id="yourCar"></div>
+
+        <script src="MakeCar.js"></script>
+        <script>
+            "use strict";
+
+            function inject(what, id) {
+                document.getElementById(id).innerHTML = "";
+                document.getElementById(id).appendChild(what);
+            }
+            
+            var myCarObj = MakeCar("blue toyota", "great", 5000, "lightblue", "yellow");
+            inject(myCarObj,"myCar");
+            
+            var yourCarObj = MakeCar("red BMW", "fair", 2500, "lightgreen", "pink");
+            inject(yourCarObj,"yourCar");
+
+        </script>
+    </body>
+</html>

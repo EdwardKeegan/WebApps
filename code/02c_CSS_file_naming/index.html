@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<!-- Sample code: Car Object -->
+<html>
+    <head>
+        <title>Car Object Sample</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+        <!-- The little icon that shows in the browser tab -->
+        <link rel="shortcut icon" href="icons/smiley.png" />  
+
+        <link href="style/carStyle.css" rel="stylesheet" type="text/css" />  
+        <style>
+            body {
+                font-family:sans-serif;
+            }
+            * {
+                box-sizing: border-box;
+            }
+            .carContainer {
+                display: flex;
+                flex-direction: row;
+
+            </style>
+        </head>
+        <body>
+            <h2>Use Chrome: Press F12 to Open Up JS Console</h2>
+
+            <div class='carContainer'>
+                <div id="myCar" class="carStyle"></div>
+                <div id="yourCar" class="carStyle"></div>
+            </div>
+
+            <script src="MakeCar.js"></script>
+            <script>
+                "use strict";
+
+                var myCarObj = MakeCar("White Audi", "great", 5000, "pics/audi.png");
+                document.getElementById("myCar").appendChild(myCarObj);
+
+                var yourCarObj = MakeCar("Red Pixar", "fair", 2500, "pics/redCar.png");
+                document.getElementById("yourCar").appendChild(yourCarObj);
+
+            </script>
+        </body>
+    </html>

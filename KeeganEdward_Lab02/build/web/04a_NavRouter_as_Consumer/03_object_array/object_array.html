@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<!--
+Dynamically creating an array of objects using JavaScript. 
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h3>Working With an Array of Objects</h3>
+        <p>
+            Enter index of array you want to see: 
+            <input type="text" id="idx"/>
+            <button onclick="showItem()">Show Item</button>
+        </p>
+        <div id="show"></div>
+        <script>
+            var myObjArray = [
+                {partNo: 1232, partDesc: "Thermal Paste"},
+                {partNo: 2231, partDesc: "GPU"},
+                {partNo: 3523, partDesc: "CPU"},
+                {partNo: 4355, partDesc: "HP"}
+            ];
+
+            for (var i = 0; i < myObjArray.length; i++) {
+                console.log("part number is " + myObjArray[i].partNo);
+                console.log("description of part is " + myObjArray[i].partDesc);
+            }
+            console.log("================");
+
+            // here's another way to iterate over array elements...
+            for (var part of myObjArray) {
+                console.log("part number is " + part.partNo);
+                console.log("description of part is " + part.partDesc);
+            }
+
+            function showItem() {
+
+                // get reference to output area on the page.
+                var showDiv = document.getElementById("show");
+
+                // get the string that the user typed into the textbox with id "idx"
+                var userIdx = document.getElementById("idx").value;
+
+                // check if the user typed in a valid number
+                if (isNaN(userIdx)) {
+                    showDiv.innerHTML = "Index must be numeric";
+                } else {
+                    // convert the user's string to numeric
+                    userIdx = Number(userIdx);
+                    if (userIdx >= 0 && userIdx < myObjArray.length) {
+                        showDiv.innerHTML = "Part Number is " +
+                                myObjArray[userIdx].partNo + ", Description is " +
+                                myObjArray[userIdx].partDesc;
+                    } else {
+                        showDiv.innerHTML = "Index must be between 0 and " + myObjArray.length;
+                    }
+
+
+                }
+            }
+
+        </script>
+    </body>
+</html>

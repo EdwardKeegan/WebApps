@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <!-- HTML Comment -->
+        <title>About CSS</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+
+            /* this is the only style comment you can use inside a style tag or in a CSS external style sheet */ 
+
+            body {
+                /* sans serif "no tail" font (like arial). Times New Roman is an example of a serif font (has tails) */
+                font-family: sans-serif;
+
+                /* set margin and padding to 0 to avoid white border around edge of browser window */
+                margin:0;
+                padding:0;
+                line-height: 1.5rem;
+            }
+            #title {
+                background-color:purple;
+                color: white;
+                padding: 1rem;
+            }
+            #nav {
+                background-color:yellow;
+                padding: 1rem;
+            }
+            #nav a {
+                text-decoration: none; /* do not underline links in the navbar */
+            }
+            .navLink {
+                padding-left:1rem;
+                margin-bottom: 1rem;
+                background-color: #CCCCCC; /* grey */
+            }
+
+            #content {
+                background-color: beige;
+                padding: 1rem;
+            }
+            #footer {
+                background-color:purple;
+                color: white;
+                padding: 1rem;
+            }
+        </style>
+
+    </head>
+    <body>
+        <div id='title'>My Title</div>
+        <div id='nav'>
+            Nav Bar
+            <div class='navLink'><a href="">link1</a></div>
+            <div class='navLink'><a href="">link2</a></div>
+            <div class='navLink'><a href="">link3</a></div>
+        </div>
+        <div id='content'>
+            <h1>CSS</h1>
+
+            <p>
+                CSS stands for Cascading Style Sheets. It's the language we use to style HTML elements. 
+            </p>
+            <p> 
+                A CSS <strong>rule-set</strong> looks like this (note terms "selector", "declaration", "property", and "value"): 
+            </p>
+            <p>
+                <img src='selector.png' style="margin-left:2rem; width:75%"/>
+            </p>
+
+            <p>
+                For <strong>complete coverage of CSS</strong> (tutorial, concepts, reference), visit 
+                <a target="_blank" href="https://www.w3schools.com/css/default.asp">W3Schools - CSS</a>.
+            </p>
+
+            <h2>CSS Selectors</h2>
+            <p>
+                So that we can specify which elements we want to style, we can add <strong>id</strong> and/or <strong>class</strong> 
+                attributes to the HTML elements. 
+                An id is supposed to be unique (one only) to the page, whereas a class may exist more than once on the page, 
+                for example: 
+            </p>
+            <pre>
+    &lt;div <strong>id</strong>='nav'>
+        Nav Bar
+        &lt;div <strong>class</strong>='navLink'>&lt;a href="">link1&lt;/a>&lt;/div>
+        &lt;div class='navLink'>&lt;a href="">link2&lt;/a>&lt;/div>
+        &lt;div class='navLink'>&lt;a href="">link3&lt;/a>&lt;/div>
+    &lt;/div>                  </pre>
+            <p>
+                As shown in the CSS figure above, each rule-set begins with a selector. 
+                There are several ways to select which HTML elements are to be styled. 
+            </p>
+            <ul>
+                <li>
+                    <strong>html tag</strong> selectors, e.g, <strong>body { ... }</strong> or <strong>p { ... }</strong>
+                </li>
+                <li>
+                    <strong>id</strong> selectors, e.g, <strong>#nav { ... }</strong>
+                </li>
+                <li>
+                    <strong>class</strong> selectors, e.g, <strong>.navLink { ... }</strong> -- note the period before "navLink"
+                </li>
+                <li>
+                    <strong>pseudo selectors</strong>, for example:
+                    <ul>
+                        <li>
+                            when the user hovers over class navLink:   <strong>.navLink:hover { ... }</strong> 
+                        </li>
+                        <li>
+                            to style links before they are clicked <strong>a:link { ... }</strong> or
+                        </li>
+                        <li>
+                            to style links after they are clicked
+                            <strong>a:visited { ... }</strong>.
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>compound</strong> selectors, e.g., links inside of #nav:  <strong>#nav a { ... }</strong>
+                </li>
+            </ul>
+
+
+            <h2>CSS Properties</h2>
+            <p>
+                CSS properties can add styling for:
+            </p>
+            <ul>
+
+                <li>
+                    <strong>fonts</strong>: font families, colors, font size, line height, letter spacing, alignment
+                </li>
+                <li>
+                    <strong>box styling</strong> (e.g., to style HTML div tags, which are essentially "boxes"): margin, padding, borders, dimensions, background colors and images
+                </li>
+                <li>
+                    <strong>positioning</strong>: static, fixed, relative, absolute
+                </li>
+                <li>
+                    <strong>transitions</strong>: "slow down" the changing of various CSS properties (provides an animated look)
+                </li>
+                <li>
+                    <strong>Media Queries</strong>: specify different layouts depending on the width of the viewport (e.g., desktop or mobile)
+                </li>
+            </ul>
+
+
+            <h2>CSS Measurements</h2>
+            <p>
+                There are a lot of different measurements, some which are absolute (like inches) and some (like pixels) where the size 
+                will vary substantially depending on the resolution of the monitor. You don't really want to mix your measurements  
+                either, or your layout may not align properly, depending on the viewport. So, here are some recommendations:
+            </p>
+            <ul>
+                <li>
+                    For <strong>heights</strong> including font-size, top/bottom padding and margin, I recommend you use 
+                    "<strong>rem</strong>", a newer measurement that's equal to the font-size of the root element. 
+                    This measurement scales well on various viewports. 
+                </li>
+                <li>
+                    For <strong>widths</strong>, its best to <strong>use percentages</strong> 
+                    so that our layouts are fluid (use all available horizontal space and wrap nicely 
+                    depending on the width of the viewport). If we used 
+                    something like pixels to width measurements, then we'd typically have wasted width or find the layout 
+                    wider than the viewport and have to to use 
+                    the left/right scroll bar to read all the text -- neither of which is good. 
+                </li>
+            </ul>
+
+            If you right click this page and View Source (in the &lt;style> element that's in the 
+            &lt;head> element), you'll see the styling that I added to this page. 
+
+
+            <h2>Where to Put CSS</h2>
+            <p>
+                We can put CSS rule sets in three places: 
+            </p>
+            <ul>
+                <li>
+                    <strong>inline</strong> styling (no reuse): rules are placed right in a specific HTML tag, like this: 
+                    <pre>
+    &lt;p style="background-color:pink; font-weight:bold;">This is a paragraph.&lt;/p></pre>
+                </li>
+                <li>
+                    <strong>internal style sheet</strong>: rules are placed inside of a &lt;style> tag inside 
+                    the &lt;head> section of a web page. Right click and View Source on this page and you'll see
+                    that we used an internal style sheet to style this page.
+                </li>
+                <li>
+                    <strong>external style sheet</strong>: rules are placed in a separate ".css" file which is referenced 
+                    by a &lt;style> tag that's inside the &lt;head> section of a web page.                  
+                </li>
+            </ul>
+            <p>
+                <strong>Comments</strong> in CSS must be of this style:  /* ... */
+            </p>
+
+        </div>
+        <div id='footer'>My Footer</div>
+    </body>
+</html>

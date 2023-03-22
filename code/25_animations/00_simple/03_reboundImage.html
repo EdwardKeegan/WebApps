@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Rebound Image Within Container</title>
+        <style>
+            #container {
+                position:relative;
+            }
+
+            #pic {
+                position:absolute;
+                top:0px;
+                left:0px;
+            }
+
+            #box {
+                position:absolute;
+                top:0px;
+                left:0px;
+                height:500px;
+                width:800px;
+                border:3px solid blue;
+            }
+        </style>
+    </head>
+    <body>
+        <input type="button" value="Advance Image" onClick="changeImage()"/>
+        <input type="button" value="Start Animation" onClick="startAnimation()"/>
+        <input type="button" value="Stop Animation" onClick="stopAnimation()"/>
+        <div id="container">
+            <div id="box"></div>
+            <img src="pics/plus.png" width="100" height="100" id="pic"/>
+        </div>
+
+        <script type="text/javascript">
+
+        // x is the left/right position of the image
+        // y is the up/down position of the image
+            var x = 30;
+            var y = 30;
+            //alert ("x is " + x + " and y is "+y);
+
+        // dx is the # of pixels that the left/right position will change when function changeImage is run
+        // dy is the # of pixels that the up/down position will change when that function is run 
+            var dx = 10;
+            var dy = 10;
+
+            function changeImage() {
+                x = x + dx;
+                y = y + dy;
+
+                if ((x > 700) || (x < 0)) {
+                    dx = -dx;
+                }
+
+                if ((y > 400) || (y < 0)) {
+                    dy = -dy;
+                }
+                //alert ("x is " + x + " and y is "+y);
+
+                document.getElementById('pic').style.left = x + "px";
+                document.getElementById('pic').style.top = y + "px";
+            }
+
+            var intervalHandle;
+            function startAnimation() {
+                changeImage();
+                intervalHandle = setInterval(changeImage, 90); /* name of function, how often to run it */
+            }
+
+            function stopAnimation() {
+                //alert ("trying to stop");
+                clearInterval(intervalHandle); // stop calling changeImage over and over
+            }
+
+        </script>
+    </body>
+</html>

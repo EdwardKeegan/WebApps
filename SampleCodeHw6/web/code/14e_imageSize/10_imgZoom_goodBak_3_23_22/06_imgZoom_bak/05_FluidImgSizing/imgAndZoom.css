@@ -1,0 +1,35 @@
+
+/* localized the styling by wrapping the component in a new div
+   (styled "imgAndZoom") and prefixing all other CSS selectors 
+   with that className */
+.imgAndZoom {
+}
+
+.imgAndZoom  .img-zoom-container {
+    position: relative;
+
+    /* added this to make the image and it's zoom side by side */
+    display: flex;
+    flex-direction: row;
+    
+    width: 80%; /* optional choice here */
+}
+
+.imgAndZoom .origPic {
+    width: 50%; /* must specify a width */
+}
+
+.imgAndZoom  .img-zoom-lens {
+    position: absolute;
+    border: 1px solid #d4d4d4;
+    /*set the size of the lens:*/
+    width: 40px;
+    height: 40px;
+}
+
+.imgAndZoom  .img-zoom-result {
+    border: 1px solid #d4d4d4;
+    /*set the size of the result div:*/
+
+}
+

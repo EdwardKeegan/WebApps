@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<!-- HTML comments like this... -->
+<html>
+    <head>
+        <title>Title Nav Using Flexbox</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link href="style/main.css" rel="stylesheet" type="text/css" />  
+        <link href="style/dropdown.css" rel="stylesheet" type="text/css" />  
+
+        <style>
+
+
+        </style>
+    </head>
+    <body>
+        <div id="titleNav">
+            <div id="title">
+                Website Title
+            </div>
+            <div id="nav">
+                <div class="dropdown">
+                    <a><img title="Home" src="icons/dark/home_icon_H24.png" alt="Home"></a>
+                </div>
+                <div class="dropdown">
+                    <div class="dropHeader" onclick="drop(this, 'hide', 'show')"><img class="dropHeader" title="Account" src="icons/dark/account_dd_icon_H24.png" alt="Account" ></div>
+                    <div class="dropContent">
+                        <a>Register</a> <br/>
+                        <a>Log In</a> <br/>
+                        <a>Profile</a> <br/>
+                        <a>Log Out</a>
+                    </div> 
+                </div>
+                <div class="dropdown">
+                    <div class="dropHeader" onclick="drop(this, 'hide', 'show')"><img class="dropHeader"  title="Search" src="icons/dark/search_dd_icon_H24.png" alt="Search" ></div>
+                    <div class="dropContent">
+                        <a>Users</a> <br/>
+                        <a>Cars</a> 
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <div class="dropHeader" onclick="drop(this, 'hide', 'show')"><img class="dropHeader"  title="Tutorial" src="icons/dark/tutorial_dd_icon_H24.png" alt="Tutorial" /></div>
+                    <div class="dropContent">
+                        <a>Proposal</a> <br/>
+                        <a>Proof Of Concept</a> <br/>
+                        <a>Tutorial Home</a> <br/>
+                        <a>Demo</a> <br/>
+                    </div> 
+                </div>          
+                <div class="dropdown">
+                    <a><img  title="Blog" src="icons/dark/blog_icon_H24.png" alt="Blog"></a>
+                </div>
+            </div>
+        </div>
+        <div id="content">
+
+            <p>
+                This code is just like the previous version only using <strong>icons with hover text</strong> 
+                instead of words in the nav bar. (It has the same the functional deficiency that clicking outside 
+                the nav bar does not close any open drop down menus.) 
+                This code provides a set of light and a set of dark icons that you are welcome to use. 
+            </p>
+
+        </div>
+        <div id="footer">
+            Your Footer Goes Here
+        </div>
+
+        <script src='js/drop.js'></script>
+    </body>
+</html>

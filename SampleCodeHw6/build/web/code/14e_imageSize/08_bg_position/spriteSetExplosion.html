@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Explosion Using Sprite Page</title>
+        <style>
+            body {
+                /* I have a background color for the page so that 
+                you can see the importance of the image being a "png" 
+                type file and having a transparent background color. 
+                Otherwise, you might see a "white box" around the 
+                explosions and that would not look good. */
+                background-color: beige; 
+                font-family: sans-serif;
+                line-height: 1.5rem;  
+                padding: 1rem;
+            }
+            .indent {
+                margin-left: 1.5rem;
+            }
+            .fire {
+                width:64px;
+                height:64px;
+                background-image:url(pics/explode.png);
+            }
+            .fire1 {
+                background-position: 0px 0px;  /* left and top */
+            }
+            .fire2 {
+                background-position: -64px 0px;
+            }
+            .fire3 {
+                background-position: -128px 0px;
+            }
+            .fire4 {
+                background-position: -192px 0px;
+            }
+            .fire5 {
+                background-position: -0px -64px;
+            }
+            .fire6 {
+                background-position: -64px -64px;
+            }
+            .fire7 {
+                background-position: -128px -64px;
+            }
+            .fire8 {
+                background-position: -192px -64px;
+            }
+            .fire9 {
+                background-position: 0px -128px;
+            }
+            .fire10 {
+                background-position: -64px -128px;
+            }
+            .fire11 {
+                background-position: -128px -128px;
+            }
+            .fire12 {
+                background-position: -192px -128px;
+            }
+            .fire13 {
+                background-position: -0px -192px;
+            }
+            .fire14 {
+                background-position: -64px -192px;
+            }
+            .fire15 {
+                background-position: -128px -192px;
+            }
+            .fire16 {
+                background-position: -192px -192px;
+            }
+        </style>
+    </head>
+    <body>
+
+        <h2>Look at this "Sprite Set" Image (png with Transparent Background)</h2>
+        <div class="indent">
+            <p>
+                So that we can talk about this topic, let's call each (64px by 64px) portion 
+                of the sprite set image (below) as being a "sprite". 
+            </p>
+            <img src="pics/explode.png" style="border:thin solid black;"/>
+        </div>
+
+        <h3>The 64px By 64px Div (Below) Has the Above Image as a Background Image</h3> 
+        <div class="indent">
+            <p>
+                Because the div (below) is smaller than its background image, 
+                we only see a portion of that sprite set image "showing through".
+                Think of background-position in this way: the div is like a window 
+                and the background image is a picture behind the window that 
+                someoone is moving around based on the background position settings 
+                (top and left).
+            </p>
+
+            <div id="pic" class = "fire fire1"></div>
+
+            <h4>Control Which Sprite Shows Through By Changing the background-position</h4> 
+            <input type="button" value="Make it fire1" onclick="document.getElementById('pic').className = 'fire fire1';" />
+            <input type="button" value="Make it fire2" onclick="document.getElementById('pic').className = 'fire fire2';" />
+            <input type="button" value="Make it fire3" onclick="document.getElementById('pic').className = 'fire fire3';"/>
+            <input type="button" value="Make it fire7" onclick="document.getElementById('pic').className = 'fire fire7';"/>
+
+            <h4>
+                Explanation of the background-position settings:
+            </h4>
+
+            <ul>
+                <li>
+                    Initially, the above div has two CSS classes applied, the first being class "fire".
+                    <strong>Class "fire"</strong> just specifies the size of the div and the background image. 
+                    If the div did not have any size, we would see nothing, no background 
+                    image showing through.
+                </li>
+                <li>
+                    The other CSS class that is initially applied is <strong>"fire1"</strong> which just has 
+                    background position "0px 0px" (for left and top). So, we just see 
+                    the upper left 64px by 64px portion of the sprite set image, meaning that 
+                    we see the upper left sprite.                 
+                </li>
+                <li>
+                    Which sprite would you see with class <strong>"fire7"</strong> 
+                    (with background-position -128px -64px)? 
+                    Because top is -128px, it's like the person moved the image up 
+                    by two "sprite rows" (behind the div which is like a fixed window), 
+                    so you see a sprite from the 3rd row. 
+                    Because right is -64px, it's like the person moved the image 
+                    to the left by one sprite and we see the 2nd sprite (from the 
+                    3rd row). 
+                </li>
+            </ul>
+            <p>
+                Look at the code from this page (JavaScript and CSS). By 
+                playing around with it, you should get a firm understanding 
+                about how you can use JavaScript and CSS to select out a sprite 
+                from a sprite set image. 
+            </p>
+        </div>
+
+        <h3>Animate It ! </h3>
+        <div class="indent">
+            <div id="animatePic" class = "fire fire1"></div>
+
+            <input type="button" value="Advance Image" onclick="changeImage()"/>
+            <input type="button" value="Start Animation" onclick="startAnimation()"/>
+            <input type="button" value="Stop Animation" onclick="stopAnimation()"/>
+        </div>
+
+
+        <script type="text/javascript">
+
+            var i = 1;
+            function changeImage() {
+                i = i + 1;
+                if (i > 16) {
+                    i = 1;
+                }
+                //var cname = 'fire fire' + i;
+                //alert ("cname is "+cname);
+                document.getElementById('animatePic').className = 'fire fire' + i;
+            }
+
+            var intervalHandle;
+            function startAnimation() {
+                changeImage();
+                intervalHandle = setInterval(changeImage, 90); /* name of function, how often to run it */
+            }
+
+            function stopAnimation() {
+                //alert ("trying to stop");
+                clearInterval(intervalHandle); // stop game, they won
+            }
+
+        </script>
+    </body>
+</html>

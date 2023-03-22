@@ -1,0 +1,19 @@
+
+.carStyle {
+    background-color:#DDDDDD; /* light grey */
+    padding:0.5rem;
+    margin:0.5rem;
+    border-radius: 8px;
+    box-shadow: 3px 3px 3px #888888; /* darker grey */
+    width: 48%; 
+    margin: 1%;
+    text-align: center;
+    margin:auto;
+}
+.carStyle img {
+    width: 80%;
+}
+
+.carStyle h3 {
+    margin-bottom: 0rem;
+}

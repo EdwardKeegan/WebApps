@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<!-- Sample code: Car Object -->
+<html>
+    <head>
+        <title>Car Object Sample</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link href="style/carStyle.css" rel="stylesheet" type="text/css" />  
+
+        <style>
+            body {
+                font-family: sans-serif;
+            }
+
+            #nav {
+                text-align:right;
+            }
+
+            #container {
+                padding: 1rem;
+            }
+            
+            a {
+                font-weight: bold;
+                color: blue;
+            }
+
+            a:hover {
+                cursor: pointer;
+            }
+            
+            .carStyle {
+                width:48%;
+                margin-left:1%;
+                margin-right:1%;
+            }
+
+        </style>
+
+    </head>
+    <body>
+        <h2>Click on Links to see Two Objects, Simple SPA (no NavRouter)</h2>
+
+        <div id="nav">
+            <a onclick="inject(home())">Home</a> | 
+            <a onclick="inject(carContent())">Two_Cars</a> | 
+            <a onclick="inject(blog())">Blog</a>
+        </div>
+
+
+        <div id="container"></div>
+
+        <script>
+            "use strict";
+        </script>
+
+        <script src="js/reusable/MakeCar.js"></script>
+        <script src="js/content/home.js"></script>  
+        <script src="js/content/carContent.js"></script>
+        <script src="js/content/blog.js"></script>
+
+        <script>
+
+
+            // cleans out the container and then injects (into container) whatever was passed in.
+            // if you don't clean out first, it appends, not replaces.
+            function inject(what) {
+                document.getElementById("container").innerHTML = "";
+                document.getElementById("container").appendChild(what);
+            }
+
+            // sends the output of the call to home() to the inject function 
+            inject(home());
+
+        </script>
+    </body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Data Types</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            body {
+                line-height: 2rem;
+                font-size: 1.25rem;
+                font-family:sans-serif;
+            }
+            pre {
+                line-height: 1.25rem;
+            }
+        </style>
+    </head>
+    <body>
+
+        <h2>JavaSript Data Types, Function Definition and Call</h2>
+        <h3>Press Chrome F12 to See Console Output</h3>
+        <pre>
+    var x = 5; // declare and instantiate
+    console.log ("x: " + x); //  prints "x: 5"
+
+    // function is just defined, does not execute unless invoked.
+    function printIt (y) {
+        console.log ("the value is " + y);
+    }
+
+    x = "hello"; // variable x now has a different data type
+    console.log ("x is now " + x); //  prints "x is now hello"
+
+    printIt (x); // prints "the value is hello"
+
+    x = [30, 20, 10];
+    console.log("array middle value: " + x[1]); // prints "array middle value: 20" 
+
+    x = { prodId:"ABC123", prodDesc: "iPhone 11", price:1234};
+    console.log("product: "+x.prodDesc); // prints "product: iPhone 11"
+
+    console.log(x); // console shows tree view of object with the three property names/values
+    console.log("x now " + x); // not useful. only shows something like "x now object"
+ 
+        </pre>
+
+        <script>
+
+            var x = 5; // declare and instantiate
+            console.log("x: " + x);//  prints "x: 5"
+
+            debugger;
+
+            // function is just defined, does not execute unless invoked.
+            function printIt(y) {
+                console.log("the value is " + y);
+            }
+
+            x = "hello"; // variable x now has a different data type
+            console.log("x is now " + x); //  prints "x is now hello"
+            
+            printIt(x); // prints "the value is hello"
+
+            x = [30, 20, 10];
+            console.log("array middle value: " + x[1]); // prints "array middle value: 20" 
+
+            x = {prodId: "ABC123", prodDesc: "iPhone 11", price: 1234};
+            console.log("product: " + x.prodDesc); // prints "product: iPhone 11"
+
+            console.log(x); // console shows tree view of object with the three property names/values
+            console.log("x now " + x); // not useful. only shows something like "x now object"  
+
+        </script>
+    </body>
+</html>

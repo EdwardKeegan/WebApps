@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!-- Sample code: Car Object -->
+<html>
+    <head>
+        <title>Car Object Sample</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            body {
+                padding: 1rem;
+                font-family: sans-serif;
+            }
+        </style>
+    </head>
+    <body>
+        <h2>Press Chrome's F12 to Open Up Console - All Public, No UI</h2>
+        <p>
+            This code:
+        </p>
+        <ul>
+            <li>
+                Has no user interface (it just prints to the console log). 
+            </li>
+            <li>
+                Makes two objects (each having only public properties and public methods). 
+            </li>
+            <li>
+                Since the data members are public, you don't even have to use the public 
+                setter functions.
+            </li>
+        </ul>
+  
+        <script src="00a_MakeCar.js"></script>
+        <script>
+            "use strict";
+
+            var myCarObj = MakeCar("blue toyota", "great", 5000);
+            myCarObj.log();
+
+            var yourCarObj = MakeCar("red BMW", "fair", 2500);
+            yourCarObj.log();
+
+            myCarObj.setCondition("poor");
+            myCarObj.log();
+
+            // since all data members are public, you don't have to use the setter function.
+            myCarObj.condition = "awesome";
+            myCarObj.log();
+
+            yourCarObj.changePrice(0.1); // 10% increase in price
+            yourCarObj.log();
+
+        </script>
+    </body>
+</html>

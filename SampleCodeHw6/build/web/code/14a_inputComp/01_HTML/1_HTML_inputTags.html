@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body {
+                font-family: sans-serif;
+                line-height: 1.5rem;
+            }
+            form {
+                border: thin solid black; 
+                padding:0.5rem;
+                margin: 0rem 1.5rem;
+                margin-bottom: 1rem;
+            }
+            form div {
+                margin-left: 1.5rem;
+                margin-bottom: 1rem;
+            }
+            p {
+                margin: 1rem 1.5rem; /* 1st is top/bottom, 2nd is left/right */
+            }
+            h2 { 
+                text-align:center;
+                margin:0.5rem 0.5rem; /* first is top/bottom, second is left/right */ 
+            }
+            h3 { 
+                margin:0.5rem 0rem; /* first is top/bottom, second is left/right */ 
+                margin-top:0rem;
+            }
+            input {
+                padding:2px;
+            }
+
+            pre {
+                line-height: 1.2rem;
+                margin-bottom:1rem;
+                margin-right: 2.5rem;
+                margin-left: 1.5rem;
+                background-color: #EEEEEE;
+                border-radius: 4px;
+                box-shadow: 2px 2px #AAAAAA;
+                padding-top: 0.25rem;
+                padding-bottom: 0.25rem;
+            }
+        </style>
+    </head>
+    <body>
+        <h2>HTML Tags For Getting Input</h2>
+        <p>
+            This page shows how web applications <strong><em>USED TO</em></strong> use 
+            <strong>&lt;form></strong> tags to get and process user data, e.g., access a database.
+
+        </p>
+        <ul style="margin-left:1.5rem;">
+            <li>
+                There are three &lt;form> tags on this page, each containing HTML input 
+                elements and a &lt;submit> button.  
+                <ul style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+                    <li>
+                        Each form is styled with a box around it 
+                        so that it is easy for you to see where the forms are on the page.
+                    </li>
+                </ul>
+            </li>
+            <li>
+                Each form has an "action" attribute that specifies the names of the server side 
+                program that is to "process" the users input -- when the user clicks submit.
+                <pre>
+    &lt;form method="post" action="http://cis-linux2.temple.edu:8080/sallyk/receiveData.jsp">  </pre>
+
+                <p>
+                    "receiveData.jsp" (shown in the form's action attribute above) is 
+                    the server side program (or page) that is referenced by all three 
+                    forms on this page. I wrote and published this generic program just to 
+                    demonstrate how web pages post data to a server side program. All my page does is to 
+                    display the names and values of all 
+                    the inputs that were sent to it. BUT, keep in mind, that server side programs 
+                    can do much more (like access 
+                    a database which is very important for web applications). 
+                </p>
+
+            </li>
+        </ul>
+
+
+
+        <form method="post" action="http://cis-linux2.temple.edu:8080/sallyk/receiveData.jsp">
+            <h3>HTML &lt;input> Tags with No Validation</h3>
+
+            <div>
+                Input type "text" (prefilled with value attribute): Your City?
+                <input type="text" name="txtCity" value="Philadelphia"/> <br/><br/>
+
+                Input with no type (defaults to "text"), added size attribute: Your State?
+                <input name="txtState" size="3"/> <br/><br/>
+
+                Input type "password" (hides user input): What's your password?  
+                <input type="password" name="myPassword" /> <br/><br/>
+
+                Input type "checkbox": Which pizza toppings do you like?<br/>
+                <input type="checkbox" name="likeChz" value="Ch" checked/> Cheese  <br/>
+                <input type="checkbox" name="likeMush" value="Mush" /> Mushrooms <br/>
+                <input type="checkbox" name="likePep" value="Pep" /> Pepperoni <br/><br/>
+
+                Input type "radio": Which pizza toppings is your FAVORITE (pick only one)?<br/>
+                <input type="radio" name="favTopping" value="Ch" /> Cheese  <br/>
+                <input type="radio" name="favTopping" value="Mush" checked /> Mushrooms <br/>
+                <input type="radio" name="favTopping" value="Pep" /> Pepperoni <br/>
+            </div>
+
+            <input type="submit"/> &nbsp; <input type="reset" />
+        </form>
+
+        <form method="post" action="http://cis-linux2.temple.edu:8080/sallyk/receiveData.jsp">
+            <h3>HTML &lt;select> and &lt;textarea> Tags with No Validation</h3>
+            <div>
+
+                &lt;select>: What year in college are you?<br/>
+                <select name="collegeYear">
+                    <option value="FR">Freshman</option>
+                    <option value="SO">Sophomore</option>
+                    <option value="JR" selected="selected">Junior</option>
+                    <option value="SR">Senior</option>
+                </select>
+                <br/><br/>
+
+                &lt;textarea> (for longer input): What comments do you have?  <br/>
+                <textarea name="comments" rows="8" cols="20">Tell us...</textarea> <br/> 
+            </div>
+            
+            <input type="submit"/> &nbsp; <input type="reset" />
+        </form>
+
+
+        <form method="post" action="http://cis-linux2.temple.edu:8080/sallyk/receiveData.jsp">
+            <h3>Using &lt;fieldset> and &lt;legend> Tags to Define Input Areas</h3>
+            <div>
+                <fieldset>
+                    <legend>Personal Data</legend>
+                    Name: <input name="userName" type="text"><br>
+                    Email: <input name="userEmail" type="text"><br>
+                </fieldset> 
+            </div>
+            <input type="submit"/> &nbsp; <input type="reset" />
+        </form>
+
+    </body>
+</html>

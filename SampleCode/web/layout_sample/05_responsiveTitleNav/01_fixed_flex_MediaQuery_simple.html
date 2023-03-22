@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<!-- HTML comments like this... -->
+<html>
+    <head>
+        <title>Title Nav Using Flexbox</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+
+
+            /* This rule makes everything use border-box sizing which is desireable. With border-box sizing, 
+               padding is not added to the width. For example, if you make the footer 100% and it has some padding, 
+               you'll see a horizontal because the footer becomes a little wider than 100%                            */
+            * { 
+                box-sizing: border-box;
+            }
+
+            /* mobile first design -- everything down to the media query is for mobile */
+
+            #titleNav {  
+                display:flex; 
+
+                /* NEW FOR MEDIA QUERY */
+                /* for mobile (narrow width), display the title and nav on top of each other: column layout */
+                flex-direction: column;
+                /* the previous settings we had here are now moved down into the media query that will kick in 
+                   when the browser is wider. */
+                /* END OF NEW */
+
+                /* fixed to top */
+                position: fixed;
+                top: 0;
+                width: 100%;
+                z-index:1;
+
+                padding: 1rem;
+                background-color: #DDDDDD;
+
+            }
+
+
+            #title {
+                font-size: 2rem;
+                white-space: nowrap;  /* don't allow the title to wrap */
+            }
+
+            #nav {
+                font-size: 1rem;
+                padding-top: 1rem;
+                white-space: nowrap;  /* don't allow nav links to wrap */
+                text-align: right;
+            }
+
+            #content {
+                padding: 1rem;
+                font-size: 1.5rem;
+                line-height: 2rem; 
+
+                /* NEW FOR MEDIA QUERY */
+                /* When the browser narrows now (with media query), the nav bar goes under the title, making 
+                the titleNav taller, so you need more top margin on the content, so the titleNav does not hide 
+                the top of the content. */
+                /* dont allow titleNav to cover up top of content */
+                margin-top: 7rem;  
+                /* END OF NEW */
+
+                /* dont allow footer to cover up bottom of content */
+                margin-bottom: 2.5rem;
+            }
+
+            /* Fix the footer at the bottom, and make sure (z-index) it's on top of content */
+            #footer {
+
+                position: fixed; 
+                bottom:0px;
+                z-index: 1;
+
+                background-color: #DDDDDD;
+                padding: 0.5rem;
+
+                font-size: 1rem;
+                text-align: center;
+                width: 100%;
+            }
+
+            /* desktop only */
+            @media only screen and (min-width: 40rem) { 
+
+                /* in desktop the titleNav is not as tall, so less top margin needed to prevent titleNav from hiding top of for content */
+                #content {
+                    margin-top: 4.5rem;
+                    /* color: red;  /* I added this to debug when the desktop rules kick in */
+                }
+
+                #titleNav {
+                    /* flex attributes */
+                    flex-direction: row;
+                    justify-content: space-between; /* flex attribute will push title left and nav right, with "space between" */
+                }
+
+                pre {
+                    margin-bottom:1.75rem;
+                    margin-right: 1rem;
+                    margin-left: 2rem;
+                    line-height:1rem;
+
+                    padding:1rem;
+                    background-color: #EEEEEE; 
+                    border-radius: 8px;
+                    box-shadow: 2px 2px #AAAAAA;
+                }
+            }
+
+        </style>
+    </head>
+    <body>
+        <div id="titleNav">
+            <div id="title">
+                Website Title
+            </div>
+            <div id="nav">
+                Home | Account | Search | Tutorial | Blog
+            </div>
+        </div>
+        <div id="content">
+
+            First line of content (not hidden under TitleNav)<br/>
+
+            <p>
+                This version has a media query that makes the web page "responsive" meaning that it 
+                looks good regardless of the width of the viewport, be it desktop or mobile device. 
+            </p>
+            <p>
+                Narrow your browser window until you see a change in the layout. The nav bar should 
+                go under the title and the top margin of the content area gets taller so that the 
+                top of the content is not hidden under the taller titleNav. 
+            </p>
+            <p>
+                Although you may find examples that use pixels as the unit of measurement 
+                for the media query min-width, I recommend that you use "rem" instead 
+                (and I looked into it from 
+                <a href="https://zellwk.com/blog/media-query-units/#:~:text=Since%20all%20three%20media%20queries,rem%20queries%20at%20this%20stage.">here</a>).
+            </p>
+            <pre>
+   @media only screen and (min-width: 40rem) { 
+
+       /* ... */
+
+   }            </pre>
+
+            Since you have specified your title and nav bar link text using rem measurements, 
+            specifying the media query min-width also with rem will provide consistent results 
+            when you narrow your browser. When narrowing your browser, your nav bar should 
+            move down to the next line about when your title would overlap with your nav bar. 
+
+
+            Last line of content (not hidden under Footer)
+
+        </div>
+        <div id="footer">
+            Your Footer Goes Here
+        </div>
+    </body>
+</html>

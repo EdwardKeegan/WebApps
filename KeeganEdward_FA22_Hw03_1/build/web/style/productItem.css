@@ -1,0 +1,19 @@
+.productItem {
+	/* Min/max width so we can have a consistent looking laptop UI */
+	min-width: 20em;
+	max-width: 20em;
+	
+
+	margin: .5em;
+	text-align: center;
+	padding: .5em;
+	background-color: rgb(130, 153, 161);
+	box-shadow: 0.3rem 0.3rem 0.3rem;
+	
+}
+
+.productItem img {
+	padding: 10px;
+	max-width: 60%;
+	max-height: 8em;
+}

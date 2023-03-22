@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+  <body>
+  <input type="text" id="textBox" value="33"/>
+  <input type="button" value="click me" onclick="myfunc()"/>
+  <script>
+     function myfunc( ) { 
+       var val = document.getElementById("textBox").value;   
+       document.getElementById("textBox").value = Number(val) + 2; 
+       console.log( document.getElementById("textBox").value ); 
+     }
+     var car = {type:"Fiat", model:"500", color:"white"};
+console.log(car.model);
+
+  </script>
+</body>
+
+</html>

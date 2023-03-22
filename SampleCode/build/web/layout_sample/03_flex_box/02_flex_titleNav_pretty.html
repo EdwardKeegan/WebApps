@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<!-- HTML comments like this... -->
+<html>
+    <head>
+        <title>Title Nav Using Flexbox</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+
+
+            /* This rule makes everything use border-box sizing which is desireable. With border-box sizing, 
+               padding is not added to the width. For example, if you make the footer 100% and it has some padding, 
+               you'll see a horizontal because the footer becomes a little wider than 100%                            */
+            * { 
+                box-sizing: border-box;
+            }
+
+            body { 
+                margin:0;                   /* no white border around browser window */
+                font-family: sans-serif;    /* no tails on the font like Times New Roman */
+                background-color: #eeeeee;  /* light grey - will show through the content area */
+            }
+
+            #titleNav {
+
+                /* the next two rules will layout the title followed by the nav side by side in a row */
+                display:flex; 
+                flex-direction: row;
+                justify-content: space-between; /* flex attribute will push title left and nav right, with "space between" */
+
+                padding: 1rem;
+                background-color: #74A5FD;
+
+                /* give a little "3D"  effect to the edges of titleNav and footer */
+                box-shadow: 0px 0px 5px black;  
+            }
+
+
+            #title {
+                font-size: 3rem;
+                font-weight: bold;
+                letter-spacing: 0.2rem; /* spaces out letters a bit */
+                white-space: nowrap;  /* don't allow the title to wrap */
+            }
+
+            #nav {
+                font-size: 1rem;
+                font-weight: bold;
+                padding-top: 2rem;
+                padding-right: 2rem;
+                white-space: nowrap;  /* don't allow nav links to wrap */
+            }
+
+            #content {
+                padding: 1rem;
+                font-size: 1.5rem;
+                line-height: 2rem; 
+            }
+
+            .hero {
+                margin-top: 6rem;
+                margin-bottom: 2rem;
+                font-size: 2.5rem;
+                line-height: 4.5rem;
+                font-weight: bold;
+                text-align:center;
+            }
+
+
+            #footer {
+
+                /* To select this color, I used the colorzilla chrome plugin to copy out the color of the title
+                   then I blended that color with various shades of grey (dark/light) until I liked it. */
+                background-color: #B4C1D9;
+                padding: 0.5rem;
+
+                font-size: 1rem;
+                text-align: center;
+                width: 100%;
+                box-shadow: 0px 0px 9px #74A5FD; /* lighter than titleNav */
+            }
+
+
+
+
+        </style>
+    </head>
+    <body>
+        <div id="titleNav">
+            <div id="title">
+                Website Title
+            </div>
+            <div id="nav">
+                Home | Account | Search | Tutorial | Blog
+            </div>
+        </div>
+        <div id="content">
+
+
+            <div class='hero'>You're Going to Love This Web Site! </div>
+
+            <p>
+                Normally the default behavior of divs (like all HTML block elements) is to start and end on a new line, 
+                as you saw in the case of the title and the nav divs in the previous example. 
+                We can change this behavior by using the new CSS flex-box. 
+                We get the title and nav divs to be in the same "row" by setting their container (titleNav) to 
+                <strong>display:flex</strong> 
+                and <strong>flex-direction:row</strong>. To make the title left justified and 
+                the nav right justified, we use <strong>justify-content:space-between</strong> (all rules for titleNav).
+            </p>           
+            <p>
+                This is a better usage of the space on the page, less waste vertically for the titleNav.
+            </p>
+            <p>
+                Change your browser width, making it narrower and narrower. 
+                Note that the title never wraps and neither does the nav bar (which is good), but when the width 
+                gets too narrow, the only way to access to the right nav links is to use the horizontal scroll bar 
+                (which no one likes). One of the next examples will address this problem by using a Media Query (stay tuned...).
+            </p>
+
+            This is the last line on this page...
+
+        </div>
+        <div id="footer">
+            Your Footer Goes Here
+        </div>
+    </body>
+</html>
